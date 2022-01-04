@@ -4,7 +4,6 @@
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 import pms
-from flask import Flask
 
 # pms.passpoli()
 
