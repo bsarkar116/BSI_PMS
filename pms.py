@@ -54,11 +54,6 @@ def ranpassgen(n):
                     x = callhibp(password)
                     if x == 0:
                         break
-                    else:
-                        print("match")
-                        break
-                else:
-                    continue
     else:
         while True:
             password = ''.join(
@@ -68,9 +63,4 @@ def ranpassgen(n):
                 x = callhibp(password)
                 if x == 0:
                     break
-                else:
-                    print("match")
-                    break
-            else:
-                continue
     return str(password)
