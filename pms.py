@@ -1,6 +1,7 @@
 import string
 import secrets
 import json
+import hashlib
 import requests
 from password_strength import PasswordPolicy
 
@@ -13,7 +14,22 @@ def passpoli():
     with open('policy.json', "w", encoding="utf8") as outfile:
         json.dump(data, outfile)
 
+
 # def disppass:
+
+def callhibp(passw):
+    m = hashlib.sha1(passw.encode('utf_8')).hexdigest()
+    query = "https://api.pwnedpasswords.com/range/" + m[:5]
+    response = requests.get(query)
+    for line in response.text.splitlines():
+        a, b = line.split(":", 1)
+        if m[5:] == a.lower():
+            flag = 1
+            break
+    if flag == 1:
+        return 1
+    else:
+        return 0
 
 
 def ranpassgen(n):
@@ -41,6 +57,7 @@ def ranpassgen(n):
                 secrets.choice(string.ascii_letters + string.digits + string.punctuation) for i in
                 range(length))
             if policy.test(password):
-                break
-
+                x = callhibp(password)
+                if x == 0:
+                    break
     return str(password)
