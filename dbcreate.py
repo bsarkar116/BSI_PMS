@@ -5,10 +5,12 @@ with open('dbcreds.json') as json_file:
     data = json.load(json_file)
 user = str(data["User"])
 passw = str(data["Password"])
+db = str(data["Database"])
 mydb = mysql.connector.connect(
     host="127.0.0.1",
     user=user,
-    password=passw
+    password=passw,
+    database=db
 )
 
 mycursor = mydb.cursor()
