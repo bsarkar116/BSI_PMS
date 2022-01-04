@@ -18,6 +18,7 @@ def passpoli():
 # def disppass:
 
 def callhibp(passw):
+    flag = 0
     m = hashlib.sha1(passw.encode('utf_8')).hexdigest()
     query = "https://api.pwnedpasswords.com/range/" + m[:5]
     response = requests.get(query)
@@ -44,20 +45,32 @@ def ranpassgen(n):
         special=int(data['Special']),  # min no. special characters
     )
     if n > 1:
-        while n > 0:
-            password = ''.join(
-                secrets.choice(string.ascii_letters + string.digits + string.punctuation) for i in
-                range(length))
-            if policy.test(password):
-                break
-            n = n - 1
+        for i in range(n):
+            while True:
+                password = ''.join(
+                    secrets.choice(string.ascii_letters + string.digits + string.punctuation) for i in
+                    range(length))
+                if not policy.test(password):
+                    x = callhibp(password)
+                    if x == 0:
+                        break
+                    else:
+                        print("match")
+                        break
+                else:
+                    continue
     else:
         while True:
             password = ''.join(
                 secrets.choice(string.ascii_letters + string.digits + string.punctuation) for i in
                 range(length))
-            if policy.test(password):
+            if not policy.test(password):
                 x = callhibp(password)
                 if x == 0:
                     break
+                else:
+                    print("match")
+                    break
+            else:
+                continue
     return str(password)
