@@ -10,6 +10,6 @@ import pms
 print("How many passwords are to be generated")
 n = int(input())
 if n > 1:
-    print('Password generated: ' + pms.ranpassgen(n))
+    print('Password batch generated and stored: ')
 else:
     print('Password generated: ' + pms.ranpassgen(n))
