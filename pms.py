@@ -3,23 +3,33 @@ import secrets
 import json
 import hashlib
 import requests
+import crypt
 from password_strength import PasswordPolicy
 
 
 def passpoli():
     a, b, c, d, e, f = input('Enter password policy in following order -> length, Number of Upper case chars, '
-                             'Number of Lower case chars, Number of special chars, Password retention duration: '
+                             'Number of Lower case chars, Number of digits, Number of special chars, Password '
+                             'retention duration: '
                              '').split(',')
     data = {'Length': a, 'Upper': b, 'Lower': c, 'Digits': d, 'Special': e, 'Age': f}
     with open('policy.json', "w", encoding="utf8") as outfile:
         json.dump(data, outfile)
+    encryptor = crypt.Secure()
+    mykey = encryptor.key_create()
+    encryptor.key_write(mykey, 'mykey.key')
+    loaded_key = encryptor.key_load('mykey.key')
+    encryptor.file_encrypt(loaded_key, 'policy.json')
+
+
+pass
 
 
 # def disppass:
 
 def callhibp(passw):
     flag = 0
-    m = hashlib.sha1(passw.encode('utf_8')).hexdigest()
+    m = hashlib.sha1(passw.encode('utf8')).hexdigest()
     query = "https://api.pwnedpasswords.com/range/" + m[:5]
     response = requests.get(query)
     for line in response.text.splitlines():
@@ -33,7 +43,13 @@ def callhibp(passw):
         return 0
 
 
+pass
+
+
 def ranpassgen(n):
+    encryptor = crypt.Secure()
+    loaded_key = encryptor.key_load('mykey.key')
+    encryptor.file_decrypt(loaded_key, 'policy.json')
     with open('policy.json') as json_file:
         data = json.load(json_file)
     length = int(data['Length'])
@@ -63,4 +79,12 @@ def ranpassgen(n):
                 x = callhibp(password)
                 if x == 0:
                     break
+    encryptor = crypt.Secure()
+    mykey = encryptor.key_create()
+    encryptor.key_write(mykey, 'mykey.key')
+    loaded_key = encryptor.key_load('mykey.key')
+    encryptor.file_encrypt(loaded_key, 'policy.json')
     return str(password)
+
+
+pass
