@@ -9,7 +9,7 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 # mycursor.execute("CREATE DATABASE password")
-# mycursor.execute("SHOW DATABASES")
+mycursor.execute("SHOW DATABASES")
 
-# for x in mycursor:
-   # print(x)
+for x in mycursor:
+    print(x)
