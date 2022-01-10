@@ -22,9 +22,9 @@ def passpoli():
                              'Number of Lower case chars, Number of digits, Number of special chars, Password '
                              'retention duration: '
                              '').split(',')
-    pol = {'Length': a, 'Upper': b, 'Lower': c, 'Digits': d, 'Special': e, 'Age': f}
+    poli = {'Length': a, 'Upper': b, 'Lower': c, 'Digits': d, 'Special': e, 'Age': f}
     with open('policy.json', "w", encoding="utf8") as outfile:
-        json.dump(pol, outfile)
+        json.dump(poli, outfile)
 
 
 def callhibp(p):
@@ -91,7 +91,7 @@ def frontend():
     elif n.lower() == "one" or n == '1':
         user = input("Please provide username: ")
         ranpassgen(user)
-        print('Password generated.')
+        print('Password generated and stored')
     else:
         print("Please enter a valid option between one or batch")
 
