@@ -9,7 +9,7 @@ from password_strength import PasswordPolicy as pp
 
 with open('dbcreds.json') as db_file:
     data = json.load(db_file)
-u = str(data["User"])
+usr = str(data["User"])
 passw = str(data["Password"])
 db = str(data["Database"])
 
@@ -43,7 +43,6 @@ def callhibp(p):
 
 
 def ranpassgen(u):
-    password = ""
     with open('policy.json') as json_file:
         pol = json.load(json_file)
     length = int(pol['Length'])
@@ -64,7 +63,7 @@ def ranpassgen(u):
                 break
     mydb = mysql.connector.connect(
         host="127.0.0.1",
-        user=u,
+        user=usr,
         password=passw,
         database=db
     )
