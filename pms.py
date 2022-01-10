@@ -12,6 +12,12 @@ with open('dbcreds.json') as db_file:
 usr = str(data["User"])
 passw = str(data["Password"])
 db = str(data["Database"])
+mydb = mysql.connector.connect(
+    host="127.0.0.1",
+    user=usr,
+    password=passw,
+    database=db
+)
 
 with open('policy.json') as json_file:
     pol = json.load(json_file)
@@ -66,12 +72,6 @@ def ranpassgen(u):
             y = callhibp(password)
             if y == 0:
                 break
-    mydb = mysql.connector.connect(
-        host="127.0.0.1",
-        user=usr,
-        password=passw,
-        database=db
-    )
     mycursor = mydb.cursor()
     query = "INSERT INTO users (user, pass) VALUES (%s, %s)"
     mycursor.execute(query, (u, password))
@@ -96,4 +96,4 @@ def frontend():
         print("Please enter a valid option between one or batch")
 
 
-frontend()
+# frontend()

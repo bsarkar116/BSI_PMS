@@ -17,7 +17,7 @@ class Password(Resource):
 api.add_resource(Password, "/passgen/<string:user>")
 
 if __name__ == "__main__":
-    app.run(debug=True, ssl_context='adhoc')
+    app.run(debug=True)
 
 
 
