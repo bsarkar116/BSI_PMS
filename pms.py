@@ -63,22 +63,35 @@ def checkpoli(p):
 
 def ranpassgen(u):
     length = int(pol['Length'])
-    while True:
-        password = ''.join(
-            secrets.choice(string.ascii_letters + string.digits + string.punctuation) for i in
-            range(length))
-        x = checkpoli(password)
-        if x == 1:
-            y = callhibp(password)
-            if y == 0:
-                break
-    mycursor = mydb.cursor()
-    query = "INSERT INTO users (user, pass) VALUES (%s, %s)"
-    mycursor.execute(query, (u, password))
-    mydb.commit()
+    mycursor = mydb.cursor(prepared=True)
+    query = """SELECT * FROM users WHERE user=%s"""
+    mycursor.execute(query, (u,))
+    rows = mycursor.fetchall()
+    if rows is None:
+        while True:
+            password = ''.join(
+                secrets.choice(string.ascii_letters + string.digits + string.punctuation) for i in
+                range(length))
+            x = checkpoli(password)
+            if x == 1:
+                y = callhibp(password)
+                if y == 0:
+                    break
+        query = """INSERT INTO users (user, pass) VALUES (%s, %s)"""
+        mycursor.execute(query, (u, password))
+        mydb.commit()
 
 
-# def disppass:
+def disppass(u):
+    mycursor = mydb.cursor(prepared=True)
+    query = """SELECT * FROM users WHERE user=%s"""
+    mycursor.execute(query, (u,))
+    rows = mycursor.fetchall()
+    if rows is None:
+        print("Not Found")
+    else:
+        print(str([0][0]), str(rows[0][1]))
+
 
 def frontend():
     n = input("How many passwords are to be generated(one or batch): ")
@@ -87,13 +100,14 @@ def frontend():
         for i in range(len(df)):
             user = df.iloc[i, 0]
             ranpassgen(user)
+            disppass(user)
         print('Password batch generated and stored.')
     elif n.lower() == "one" or n == '1':
         user = input("Please provide username: ")
         ranpassgen(user)
-        print('Password generated and stored')
+        disppass(user)
     else:
         print("Please enter a valid option between one or batch")
 
 
-# frontend()
+frontend()
