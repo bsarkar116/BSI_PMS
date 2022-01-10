@@ -9,9 +9,12 @@ from password_strength import PasswordPolicy as pp
 
 with open('dbcreds.json') as db_file:
     data = json.load(db_file)
-u = str(data["User"])
+usr = str(data["User"])
 passw = str(data["Password"])
 db = str(data["Database"])
+
+with open('policy.json') as json_file:
+    pol = json.load(json_file)
 
 
 def passpoli():
@@ -24,8 +27,6 @@ def passpoli():
         json.dump(pol, outfile)
 
 
-# def disppass:
-
 def callhibp(p):
     flag = 0
     m = hashlib.sha1(p.encode('utf8')).hexdigest()
@@ -36,17 +37,12 @@ def callhibp(p):
         if m[5:] == a.lower():
             flag = 1
             break
-    if flag == 1:
-        return 1
-    else:
-        return 0
+    return flag
 
 
-def ranpassgen(u):
-    password = ""
-    with open('policy.json') as json_file:
-        pol = json.load(json_file)
+def checkpoli(p):
     length = int(pol['Length'])
+    flag = 0
     policy = pp.from_names(
         length=length,  # min length
         uppercase=int(pol['Upper']),  # min no. uppercase letters
@@ -54,36 +50,50 @@ def ranpassgen(u):
         numbers=int(pol['Digits']),  # min no. digits
         special=int(pol['Special']),  # min no. special characters
     )
+    if not policy.test(p):
+        flag = 1
+    return flag
+
+
+def ranpassgen(u):
+    length = int(pol['Length'])
     while True:
         password = ''.join(
             secrets.choice(string.ascii_letters + string.digits + string.punctuation) for i in
             range(length))
-        if not policy.test(password):
-            x = callhibp(password)
-            if x == 0:
+        x = checkpoli(password)
+        if x == 1:
+            y = callhibp(password)
+            if y == 0:
                 break
     mydb = mysql.connector.connect(
         host="127.0.0.1",
-        user=u,
+        user=usr,
         password=passw,
         database=db
     )
     mycursor = mydb.cursor()
-    query = "INSERT INTO users (user, Name) VALUES(?, ?)", (u, password)
-    mycursor.execute(query)
+    query = "INSERT INTO users (user, pass) VALUES (%s, %s)"
+    mycursor.execute(query, (u, password))
+    mydb.commit()
 
+
+# def disppass:
 
 def frontend():
     n = input("How many passwords are to be generated(one or batch): ")
-    if n.lower() == "batch":
+    if n.lower() == "batch" or n.lower() == "m":
         df = pd.read_csv("users_batch.csv")
         for i in range(len(df)):
             user = df.iloc[i, 0]
             ranpassgen(user)
         print('Password batch generated and stored.')
-    elif n.lower() == "one":
+    elif n.lower() == "one" or n == '1':
         user = input("Please provide username: ")
         ranpassgen(user)
         print('Password generated.')
     else:
         print("Please enter a valid option between one or batch")
+
+
+frontend()
