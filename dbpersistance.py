@@ -1,18 +1,21 @@
 import json
 import mysql.connector as sql
 
-with open('dbcreds.json') as db_file:
-    data = json.load(db_file)
-usr = str(data["User"])
-passw = str(data["Password"])
-db = str(data["Database"])
-mydb = sql.connect(
-    host="127.0.0.1",
-    user=usr,
-    password=passw,
-    database=db
-)
-mycursor = mydb.cursor()
+try:
+    with open('dbcreds.json') as db_file:
+        data = json.load(db_file)
+    usr = str(data["User"])
+    passw = str(data["Password"])
+    db = str(data["Database"])
+    mydb = sql.connect(
+        host="127.0.0.1",
+        user=usr,
+        password=passw,
+        database=db
+    )
+    mycursor = mydb.cursor()
+except FileNotFoundError:
+    print("No file found with database information")
 
 
 def insertuser(u, p):
@@ -28,3 +31,4 @@ def lookup(u):
     mycursor.execute(query, (u,))
     rows = mycursor.fetchall()
     return rows
+

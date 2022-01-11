@@ -1,8 +1,5 @@
 import json
-from password_strength import PasswordPolicy as pp
-
-with open('policy.json') as json_file:
-    pol = json.load(json_file)
+from password_strength import PasswordPolicy as pp  #
 
 
 def genpolicy():
@@ -13,6 +10,13 @@ def genpolicy():
     poli = {'Length': a, 'Upper': b, 'Lower': c, 'Digits': d, 'Special': e, 'Age': f}
     with open('policy.json', "w", encoding="utf8") as outfile:
         json.dump(poli, outfile)
+
+
+try:
+    with open('policy.json') as json_file:
+        pol = json.load(json_file)
+except FileNotFoundError:
+    print("Policy file not found. Please generate one first")
 
 
 def returnlen():

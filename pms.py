@@ -12,7 +12,7 @@ def callhibp(p):
     m = hashlib.sha1(p.encode('utf8')).hexdigest()
     query = "https://api.pwnedpasswords.com/range/" + m[:5]
     response = requests.get(query)
-    for line in response.text.splitlines():
+    for line in response.text.splitlines():     #
         a, b = line.split(":", 1)
         if m[5:] == a.lower():
             flag = 1
@@ -37,7 +37,7 @@ def ranpassgen(u):
 
 
 def frontend():
-    n = input("How many passwords are to be generated(one or batch): ")
+    n = input("How many passwords are to be generated(one/1 or batch/m): ")
     if n.lower() == "batch" or n.lower() == "m":
         df = pd.read_csv("users_batch.csv")
         for i in range(len(df)):
@@ -53,4 +53,4 @@ def frontend():
         print("Please enter a valid option between one or batch")
 
 
-frontend()
+# frontend()
