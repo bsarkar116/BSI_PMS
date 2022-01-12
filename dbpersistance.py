@@ -24,6 +24,9 @@ def insertuser(u, p):
         query = """INSERT INTO users (user, pass) VALUES (%s, %s)"""
         mycursor.execute(query, (u, p))
         mydb.commit()
+        return True
+    else:
+        return False
 
 
 def lookup(u):

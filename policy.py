@@ -33,5 +33,6 @@ def checkpolicy(p):
         special=int(pol['Special']),  # min no. special characters
     )
     if not policy.test(p):
-        flag = 1
-    return flag
+        return True
+    else:
+        return False
