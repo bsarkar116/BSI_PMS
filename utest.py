@@ -10,7 +10,7 @@ class TestPMS(unittest.TestCase):
         Test that the complexity of password generated is evaluated as per current policy
         """
         result = checkpolicy('P@ssw0rd')
-        self.assertEqual(result, 0)
+        self.assertEqual(result, False)
 
     def test_callhibp(self):
         """

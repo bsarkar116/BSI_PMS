@@ -3,7 +3,7 @@ import secrets
 import hashlib
 import requests
 from policy import *
-from dbpersistance import *
+from dbpersistence import *
 
 
 def callhibp(p):
