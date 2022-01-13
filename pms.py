@@ -19,7 +19,7 @@ def callhibp(p):
     return flag
 
 
-def ranpassgen(u):
+def ranpassgen(u, r):
     while True:
         password = ''.join(
             secrets.choice(string.ascii_letters + string.digits + string.punctuation) for i in
@@ -29,7 +29,7 @@ def ranpassgen(u):
             y = callhibp(password)
             if y == 0:
                 break
-    result = insertuser(u, password)
+    result = insertuser(u, password, r)
     if result:
         return True
     else:

@@ -24,7 +24,6 @@ def returnlen():
 
 
 def checkpolicy(p):
-    flag = 0
     policy = pp.from_names(
         length=int(pol['Length']),  # min length
         uppercase=int(pol['Upper']),  # min no. uppercase letters

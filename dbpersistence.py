@@ -18,11 +18,11 @@ except FileNotFoundError:
     print("No file found with database information")
 
 
-def insertuser(u, p):
+def insertuser(u, p, r):
     rows = lookup(u)
     if not rows:
-        query = """INSERT INTO users (user, pass) VALUES (%s, %s)"""
-        mycursor.execute(query, (u, p))
+        query = """INSERT INTO users (user, pass, role, creation) VALUES (%s, %s, %s, CURRENT_DATE())"""
+        mycursor.execute(query, (u, p, r))
         mydb.commit()
         return True
     else:
