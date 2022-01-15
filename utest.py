@@ -23,16 +23,17 @@ class TestPMS(unittest.TestCase):
 
     def test_dbinsert(self):
         """
-        Test whether insertion of data is persistent in the database by checking the rows returned
+        Test whether insertion of data is persistent in the database by checking the boolean response of method
         """
-        self.assertTrue(insertuser("abz@acme.com", "Intel4770@3.4A"))
+        self.assertTrue(insertuser("abz@acme.com", "Intel4770@3.4A", "role"))
 
     def test_passgenapi(self):
         """
         Test the invocation of password generation API for a single user by checking the response code returned
         """
-        query = 'http://127.0.0.1:5000/passgen/anony@acme.com'
-        result = requests.put(query)
+        d = {"name": "anony@acme.com", "role": "user"}
+        query = 'http://127.0.0.1:5000/single/'
+        result = requests.put(query, d)
         assert result.status_code == 200
 
 
