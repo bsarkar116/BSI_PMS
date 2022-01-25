@@ -1,5 +1,7 @@
 import json
 from password_strength import PasswordPolicy as pp  #
+from database import lookup
+from datetime import date
 
 
 def genpolicy():
@@ -35,3 +37,12 @@ def checkpolicy(p):
         return True
     else:
         return False
+
+
+def passretention(u, passw):
+    rows = lookup(u)
+    days = date.today() - rows[0][3]
+    if checkpolicy(passw) and int(days) <= int(pol['Age']):
+        return False
+    else:
+        return True

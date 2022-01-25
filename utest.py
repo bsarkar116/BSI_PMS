@@ -25,15 +25,25 @@ class TestPMS(unittest.TestCase):
         """
         Test whether insertion of data is persistent in the database by checking the boolean response of method
         """
-        self.assertTrue(insertuser("abz@acme.com", "Intel4770@3.4A", "role"))
+        self.assertTrue(insertuser("abz@acme.com", "Intel4770@3.4A", "user"))
 
-    def test_passgenapi(self):
+    def test_singlegenapi(self):
         """
         Test the invocation of password generation API for a single user by checking the response code returned
         """
-        d = {"name": "anony@acme.com", "role": "user"}
-        query = 'http://127.0.0.1:5000/single/'
-        result = requests.put(query, d)
+        d = {"name": "anotst@acme.com", "role": "user"}
+        query = 'http://127.0.0.1:5000/add/single'
+        result = requests.post(query, d)
+        assert result.status_code == 200
+
+    def test_batchgenapi(self):
+        """
+        Test the invocation of password generation API for a batch of users by checking the response code returned
+        """
+        query = 'http://127.0.0.1:5000/add/multi'
+        file = {'file': open("C:/Users/briji/OneDrive/Desktop/users_batch.csv", "rb")}
+        result = requests.post(query, files=file)
+        file.clear()
         assert result.status_code == 200
 
 

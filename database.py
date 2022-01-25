@@ -34,4 +34,3 @@ def lookup(u):
     mycursor.execute(query, (u,))
     rows = mycursor.fetchall()
     return rows
-
