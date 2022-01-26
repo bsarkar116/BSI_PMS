@@ -18,7 +18,7 @@ try:
     with open('policy.json') as json_file:
         pol = json.load(json_file)
 except FileNotFoundError:
-    print("Policy file not found. Please generate one first")
+    print("Missing config file")
 
 
 def returnlen():

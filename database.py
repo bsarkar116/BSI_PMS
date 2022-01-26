@@ -15,7 +15,7 @@ try:
     )
     mycursor = mydb.cursor()
 except FileNotFoundError:
-    print("No file found with database information")
+    print("Missing config file")
 
 
 def insertuser(u, p, r):

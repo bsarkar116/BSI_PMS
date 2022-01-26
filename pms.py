@@ -2,8 +2,9 @@ import string
 import secrets
 import hashlib
 import requests
-from policy import checkpolicy, returnlen
-from database import insertuser
+import bcrypt
+from policy import checkpolicy, returnlen, passretention
+from database import insertuser, lookup
 
 
 def callhibp(p):
@@ -19,6 +20,21 @@ def callhibp(p):
     return flag
 
 
+def hashing(passw):  # referenced from https://stackoverflow.com/questions/8870190/is-it-better-to-save-insert-the
+    # -hashed-string-in-database-table-before-saving-th
+    salt = bcrypt.gensalt()
+    hashed = bcrypt.hashpw(passw.encode(), salt)
+    return hashed
+
+
+def comparehash(u, passw):
+    rows = lookup(u)
+    if bcrypt.hashpw(passw.encode(), rows[0][1].encode()) == rows[0][1].encode():
+        return True
+    else:
+        return False
+
+
 def ranpassgen(u, r):
     while True:
         password = ''.join(
@@ -27,8 +43,10 @@ def ranpassgen(u, r):
             y = callhibp(password)
             if y == 0:
                 break
-    result = insertuser(u, password, r)
+    hashedpass = hashing(password)
+    result = insertuser(u, hashedpass, r)
     if result:
-        return True
+        return True, password
     else:
-        return False
+        return False, None
+
