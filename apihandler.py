@@ -1,75 +1,93 @@
-import re
-import jwt
-import json
-import datetime
+from re import match
+from jwt import encode
+from json import load, loads
+from validations import *
+from datetime import datetime, timedelta
 from flask import Flask, Response, request, jsonify
-from flask_restful import Api, Resource, reqparse
-from pms import ranpassgen, comparehash
-import pandas as pd
+from flask_restful import Api, Resource
+from schema import *
+from misc import *
+from pms import adduser, comparehash, passretention, updatepass, genpolicy
 
 app = Flask(__name__)
 api = Api(app)
 
 try:
-    with open('token.json') as json_file:
-        tok = json.load(json_file)
+    with open("token.json") as json_file:
+        tok = load(json_file)
 except FileNotFoundError:
     print("Missing config file")
 
+
+def createtoken(u):
+    app.config["SECRET_KEY"] = str(tok["SECRET_KEY"])
+    token = encode(
+        {'user': u, 'exp': datetime.utcnow() + timedelta(minutes=10)},
+        app.config['SECRET_KEY'])
+    return token
+
+
 # API resource referenced from https://www.youtube.com/watch?v=GMppyAPbLYk&t=1842s
-
-single_args = reqparse.RequestParser()
-single_args.add_argument("user", type=str, help="User name is missing", required=True)
-single_args.add_argument("role", type=str, help="Desired role is missing", required=True)
-
 
 class AddUser(Resource):
     def post(self):
-        if re.match('/add/single', request.path):
-            args = single_args.parse_args()
-            response, passw = ranpassgen(args['user'], args['role'])
-            if response:
-                return {"User": args['user'], "Pass": passw}, 200
-            else:
-                return Response("Duplicate user", mimetype="text/html", status=403)
-        elif re.match('/add/multi', request.path):
-            file = request.files['file']
-            df = pd.read_csv(file)
-            templist = []
-            df_new = df.drop("Role", axis=1)
-            for i in range(len(df)):
-                result, passw = ranpassgen(df.iloc[i, 0], df.iloc[i, 1])
-                if result:
-                    templist.append(passw)
+        if match('/add/single', request.path):
+            data = request.json
+            isvalid = validateJson(data, userSchema)
+            print(isvalid)
+            if isvalid:
+                response, passw = adduser(data['user'], data['role'], data['appid'])
+                if response:
+                    return jsonify({"User": data['user'], "Pass": passw})
                 else:
-                    templist.append("Duplicate user")
-            df_new["Password"] = templist
-            return Response(df_new.to_csv(), mimetype="text/csv", status=200)
+                    return Response("Duplicate user", mimetype="text/html", status=403)
+            else:
+                return Response("Malformed data sent", mimetype="text/html", status=403)
+        elif match('/add/multi', request.path):
+            file = request.files['file']
+            output = batchhandler(file)
+            return Response(output.to_csv(), mimetype="text/csv", status=200)
 
 
 api.add_resource(AddUser, "/add/single", endpoint="add-single")
 api.add_resource(AddUser, "/add/multi", endpoint="add-multi")
 
-auth_args = reqparse.RequestParser()
-auth_args.add_argument("user", type=str, help="User name is missing", required=True)
-auth_args.add_argument("pass", type=str, help="Password is missing", required=True)
-
-app.config['SECRET_KEY'] = str(tok["SECRET_KEY"])
-
 
 class Authenticate(Resource):
     def get(self):
-        args = auth_args.parse_args()
-        if comparehash(args['user'], args['pass']):
-            token = jwt.encode(
-                {'user': args['user'], 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=10)},
-                app.config['SECRET_KEY'])
-            return jsonify({'token': token})
+        data = request.json
+        isvalid = validateJson(data, loginSchema)
+        if isvalid:
+            if comparehash(data['user'], data['pass']):
+                if passretention():
+                    passw = updatepass(data['user'])
+                    token = createtoken(data['user'])
+                    return jsonify({'token': token, 'Pass': passw, "Message": "Password has been updated"})
+                else:
+                    token = createtoken(data['user'])
+                    return jsonify({'token': token})
+            else:
+                return Response("Invalid User/Password", mimetype="text/html", status=403)
         else:
-            return Response("Invalid User/Password", mimetype="text/html", status=404)
+            return Response("Malformed data sent", mimetype="text/html", status=403)
 
 
 api.add_resource(Authenticate, "/auth", endpoint="auth")
+
+
+class Policy(Resource):
+    def post(self):
+        file = request.files['file'].read()
+        data = loads(file.decode())
+        isvalid = validateJson(data, plicySchema)
+        if isvalid:
+            genpolicy(data['Length'], data['Upper'], data['Lower'], data['Digits'], data['Special'], data['Age'])
+            return Response("Policy updated", mimetype="text/html", status=200)
+        else:
+            return Response("Malformed data sent", mimetype="text/html", status=403)
+
+
+api.add_resource(Policy, "/policy", endpoint="policy")
 
 if __name__ == "__main__":
     app.run(debug=True, ssl_context=('cert.crt', 'cert.key'), host="Localhost")

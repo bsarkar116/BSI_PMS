@@ -18,19 +18,39 @@ except FileNotFoundError:
     print("Missing config file")
 
 
-def insertuser(u, p, r):
-    rows = lookup(u)
+def insertuser(u, p, r, appid):
+    rows = lookupuser(u)
     if not rows:
-        query = """INSERT INTO users (user, pass, role, creation) VALUES (%s, %s, %s, CURRENT_DATE())"""
-        mycursor.execute(query, (u, p, r))
+        query = """INSERT INTO users (user, pass, role, creation, appid, status) VALUES (%s, %s, %s, 
+        CURRENT_TIMESTAMP(), %s, %s) """
+        mycursor.execute(query, (u, p, r, appid, "0"))
         mydb.commit()
         return True
     else:
         return False
 
 
-def lookup(u):
+def queryall():
+    query = """SELECT * FROM users"""
+    mycursor.execute(query)
+    rows = mycursor.fetchall()
+    return rows
+
+
+def lookupuser(u):
     query = """SELECT * FROM users WHERE user=%s"""
     mycursor.execute(query, (u,))
     rows = mycursor.fetchall()
     return rows
+
+
+def updatep(u, pas):
+    query = """UPDATE users SET pass=%s, status=%s WHERE user=%s"""
+    mycursor.execute(query, (pas, "0", u))
+    mydb.commit()
+
+
+def updatestatus(u):
+    query = """UPDATE users SET status=%s WHERE user=%s"""
+    mycursor.execute(query, ("1", u))
+    mydb.commit()

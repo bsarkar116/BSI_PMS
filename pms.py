@@ -3,8 +3,8 @@ import secrets
 import hashlib
 import requests
 import bcrypt
-from policy import checkpolicy, returnlen, passretention
-from database import insertuser, lookup
+from policy import *
+from database import insertuser, lookupuser, updatep
 
 
 def callhibp(p):
@@ -28,14 +28,18 @@ def hashing(passw):  # referenced from https://stackoverflow.com/questions/88701
 
 
 def comparehash(u, passw):
-    rows = lookup(u)
-    if bcrypt.hashpw(passw.encode(), rows[0][1].encode()) == rows[0][1].encode():
-        return True
+    rows = lookupuser(u)
+    if rows:
+        if bcrypt.hashpw(passw.encode(), rows[0][1].encode()) == rows[0][1].encode():
+            return True
+        else:
+            return False
     else:
         return False
 
 
-def ranpassgen(u, r):
+
+def randomgen():
     while True:
         password = ''.join(
             secrets.choice(string.ascii_letters + string.digits + string.punctuation) for i in range(returnlen()))
@@ -44,9 +48,19 @@ def ranpassgen(u, r):
             if y == 0:
                 break
     hashedpass = hashing(password)
-    result = insertuser(u, hashedpass, r)
+    return hashedpass, password
+
+
+def adduser(u, r, appid):
+    hpass, passw = randomgen()
+    result = insertuser(u, hpass, r, appid)
     if result:
-        return True, password
+        return True, passw
     else:
         return False, None
 
+
+def updatepass(u):
+    hpass, passw = randomgen()
+    updatep(u, hpass)
+    return passw

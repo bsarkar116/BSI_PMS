@@ -25,7 +25,7 @@ class TestPMS(unittest.TestCase):
         """
         Test whether insertion of data is persistent in the database by checking the boolean response of method
         """
-        self.assertTrue(insertuser("abz@acme.com", "Intel4770@3.4A", "user"))
+        self.assertTrue(insertuser("abz@acme.com", "Intel4770@3.4A", "user", "a2"))
 
     def test_singlegenapi(self):
         """
