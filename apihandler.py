@@ -5,9 +5,10 @@ from flask import Flask, Response, request, jsonify
 from flask_wtf.csrf import CSRFProtect
 from flask_restful import Api, Resource
 from schema import plicySchema, userSchema, loginSchema
-from misc import batchhandler
 from tokens import create_token, verify_token
-from pms import adduser, comparehash, passretention, updatepass, genpolicy, lookupflag
+from policy import passretention, genpolicy
+from database import lookupuser
+from pms import adduser, comparehash, updatepass, batchadder
 
 app = Flask(__name__)
 csrf = CSRFProtect(app)
@@ -37,7 +38,7 @@ class AddUser(Resource):
                 return Response(reply, mimetype=mime, status=403)
         elif match('/add/multi', request.path):
             file = request.files['file']
-            output = batchhandler(file)
+            output = batchadder(file)
             return Response(output.to_csv(), mimetype="text/csv", status=200)
 
 
@@ -51,7 +52,8 @@ class Authenticate(Resource):
         isvalid = validatejson(data, loginSchema)
         if isvalid:
             if comparehash(data['user'], data['pass']):
-                flag = lookupflag(data['user'])
+                rows = lookupuser(data['user'])
+                flag = rows[0][5]
                 if flag == "1":
                     passw = updatepass(data['user'])
                     token = create_token(data['user'])

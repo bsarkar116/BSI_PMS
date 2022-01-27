@@ -3,7 +3,8 @@ import secrets
 import hashlib
 import requests
 import bcrypt
-from policy import passretention, genpolicy, checkpolicy, returnlen
+import pandas as pd
+from policy import checkpolicy, returnlen
 from database import insertuser, lookupuser, updatep
 
 
@@ -19,14 +20,9 @@ def callhibp(p):
             break
     return flag
 
+
 # referenced from https://stackoverflow.com/questions/8870190/is-it-better-to-save-insert-the
 # -hashed-string-in-database-table-before-saving-th
-
-def hashing(passw):
-    salt = bcrypt.gensalt()
-    hashed = bcrypt.hashpw(passw.encode(), salt)
-    return hashed
-
 
 def comparehash(u, passw):
     rows = lookupuser(u)
@@ -40,7 +36,7 @@ def comparehash(u, passw):
 
 
 def randomgen():
-    exclude = set(("'", '"'))
+    exclude = {"'", '"'}
     puncts = ''.join(ch for ch in string.punctuation if ch not in exclude)
     while True:
         password = ''.join(
@@ -49,7 +45,8 @@ def randomgen():
             y = callhibp(password)
             if y == 0:
                 break
-    hashedpass = hashing(password)
+    salt = bcrypt.gensalt()
+    hashedpass = bcrypt.hashpw(password.encode(), salt)
     return hashedpass, password
 
 
@@ -62,13 +59,21 @@ def adduser(u, r, appid):
         return False, None
 
 
+def batchadder(file):
+    df = pd.read_csv(file)
+    templist = []
+    df_new = df.drop(["Role", "AppID"], axis=1)
+    for i in range(len(df)):
+        result, passw = adduser(df.iloc[i, 0], df.iloc[i, 1], df.iloc[i, 2])
+        if result:
+            templist.append(passw)
+        else:
+            templist.append("Duplicate user")
+    df_new["Password"] = templist
+    return df_new
+
+
 def updatepass(u):
     hpass, passw = randomgen()
     updatep(u, hpass)
     return passw
-
-
-def lookupflag(u):
-    rows = lookupuser(u)
-    flag = rows[0][5]
-    return flag
