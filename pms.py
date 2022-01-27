@@ -38,7 +38,6 @@ def comparehash(u, passw):
         return False
 
 
-
 def randomgen():
     while True:
         password = ''.join(
@@ -64,3 +63,9 @@ def updatepass(u):
     hpass, passw = randomgen()
     updatep(u, hpass)
     return passw
+
+
+def lookupflag(u):
+    rows = lookupuser(u)
+    flag = rows[0][5]
+    return flag

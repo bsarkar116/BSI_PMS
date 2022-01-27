@@ -7,7 +7,7 @@ from flask import Flask, Response, request, jsonify
 from flask_restful import Api, Resource
 from schema import *
 from misc import *
-from pms import adduser, comparehash, passretention, updatepass, genpolicy
+from pms import adduser, comparehash, passretention, updatepass, genpolicy, lookupflag
 
 app = Flask(__name__)
 api = Api(app)
@@ -18,6 +18,7 @@ try:
 except FileNotFoundError:
     print("Missing config file")
 
+passretention()
 
 def createtoken(u):
     app.config["SECRET_KEY"] = str(tok["SECRET_KEY"])
@@ -59,11 +60,12 @@ class Authenticate(Resource):
         isvalid = validateJson(data, loginSchema)
         if isvalid:
             if comparehash(data['user'], data['pass']):
-                if passretention():
+                flag = lookupflag(data['user'])
+                if  flag == "1":
                     passw = updatepass(data['user'])
                     token = createtoken(data['user'])
                     return jsonify({'token': token, 'Pass': passw, "Message": "Password has been updated"})
-                else:
+                elif flag == "0":
                     token = createtoken(data['user'])
                     return jsonify({'token': token})
             else:

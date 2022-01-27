@@ -45,7 +45,7 @@ def lookupuser(u):
 
 
 def updatep(u, pas):
-    query = """UPDATE users SET pass=%s, status=%s WHERE user=%s"""
+    query = """UPDATE users SET pass=%s, status=%s, creation=CURRENT_TIMESTAMP() WHERE user=%s"""
     mycursor.execute(query, (pas, "0", u))
     mydb.commit()
 
