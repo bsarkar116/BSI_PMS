@@ -1,12 +1,12 @@
 plicySchema = {
     "type": "object",
                "properties": {
-                   "Length": {"type": "number"},
-                   "Upper": {"type": "number"},
-                   "Lower": {"type": "number"},
-                   "Digits": {"type": "number"},
-                   "Special": {"type": "number"},
-                   "Age": {"type": "number"}
+                   "Length": {"type": "integer", "minimum": 0},
+                   "Upper": {"type": "integer", "minimum": 0},
+                   "Lower": {"type": "integer", "minimum": 0},
+                   "Digits": {"type": "integer", "minimum": 0},
+                   "Special": {"type": "integer", "minimum": 0},
+                   "Age": {"type": "integer", "minimum": 0}
                },
                "required": [
                    "Length",
@@ -21,9 +21,9 @@ plicySchema = {
 userSchema = {
     "type": "object",
               "properties": {
-                  "user": {"type": "string"},
-                  "role": {"type": "string"},
-                  "appid": {"type": "string"}
+                  "user": {"type": "string", "pattern": "^[A-Za-z0-9]+[\._]?[A-Za-z0-9]+[@]acme.com$"},
+                  "role": {"type": "string", "enum": ["user", "admin"]},
+                  "appid": {"type": "string", "pattern": "^a+[0-9]$"}
               },
               "required": [
                   "user",
@@ -35,7 +35,7 @@ userSchema = {
 loginSchema = {
     "type": "object",
                "properties": {
-                   "user": {"type": "string"},
+                   "user": {"type": "string", "pattern": "^[A-Za-z0-9]+[\._]?[A-Za-z0-9]+[@]acme.com$"},
                    "pass": {"type": "string"},
                },
                "required": [

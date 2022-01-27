@@ -3,7 +3,7 @@ import secrets
 import hashlib
 import requests
 import bcrypt
-from policy import *
+from policy import passretention, genpolicy, checkpolicy, returnlen
 from database import insertuser, lookupuser, updatep
 
 
@@ -19,9 +19,10 @@ def callhibp(p):
             break
     return flag
 
+# referenced from https://stackoverflow.com/questions/8870190/is-it-better-to-save-insert-the
+# -hashed-string-in-database-table-before-saving-th
 
-def hashing(passw):  # referenced from https://stackoverflow.com/questions/8870190/is-it-better-to-save-insert-the
-    # -hashed-string-in-database-table-before-saving-th
+def hashing(passw):
     salt = bcrypt.gensalt()
     hashed = bcrypt.hashpw(passw.encode(), salt)
     return hashed
@@ -39,9 +40,11 @@ def comparehash(u, passw):
 
 
 def randomgen():
+    exclude = set(("'", '"'))
+    puncts = ''.join(ch for ch in string.punctuation if ch not in exclude)
     while True:
         password = ''.join(
-            secrets.choice(string.ascii_letters + string.digits + string.punctuation) for i in range(returnlen()))
+            secrets.choice(string.ascii_letters + string.digits + puncts) for i in range(returnlen()))
         if checkpolicy(password):
             y = callhibp(password)
             if y == 0:

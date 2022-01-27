@@ -14,7 +14,7 @@ try:
         database=db
     )
     mycursor = mydb.cursor()
-except FileNotFoundError:
+except:
     print("Missing config file")
 
 
