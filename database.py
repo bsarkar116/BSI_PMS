@@ -23,7 +23,7 @@ def insertuser(u, p, r, appid):
     if not rows:
         query = """INSERT INTO users (user, pass, role, creation, appid, status) VALUES (%s, %s, %s, 
         CURRENT_TIMESTAMP(), %s, %s) """
-        mycursor.execute(query, (u, p, r, appid, "0"))
+        mycursor.execute(query, (u, p, r, appid, "1"))
         mydb.commit()
         return True
     else:

@@ -17,6 +17,7 @@ api = Api(app, decorators=[csrf.exempt])  # Decorator to exempt CSRF protection 
 # Constants
 mime = "text/html"
 reply = "Malformed data sent"
+token = None
 
 passretention()
 
@@ -24,22 +25,31 @@ passretention()
 # REST API resource referenced from https://www.youtube.com/watch?v=GMppyAPbLYk&t=1842s
 class AddUser(Resource):
     def post(self):
-        if match('/add/single', request.path):
-            data = request.json
-            isvalid = validatejson(data, userSchema)
-            print(isvalid)
-            if isvalid:
-                response, passw = adduser(data['user'], data['role'], data['appid'])
-                if response:
-                    return jsonify({"User": data['user'], "Pass": passw})
+        global token
+        if 'auth-tokens' in request.headers:
+            token = request.headers['auth-tokens']
+        role = verify_token(token)
+        if role == "admin":
+            if match('/add/single', request.path):
+                data = request.json
+                isvalid = validatejson(data, userSchema)
+                print(isvalid)
+                if isvalid:
+                    response, passw = adduser(data['user'], data['role'], data['appid'])
+                    if response:
+                        return jsonify({"User": data['user'], "Pass": passw})
+                    else:
+                        return Response("Duplicate user", mimetype=mime, status=403)
                 else:
-                    return Response("Duplicate user", mimetype=mime, status=403)
-            else:
-                return Response(reply, mimetype=mime, status=403)
-        elif match('/add/multi', request.path):
-            file = request.files['file']
-            output = batchadder(file)
-            return Response(output.to_csv(), mimetype="text/csv", status=200)
+                    return Response(reply, mimetype=mime, status=403)
+            elif match('/add/multi', request.path):
+                file = request.files['file']
+                output = batchadder(file)
+                return Response(output.to_csv(), mimetype="text/csv", status=200)
+        elif not role:
+            return Response("Invalid token. Please generate new one.", mimetype=mime, status=403)
+        else:
+            return Response("User not authorized", mimetype=mime, status=403)
 
 
 api.add_resource(AddUser, "/add/single", endpoint="add-single")
@@ -56,11 +66,11 @@ class Authenticate(Resource):
                 flag = rows[0][5]
                 if flag == "1":
                     passw = updatepass(data['user'])
-                    token = create_token(data['user'])
-                    return jsonify({'token': token, 'Pass': passw, "Message": "Password has been updated"})
+                    t = create_token(data['user'])
+                    return jsonify({'token': t, 'Pass': passw, "Message": "New password generated"})
                 elif flag == "0":
-                    token = create_token(data['user'])
-                    return jsonify({'token': token})
+                    t = create_token(data['user'])
+                    return jsonify({'token': t})
             else:
                 return Response("Invalid User/Password", mimetype=mime, status=403)
         else:
@@ -72,7 +82,7 @@ api.add_resource(Authenticate, "/auth", endpoint="auth")
 
 class Policy(Resource):
     def post(self):
-        token = None
+        global token
         if 'auth-tokens' in request.headers:
             token = request.headers['auth-tokens']
         role = verify_token(token)
@@ -94,4 +104,4 @@ class Policy(Resource):
 api.add_resource(Policy, "/policy", endpoint="policy")
 
 if __name__ == "__main__":
-    app.run(debug=True, ssl_context=('cert.crt', 'cert.key'), host="Localhost")
+    app.run(debug=True, ssl_context=('cert.crt', 'cert.key'), host="localhost")

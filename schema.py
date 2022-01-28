@@ -1,12 +1,12 @@
 plicySchema = {
     "type": "object",
                "properties": {
-                   "Length": {"type": "integer", "minimum": 0},
+                   "Length": {"type": "integer", "minimum": 1},
                    "Upper": {"type": "integer", "minimum": 0},
                    "Lower": {"type": "integer", "minimum": 0},
                    "Digits": {"type": "integer", "minimum": 0},
                    "Special": {"type": "integer", "minimum": 0},
-                   "Age": {"type": "integer", "minimum": 0}
+                   "Age": {"type": "integer", "minimum": 1}
                },
                "required": [
                    "Length",
