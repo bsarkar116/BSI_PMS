@@ -9,23 +9,23 @@ class TestPMS(unittest.TestCase):
         """
         Test that the complexity criteria of a generated password is evaluated as per current policy
         """
-        result = checkpolicy('P@ssw0rd')
+        result = check_policy('P@ssw0rd')
         self.assertEqual(result, False)
 
     def test_callhibp(self):
         """
         Test the invocation of HIBP API and check password leak status where 1 signifies a leak and 0 as safe
         """
-        result1 = callhibp('P@ssw0rd')
+        result1 = call_hibp('P@ssw0rd')
         self.assertGreaterEqual(result1, 1)
-        result2 = callhibp('Intel4770@3.4')
+        result2 = call_hibp('Intel4770@3.4')
         self.assertEqual(result2, 0)
 
     def test_dbinsert(self):
         """
         Test whether insertion of data is persistent in the database by checking the boolean response of method
         """
-        self.assertTrue(insertuser("abz@acme.com", "Intel4770@3.4A", "user", "a2"))
+        self.assertTrue(insert_user("abz@acme.com", "Intel4770@3.4A", "user", "a2"))
 
     def test_singlegenapi(self):
         """

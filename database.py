@@ -18,8 +18,8 @@ except:
     print("Missing config file")
 
 
-def insertuser(u, p, r, appid):
-    rows = lookupuser(u)
+def insert_user(u, p, r, appid):
+    rows = lookup_user(u)
     if not rows:
         query = """INSERT INTO users (user, pass, role, creation, appid, status) VALUES (%s, %s, %s, 
         CURRENT_TIMESTAMP(), %s, %s) """
@@ -30,14 +30,14 @@ def insertuser(u, p, r, appid):
         return False
 
 
-def queryall():
+def query_all():
     query = """SELECT * FROM users"""
     mycursor.execute(query)
     rows = mycursor.fetchall()
     return rows
 
 
-def lookupuser(u):
+def lookup_user(u):
     query = """SELECT * FROM users WHERE user=%s"""
     mycursor.execute(query, (u,))
     rows = mycursor.fetchall()
@@ -50,7 +50,7 @@ def updatep(u, pas):
     mydb.commit()
 
 
-def updatestatus(u):
+def update_status(u):
     query = """UPDATE users SET status=%s WHERE user=%s"""
     mycursor.execute(query, ("1", u))
     mydb.commit()

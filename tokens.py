@@ -1,6 +1,6 @@
 import jwt
 from datetime import datetime, timedelta
-from database import lookupuser
+from database import lookup_user
 from json import load
 
 try:
@@ -13,7 +13,7 @@ except:
 # Referenced https://pyjwt.readthedocs.io/en/latest/index.html for jwt
 
 def create_token(u):
-    rows = lookupuser(u)
+    rows = lookup_user(u)
     token = jwt.encode({'user': u, 'role': rows[0][2], 'exp': datetime.utcnow() + timedelta(minutes=10)},
                        str(tok["SECRET_KEY"]))
     return token

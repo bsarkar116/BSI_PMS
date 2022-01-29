@@ -1,14 +1,14 @@
 from re import match
 from json import loads
-from validations import validatejson
+from validations import validate_json
 from flask import Flask, Response, request, jsonify
 from flask_wtf.csrf import CSRFProtect
 from flask_restful import Api, Resource
 from schema import plicySchema, userSchema, loginSchema
 from tokens import create_token, verify_token
-from policy import passretention, genpolicy
-from database import lookupuser
-from pms import adduser, comparehash, updatepass, batchadder
+from policy import pass_retention, gen_policy
+from database import lookup_user
+from pms import adduser, compare_hash, update_pass, batch_adder
 
 app = Flask(__name__)
 csrf = CSRFProtect(app)
@@ -19,7 +19,7 @@ mime = "text/html"
 reply = "Malformed data sent"
 token = None
 
-passretention()
+pass_retention()
 
 
 # REST API resource referenced from https://www.youtube.com/watch?v=GMppyAPbLYk&t=1842s
@@ -32,7 +32,7 @@ class AddUser(Resource):
         if role == "admin":
             if match('/add/single', request.path):
                 data = request.json
-                isvalid = validatejson(data, userSchema)
+                isvalid = validate_json(data, userSchema)
                 print(isvalid)
                 if isvalid:
                     response, passw = adduser(data['user'], data['role'], data['appid'])
@@ -44,8 +44,11 @@ class AddUser(Resource):
                     return Response(reply, mimetype=mime, status=403)
             elif match('/add/multi', request.path):
                 file = request.files['file']
-                output = batchadder(file)
-                return Response(output.to_csv(), mimetype="text/csv", status=200)
+                output = batch_adder(file)
+                if output.empty:
+                    return Response(reply, mimetype=mime, status=403)
+                else:
+                    return Response(output.to_csv(), mimetype="text/csv", status=200)
         elif not role:
             return Response("Invalid token. Please generate new one.", mimetype=mime, status=403)
         else:
@@ -59,13 +62,13 @@ api.add_resource(AddUser, "/add/multi", endpoint="add-multi")
 class Authenticate(Resource):
     def get(self):
         data = request.json
-        isvalid = validatejson(data, loginSchema)
+        isvalid = validate_json(data, loginSchema)
         if isvalid:
-            if comparehash(data['user'], data['pass']):
-                rows = lookupuser(data['user'])
+            if compare_hash(data['user'], data['pass']):
+                rows = lookup_user(data['user'])
                 flag = rows[0][5]
                 if flag == "1":
-                    passw = updatepass(data['user'])
+                    passw = update_pass(data['user'])
                     t = create_token(data['user'])
                     return jsonify({'token': t, 'Pass': passw, "Message": "New password generated"})
                 elif flag == "0":
@@ -89,9 +92,9 @@ class Policy(Resource):
         if role == "admin":
             file = request.files['file'].read()
             data = loads(file.decode())
-            isvalid = validatejson(data, plicySchema)
+            isvalid = validate_json(data, plicySchema)
             if isvalid:
-                genpolicy(data['Length'], data['Upper'], data['Lower'], data['Digits'], data['Special'], data['Age'])
+                gen_policy(data['Length'], data['Upper'], data['Lower'], data['Digits'], data['Special'], data['Age'])
                 return Response("Policy updated", mimetype="text/html", status=200)
             else:
                 return Response(reply, mimetype=mime, status=403)
