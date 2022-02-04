@@ -82,15 +82,15 @@ def batch_remove(file):
     df = pd.read_csv(file)
     templist = []
     if validate_csv(df):
-        df_new = df["User"]
+        df = df[["User"]]
         for i in range(len(df)):
             result = del_user(df.iloc[i, 0])
             if result:
                 templist.append("User removed")
             else:
                 templist.append("User not found")
-        df_new["Status"] = templist
-        return df_new
+        df["Status"] = templist
+        return df
     else:
         df = pd.DataFrame()
         return df

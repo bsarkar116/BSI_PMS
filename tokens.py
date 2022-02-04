@@ -14,7 +14,7 @@ except:
 
 def create_token(u):
     rows = lookup_user(u)
-    token = jwt.encode({'user': u, 'role': rows[0][2], 'exp': datetime.utcnow() + timedelta(minutes=10)},
+    token = jwt.encode({'user': u, 'role': rows[0][2], 'appid': rows[0][4], 'exp': datetime.utcnow() + timedelta(minutes=10)},
                        str(tok["SECRET_KEY"]))
     return token
 
