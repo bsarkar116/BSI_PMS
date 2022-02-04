@@ -32,6 +32,16 @@ userSchema = {
               ]
             }
 
+removeSchema = {
+    "type": "object",
+              "properties": {
+                  "user": {"type": "string", "pattern": "^[A-Za-z0-9]+[\._]?[A-Za-z0-9]+[@]acme.com$"}
+              },
+              "required": [
+                  "user"
+              ]
+            }
+
 loginSchema = {
     "type": "object",
                "properties": {

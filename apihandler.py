@@ -4,11 +4,11 @@ from validations import validate_json
 from flask import Flask, Response, request, jsonify
 from flask_wtf.csrf import CSRFProtect
 from flask_restful import Api, Resource
-from schema import plicySchema, userSchema, loginSchema
+from schema import plicySchema, userSchema, loginSchema, removeSchema
 from tokens import create_token, verify_token
 from policy import pass_retention, gen_policy
-from database import lookup_user
-from pms import adduser, compare_hash, update_pass, batch_adder
+from database import lookup_user, del_user
+from pms import adduser, compare_hash, update_pass, batch_add, batch_remove
 
 app = Flask(__name__)
 csrf = CSRFProtect(app)
@@ -23,7 +23,7 @@ pass_retention()
 
 
 # REST API resource referenced from https://www.youtube.com/watch?v=GMppyAPbLYk&t=1842s
-class AddUser(Resource):
+class UserMgmt(Resource):
     def post(self):
         global token
         if 'auth-tokens' in request.headers:
@@ -33,7 +33,6 @@ class AddUser(Resource):
             if match('/add/single', request.path):
                 data = request.json
                 isvalid = validate_json(data, userSchema)
-                print(isvalid)
                 if isvalid:
                     response, passw = adduser(data['user'], data['role'], data['appid'])
                     if response:
@@ -44,7 +43,36 @@ class AddUser(Resource):
                     return Response(reply, mimetype=mime, status=403)
             elif match('/add/multi', request.path):
                 file = request.files['file']
-                output = batch_adder(file)
+                output = batch_add(file)
+                if output.empty:
+                    return Response(reply, mimetype=mime, status=403)
+                else:
+                    return Response(output.to_csv(), mimetype="text/csv", status=200)
+        elif not role:
+            return Response("Invalid token. Please generate new one.", mimetype=mime, status=403)
+        else:
+            return Response("User not authorized", mimetype=mime, status=403)
+
+    def delete(self):
+        global token
+        if 'auth-tokens' in request.headers:
+            token = request.headers['auth-tokens']
+        role = verify_token(token)
+        if role == "admin":
+            if match('/del/single', request.path):
+                data = request.json
+                isvalid = validate_json(data, removeSchema)
+                if isvalid:
+                    response = del_user(data['user'])
+                    if response:
+                        return Response("User removed", mimetype=mime, status=200)
+                    else:
+                        return Response("User not found", mimetype=mime, status=403)
+                else:
+                    return Response(reply, mimetype=mime, status=403)
+            elif match('/del/multi', request.path):
+                file = request.files['file']
+                output = batch_remove(file)
                 if output.empty:
                     return Response(reply, mimetype=mime, status=403)
                 else:
@@ -55,8 +83,10 @@ class AddUser(Resource):
             return Response("User not authorized", mimetype=mime, status=403)
 
 
-api.add_resource(AddUser, "/add/single", endpoint="add-single")
-api.add_resource(AddUser, "/add/multi", endpoint="add-multi")
+api.add_resource(UserMgmt, "/add/single", endpoint="add-single")
+api.add_resource(UserMgmt, "/add/multi", endpoint="add-multi")
+api.add_resource(UserMgmt, "/del/single", endpoint="del-single")
+api.add_resource(UserMgmt, "/del/multi", endpoint="del-multi")
 
 
 class Authenticate(Resource):

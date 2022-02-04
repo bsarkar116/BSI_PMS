@@ -6,7 +6,7 @@ import bcrypt
 import pandas as pd
 from validations import validate_csv
 from policy import check_policy, return_len
-from database import insert_user, lookup_user, updatep
+from database import insert_user, lookup_user, updatep, del_user
 
 
 def call_hibp(p):
@@ -60,7 +60,7 @@ def adduser(u, r, appid):
         return False, None
 
 
-def batch_adder(file):
+def batch_add(file):
     df = pd.read_csv(file)
     templist = []
     if validate_csv(df):
@@ -74,15 +74,32 @@ def batch_adder(file):
         df_new["Password"] = templist
         return df_new
     else:
-        df_new = pd.DataFrame()
+        df = pd.DataFrame()
+        return df
+
+
+def batch_remove(file):
+    df = pd.read_csv(file)
+    templist = []
+    if validate_csv(df):
+        df_new = df["User"]
+        for i in range(len(df)):
+            result = del_user(df.iloc[i, 0])
+            if result:
+                templist.append("User removed")
+            else:
+                templist.append("User not found")
+        df_new["Status"] = templist
         return df_new
+    else:
+        df = pd.DataFrame()
+        return df
 
 
 def update_pass(u):
     hpass, passw = random_gen()
     updatep(u, hpass)
     return passw
-
 
 # In case of no admin accounts use below
 # a, b = adduser("brijit@acme.com", "admin", "a0")

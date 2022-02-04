@@ -30,6 +30,17 @@ def insert_user(u, p, r, appid):
         return False
 
 
+def del_user(u):
+    rows = lookup_user(u)
+    if rows:
+        query = """DELETE FROM users WHERE user=%s"""
+        mycursor.execute(query, (u,))
+        mydb.commit()
+        return True
+    else:
+        return False
+
+
 def query_all():
     query = """SELECT * FROM users"""
     mycursor.execute(query)
