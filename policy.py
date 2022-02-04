@@ -1,4 +1,5 @@
-from password_strength import PasswordPolicy as pp  #
+# referenced password_strength module from https://pypi.org/project/password-strength/
+from password_strength import PasswordPolicy as pp
 from database import update_status, query_all
 from datetime import datetime
 import json

@@ -1,4 +1,4 @@
-plicySchema = {
+policySchema = {
     "type": "object",
                "properties": {
                    "Length": {"type": "integer", "minimum": 1},

@@ -100,7 +100,3 @@ def update_pass(u):
     hpass, passw = random_gen()
     updatep(u, hpass)
     return passw
-
-# In case of no admin accounts use below
-# a, b = adduser("brijit@acme.com", "admin", "a0")
-# print(b)
