@@ -59,7 +59,7 @@ class TestPMS(unittest.TestCase):
         self.assertEqual(response2, 0)
 
     def setUp(self) -> None:
-        self.create = Create("abz2@acme.com", "admin", "a2")
+        self.create = Create("abz2@acme.com", "user", "a2")
         self.create1 = Create("abz2@acme.com", "admin", "a2")
         self.create1.create_user()
 
@@ -68,18 +68,42 @@ class TestPMS(unittest.TestCase):
         self.create1.delete_user()
         del self.create
 
+    def test_input_validation(self):
+        """
+        Test the json and csv input validations for API calls
+        """
+        # JSON Schema for password policy
+        self.assertTrue(validate_json(self.create.json_policy, policySchema))
+        # JSON Schema for user information
+        self.assertFalse(validate_json(self.create.json_user, userSchema))
+        # JSON Schema for user login
+        self.assertTrue(validate_json(self.create.json_login, loginSchema))
+        # JSON Schema for user removal
+        self.assertTrue(validate_json(self.create.json_remove, removeSchema))
+        # CSV for batch of users to be added
+        self.assertTrue(validate_csv(self.create.df1))
+        # CSV for batch of users to be removed
+        self.assertTrue(validate_csv(self.create.df2))
+
     def test_policy(self):
         """
-        Test the logic of password policy, creation of policy file and retention policy
+        Test the logic of password retention policy
         """
-        # Generate policy
-        gen_policy(10, 2, 2, 2, 2, 40)
-        self.assertEqual(load_policy(), self.create.dic)
-        # Check password against current policy
+        self.assertTrue(pass_retention())
+
+    def test_check_policy(self):
+        """
+        Test the logic of checking password policy
+        """
         response = check_policy('P@ssw0rd')
         self.assertFalse(response)
-        # Verify password retention policy
-        self.assertTrue(pass_retention())
+
+    def test_gen_policy(self):
+        """
+        Test the logic of password policy file creation
+        """
+        gen_policy(10, 2, 2, 2, 2, 40)
+        self.assertEqual(load_policy(), self.create.dic)
 
     def test_pass_gen(self):
         """
@@ -96,28 +120,6 @@ class TestPMS(unittest.TestCase):
         token = create_token(self.create1.user)
         self.assertIsNotNone(verify_token(token))
 
-    def test_json_validations(self):
-        """
-        Test the json input validations for API calls
-        """
-        # JSON Schema for password policy
-        self.assertTrue(validate_json(self.create.json_policy, policySchema))
-        # JSON Schema for user information
-        self.assertFalse(validate_json(self.create.json_user, userSchema))
-        # JSON Schema for user login
-        self.assertTrue(validate_json(self.create.json_login, loginSchema))
-        # JSON Schema for user removal
-        self.assertTrue(validate_json(self.create.json_remove, removeSchema))
-
-    def test_csv_validations(self):
-        """
-        Test validation of CSV batch file for API calls
-        """
-        # CSV for batch of users to be added
-        self.assertTrue(validate_csv(self.create.df1))
-        # CSV for batch of users to be removed
-        self.assertTrue(validate_csv(self.create.df2))
-
     def test_user_auth(self):
         """
         Test user authentication API call
@@ -127,9 +129,9 @@ class TestPMS(unittest.TestCase):
         response = requests.get(query + "auth", json=d, verify='cert.pem')
         self.assertIsNotNone(response)
 
-    def test_add_user_api(self):
+    def test_api_call(self):
         """
-        Test user creation API call
+        Test API calls to the PMS
         """
         query = self.create.url
         # Single user creation
@@ -143,18 +145,12 @@ class TestPMS(unittest.TestCase):
         header2 = {'auth-tokens': "dummy token"}
         response = requests.post(query + "add/multi", files=file, headers=header2, verify='cert.pem')
         self.assertIsNotNone(response)
-
-    def test_remove_user_api(self):
-        """
-        Test user removal API call
-        """
-        query = self.create.url
-        # Single user creation
+        # Single user deletion
         header1 = {'auth-tokens': "dummy token"}
         d = {"user": "arcon@acme.com", "role": "user", "appid": "a1"}
         response = requests.post(query + "del/single", json=d, headers=header1, verify='cert.pem')
         self.assertIsNotNone(response)
-        # Batch user creation
+        # Batch user deletion
         flag = 1
         file = {'file': open("test_users_remove.csv", "rb")}
         header2 = {'auth-tokens': "dummy token"}

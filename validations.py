@@ -1,5 +1,3 @@
-from re import fullmatch, compile
-
 from jsonschema import validate
 import jsonschema
 import json
