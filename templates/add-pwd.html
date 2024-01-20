@@ -1,0 +1,49 @@
+{% extends template %}
+
+{% block add_pwd %}
+{% macro render_input(field, showErrors="true") %}
+    <tr>
+        <td>{{ field.label }}</td>
+        <td>{{ field(**kwargs)|safe }}
+            {% if showErrors=="true" and field.errors %}
+            <ul class="errors">
+            {% for error in field.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+        </td>
+    </tr>
+{% endmacro %}
+<div>
+    <h3><b>Add Application Entry</b></h3>
+</div>
+<form class="user" method="POST" action="{{ url_for('addpwd') }}" accept-charset="utf-8">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <div class="col-sm-6">
+        {{render_input(form.appname, type="text", class="form-control form-control-user", id="InputAppname", autocomplete="off")}}
+    </div>
+    <div>
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            {{render_input(form.letters, type="checkbox", class="form-control form-control-user", id="InputLetters")}}
+        </div>
+        <div class="col-sm-6">
+            {{render_input(form.digits, type="checkbox", class="form-control form-control-user", id="InputDigits")}}
+        </div>
+        <div class="col-sm-6">
+            {{render_input(form.special, type="checkbox", class="form-control form-control-user", id="InputSpecial")}}
+        </div>
+    </div>
+    <div class="col-sm-6">
+        {{form.length.label}}: <output id="value"></output>
+        {{form.length(type="range", class="form-control form-control-user", min='6', max='25', step="1", id="InputLength")}}
+    </div>
+    <hr>
+    <div class="col-sm-6">
+            <button type="submit" name="add_pwd" value="submit_value" class="btn btn-primary btn-user btn-block">
+             Add Password
+            </button>
+    </div>
+</form>
+
+{% endblock %}

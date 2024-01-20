@@ -1,0 +1,77 @@
+{% extends template %}
+
+{% block pass_pol %}
+{% macro render_input(field, showErrors="true") %}
+    <tr>
+        <td>{{ field.label }}</td>
+        <td>{{ field(**kwargs)|safe }}
+            {% if showErrors=="true" and field.errors %}
+            <ul class="errors">
+            {% for error in field.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+        </td>
+    </tr>
+{% endmacro %}
+<div>
+    <h3><b>Update Password Policy</b></h3>
+</div>
+
+<form class="user" method="POST" action="{{ url_for('updpol') }}" accept-charset="utf-8" novalidate>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <div class="col-sm-6">
+        {{render_input(form.length, type="number", class="form-control form-control-user", id="Length")}}
+    </div>
+    <div class="col-sm-6 mb-3 mb-sm-0">
+        {{render_input(form.upper, type="number", class="form-control form-control-user", id="Upper")}}
+    </div>
+    <div class="col-sm-6">
+        {{render_input(form.lower, type="number", class="form-control form-control-user", id="Lower")}}
+    </div>
+    <div class="col-sm-6">
+        {{render_input(form.digits, type="number", class="form-control form-control-user", id="Digits")}}
+    </div>
+    <div class="col-sm-6">
+        {{render_input(form.special, type="number", class="form-control form-control-user", id="Special")}}
+    </div>
+    <div class="col-sm-6">
+        {{render_input(form.age, type="number", class="form-control form-control-user", id="Age")}}
+    </div>
+    <hr>
+    <div class="col-sm-6">
+        <button type="submit" name="add_pol" value="submit_value" class="btn btn-primary btn-user">
+             Update Policy
+        </button>
+        <a href = "{{ url_for('updpol') }}" class="btn btn-primary btn-user" data-toggle="modal" data-target="#modaluploadpol">Update Policy File</a>
+    </div>
+</form>
+
+<!--Modal for file upload-->
+<div id="modaluploadpol" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">File Upload</h4>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ url_for('updpol') }}" method="POST" novalidate accept-charset="utf-8" enctype="multipart/form-data">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                           {{form1.file.label}} {{form1.file(type="file")}}
+                        <div class="form-group" align="right">
+                          <hr>
+                          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                          <button type="submit" name="upload_pol" value="submit_value" class="btn btn-primary btn-user">Upload
+                         </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,904 @@
+[January 19, 2024 23:10:46 W. Europe Standard Time] INFO | _internal >>> [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:9000
+ * Running on http://192.168.1.104:9000
+[January 19, 2024 23:10:46 W. Europe Standard Time] INFO | _internal >>> [33mPress CTRL+C to quit[0m
+[January 19, 2024 23:10:46 W. Europe Standard Time] INFO | _internal >>>  * Restarting with stat
+[January 19, 2024 23:10:47 W. Europe Standard Time] WARNING | _internal >>>  * Debugger is active!
+[January 19, 2024 23:10:47 W. Europe Standard Time] INFO | _internal >>>  * Debugger PIN: 607-858-308
+[January 19, 2024 23:10:55 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:10:55] "[32mGET /app/listpwd HTTP/1.1[0m" 302 -
+[January 19, 2024 23:10:55 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:10:55] "GET /app/login HTTP/1.1" 200 -
+[January 19, 2024 23:10:55 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:10:55] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:10:55 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:10:55] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:10:55 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:10:55] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:10:55 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:10:55] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:10:55 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:10:55] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:10:55 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:10:55] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:10:55 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:10:55] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:11:05 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:11:05] "GET /app/ HTTP/1.1" 200 -
+[January 19, 2024 23:11:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:11:06] "GET /app/static/assets/img/testimonials-1.jpg HTTP/1.1" 200 -
+[January 19, 2024 23:11:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:11:06] "GET /app/static/css/styles.css HTTP/1.1" 200 -
+[January 19, 2024 23:11:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:11:06] "GET /app/static/assets/img/testimonials-2.jpg HTTP/1.1" 200 -
+[January 19, 2024 23:11:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:11:06] "GET /app/static/assets/img/testimonials-3.jpg HTTP/1.1" 200 -
+[January 19, 2024 23:11:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:11:06] "GET /app/static/js/scripts.js HTTP/1.1" 200 -
+[January 19, 2024 23:11:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:11:06] "GET /app/static/assets/img/bg-masthead.jpg HTTP/1.1" 200 -
+[January 19, 2024 23:11:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:11:06] "GET /app/static/assets/favicon.ico HTTP/1.1" 200 -
+[January 19, 2024 23:11:08 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:11:08] "GET /app/login HTTP/1.1" 200 -
+[January 19, 2024 23:11:08 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:11:08] "GET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 200 -
+[January 19, 2024 23:11:08 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:11:08] "GET /app/static/css/sb-admin-2.min.css HTTP/1.1" 200 -
+[January 19, 2024 23:11:08 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:11:08] "GET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 200 -
+[January 19, 2024 23:11:08 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:11:08] "GET /app/static/vendor/jquery/jquery.min.js HTTP/1.1" 200 -
+[January 19, 2024 23:11:08 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:11:08] "GET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1" 200 -
+[January 19, 2024 23:11:08 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:11:08] "GET /app/static/css/errors.css HTTP/1.1" 200 -
+[January 19, 2024 23:11:08 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:11:08] "GET /app/static/js/sb-admin-2.min.js HTTP/1.1" 200 -
+[January 19, 2024 23:11:11 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:11:11] "GET /app/register HTTP/1.1" 200 -
+[January 19, 2024 23:11:11 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:11:11] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:11:11 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:11:11] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:11:11 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:11:11] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:11:11 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:11:11] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:11:11 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:11:11] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:11:11 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:11:11] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:11:11 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:11:11] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:15:51 W. Europe Standard Time] INFO | frontend >>> New User created
+[January 19, 2024 23:15:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:15:51] "[32mPOST /app/register HTTP/1.1[0m" 302 -
+[January 19, 2024 23:15:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:15:51] "GET /app/login HTTP/1.1" 200 -
+[January 19, 2024 23:15:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:15:51] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:15:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:15:51] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:15:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:15:51] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:15:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:15:51] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:15:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:15:51] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:15:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:15:51] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:15:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:15:51] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:34 W. Europe Standard Time] INFO | frontend >>> Access granted
+[January 19, 2024 23:16:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:34] "[32mPOST /app/login HTTP/1.1[0m" 302 -
+[January 19, 2024 23:16:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:35] "GET /app/dashboard HTTP/1.1" 200 -
+[January 19, 2024 23:16:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:35] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:35] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:35] "GET /app/static/img/undraw_rocket.svg HTTP/1.1" 200 -
+[January 19, 2024 23:16:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:35] "GET /app/static/js/range.js HTTP/1.1" 200 -
+[January 19, 2024 23:16:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:35] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:35] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:35] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:35] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:35] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:35] "GET /app/static/img/undraw_profile.svg HTTP/1.1" 200 -
+[January 19, 2024 23:16:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:35] "GET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1" 200 -
+[January 19, 2024 23:16:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:35] "GET /app/static/js/demo/chart-pie-demo.js HTTP/1.1" 200 -
+[January 19, 2024 23:16:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:35] "GET /app/static/js/demo/chart-area-demo.js HTTP/1.1" 200 -
+[January 19, 2024 23:16:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:35] "GET /app/static/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 HTTP/1.1" 200 -
+[January 19, 2024 23:16:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:35] "GET /app/static/assets/favicon.ico HTTP/1.1" 200 -
+[January 19, 2024 23:16:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:38] "GET /app/pwd HTTP/1.1" 200 -
+[January 19, 2024 23:16:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:38] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:38] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:38] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:38] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:38] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:38] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:38] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:38] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:38] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:38] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:38] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:38] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:38] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:45 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:45] "[32mPOST /app/addpwd HTTP/1.1[0m" 302 -
+[January 19, 2024 23:16:45 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:45] "GET /app/pwd HTTP/1.1" 200 -
+[January 19, 2024 23:16:45 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:45] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:45 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:45] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:45 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:45] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:45 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:45] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:45 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:45] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:45 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:45] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:45 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:45] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:45 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:45] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:45 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:45] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:45 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:45] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:45 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:45] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:45 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:45] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:45 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:45] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:52 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:52] "[32mPOST /app/addpwd HTTP/1.1[0m" 302 -
+[January 19, 2024 23:16:52 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:52] "GET /app/pwd HTTP/1.1" 200 -
+[January 19, 2024 23:16:53 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:53] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:53 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:53] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:53 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:53] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:53 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:53] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:53 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:53] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:53 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:53] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:53 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:53] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:53 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:53] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:53 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:53] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:53 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:53] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:53 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:53] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:53 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:53] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:16:53 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:16:53] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:06] "[32mPOST /app/addpwd HTTP/1.1[0m" 302 -
+[January 19, 2024 23:17:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:06] "GET /app/pwd HTTP/1.1" 200 -
+[January 19, 2024 23:17:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:06] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:06] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:06] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:06] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:06] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:06] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:06] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:06] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:06] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:06] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:06] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:06] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:06] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:49 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:49] "[32mPOST /app/addpwd HTTP/1.1[0m" 302 -
+[January 19, 2024 23:17:49 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:49] "GET /app/pwd HTTP/1.1" 200 -
+[January 19, 2024 23:17:49 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:49] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:49 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:49] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:49 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:49] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:49 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:49] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:49 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:49] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:49 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:49] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:49 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:49] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:49 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:49] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:49 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:49] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:49 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:49] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:49 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:49] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:49 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:49] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:49 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:49] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:54 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:54] "GET /app/listpwd HTTP/1.1" 200 -
+[January 19, 2024 23:17:54 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:54] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:54 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:54] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:54 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:54] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:54 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:54] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:54 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:54] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:54 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:54] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:54 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:54] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:54 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:54] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:54 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:54] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:54 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:54] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:54 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:54] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:54 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:54] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:17:54 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:17:54] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:09] "[32mPOST /app/share HTTP/1.1[0m" 302 -
+[January 19, 2024 23:18:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:09] "GET /app/listpwd HTTP/1.1" 200 -
+[January 19, 2024 23:18:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:09] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:09] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:09] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:09] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:09] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:09] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:09] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:09] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:09] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:09] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:09] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:09] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:09] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:20 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:20] "[32mPOST /app/share HTTP/1.1[0m" 302 -
+[January 19, 2024 23:18:20 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:20] "GET /app/listpwd HTTP/1.1" 200 -
+[January 19, 2024 23:18:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:21] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:21] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:21] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:21] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:21] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:21] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:21] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:21] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:21] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:21] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:21] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:21] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:21] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:39 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:39] "[32mPOST /app/share HTTP/1.1[0m" 302 -
+[January 19, 2024 23:18:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:40] "GET /app/listpwd HTTP/1.1" 200 -
+[January 19, 2024 23:18:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:40] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:40] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:40] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:40] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:40] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:40] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:40] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:40] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:40] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:40] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:40] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:40] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:40] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:50 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:50] "[32mPOST /app/share HTTP/1.1[0m" 302 -
+[January 19, 2024 23:18:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:51] "GET /app/listpwd HTTP/1.1" 200 -
+[January 19, 2024 23:18:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:51] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:51] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:51] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:51] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:51] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:51] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:51] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:51] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:51] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:51] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:51] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:51] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:18:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:18:51] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:06] "GET /app/logout HTTP/1.1" 200 -
+[January 19, 2024 23:19:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:06] "[36mGET /app/static/assets/img/testimonials-2.jpg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:06] "[36mGET /app/static/assets/img/testimonials-1.jpg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:06] "[36mGET /app/static/assets/img/testimonials-3.jpg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:06] "GET /app/static/css/styles.css HTTP/1.1" 200 -
+[January 19, 2024 23:19:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:06] "[36mGET /app/static/js/scripts.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:06] "[36mGET /app/static/assets/img/bg-masthead.jpg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:24 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:24] "GET /app/login HTTP/1.1" 200 -
+[January 19, 2024 23:19:24 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:24] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:24 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:24] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:24 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:24] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:24 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:24] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:24 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:24] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:24 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:24] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:24 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:24] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:30 W. Europe Standard Time] INFO | frontend >>> Access granted
+[January 19, 2024 23:19:30 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:30] "[32mPOST /app/login HTTP/1.1[0m" 302 -
+[January 19, 2024 23:19:30 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:30] "GET /app/dashboard HTTP/1.1" 200 -
+[January 19, 2024 23:19:30 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:30] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:30 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:30] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:30 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:30] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:30 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:30] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:30 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:30] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:30 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:30] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:30 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:30] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:30 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:30] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:30 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:30] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:30 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:30] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:30 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:30] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:30 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:30] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:30 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:30] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:31 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:31] "GET /app/static/assets/favicon.ico HTTP/1.1" 200 -
+[January 19, 2024 23:19:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:34] "GET /app/pwd HTTP/1.1" 200 -
+[January 19, 2024 23:19:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:34] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:34] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:34] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:34] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:34] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:34] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:34] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:34] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:34] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:34] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:34] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:34] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:34] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:38] "GET /app/listpwd HTTP/1.1" 200 -
+[January 19, 2024 23:19:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:38] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:38] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:38] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:38] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:38] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:38] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:38] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:38] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:38] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:38] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:38] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:38] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:19:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:19:38] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:20:18 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:20:18] "[32mPOST /app/delpwd HTTP/1.1[0m" 302 -
+[January 19, 2024 23:20:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:20:19] "GET /app/listpwd HTTP/1.1" 200 -
+[January 19, 2024 23:20:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:20:19] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:20:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:20:19] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:20:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:20:19] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:20:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:20:19] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:20:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:20:19] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:20:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:20:19] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:20:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:20:19] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:20:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:20:19] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:20:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:20:19] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:20:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:20:19] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:20:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:20:19] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:20:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:20:19] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:20:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:20:19] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:04] "GET /app/profile HTTP/1.1" 200 -
+[January 19, 2024 23:22:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:04] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:04] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:04] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:04] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:04] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:04] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:04] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:04] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:04] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:04] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:04] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:04] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:04] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:18 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:18] "[32mPOST /app/update HTTP/1.1[0m" 302 -
+[January 19, 2024 23:22:18 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:18] "GET /app/profile HTTP/1.1" 200 -
+[January 19, 2024 23:22:18 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:18] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:18 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:18] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:18 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:18] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:18 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:18] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:18 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:18] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:18 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:18] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:18 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:18] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:18 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:18] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:18 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:18] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:18 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:18] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:18 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:18] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:18 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:18] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:18 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:18] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:25 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:25] "[32mPOST /app/update HTTP/1.1[0m" 302 -
+[January 19, 2024 23:22:25 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:25] "GET /app/profile HTTP/1.1" 200 -
+[January 19, 2024 23:22:25 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:25] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:25 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:25] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:25 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:25] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:25 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:25] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:25 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:25] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:25 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:25] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:25 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:25] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:25 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:25] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:25 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:25] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:25 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:25] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:25 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:25] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:25 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:25] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:22:25 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:22:25] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:19] "GET /app/pwd HTTP/1.1" 200 -
+[January 19, 2024 23:23:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:19] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:19] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:19] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:19] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:19] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:19] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:19] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:19] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:19] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:19] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:19] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:19] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:19 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:19] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:34] "[32mPOST /app/addpwd HTTP/1.1[0m" 302 -
+[January 19, 2024 23:23:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:35] "GET /app/pwd HTTP/1.1" 200 -
+[January 19, 2024 23:23:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:35] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:35] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:35] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:35] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:35] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:35] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:35] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:35] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:35] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:35] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:35] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:35] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:35] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:37 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:37] "GET /app/listpwd HTTP/1.1" 200 -
+[January 19, 2024 23:23:37 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:37] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:37 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:37] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:37 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:37] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:37 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:37] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:37 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:37] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:37 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:37] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:38] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:38] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:38] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:38] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:38] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:38] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:38 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:38] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:23:57 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:57] "GET /app/logout HTTP/1.1" 200 -
+[January 19, 2024 23:23:57 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:57] "GET /app/static/assets/img/testimonials-1.jpg HTTP/1.1" 200 -
+[January 19, 2024 23:23:57 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:57] "GET /app/static/css/styles.css HTTP/1.1" 200 -
+[January 19, 2024 23:23:57 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:57] "GET /app/static/js/scripts.js HTTP/1.1" 200 -
+[January 19, 2024 23:23:57 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:57] "GET /app/static/assets/img/testimonials-3.jpg HTTP/1.1" 200 -
+[January 19, 2024 23:23:57 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:57] "GET /app/static/assets/img/testimonials-2.jpg HTTP/1.1" 200 -
+[January 19, 2024 23:23:57 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:23:57] "GET /app/static/assets/img/bg-masthead.jpg HTTP/1.1" 200 -
+[January 19, 2024 23:24:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:09] "GET /app/login HTTP/1.1" 200 -
+[January 19, 2024 23:24:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:09] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:09] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:09] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:09] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:09] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:09] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:09] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:16 W. Europe Standard Time] INFO | frontend >>> Access granted
+[January 19, 2024 23:24:16 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:16] "[32mPOST /app/login HTTP/1.1[0m" 302 -
+[January 19, 2024 23:24:16 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:16] "GET /app/dashboard HTTP/1.1" 200 -
+[January 19, 2024 23:24:16 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:16] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:16 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:16] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:16 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:16] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:16 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:16] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:16 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:16] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:16 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:16] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:16 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:16] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:16 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:16] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:16 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:16] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:16 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:16] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:16 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:16] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:16 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:16] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:16 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:16] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:16 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:16] "GET /app/static/assets/favicon.ico HTTP/1.1" 200 -
+[January 19, 2024 23:24:20 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:20] "GET /app/profile HTTP/1.1" 200 -
+[January 19, 2024 23:24:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:21] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:21] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:21] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:21] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:21] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:21] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:21] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:21] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:21] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:21] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:21] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:21] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:21 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:21] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:29] "[32mPOST /app/update HTTP/1.1[0m" 302 -
+[January 19, 2024 23:24:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:29] "GET /app/profile HTTP/1.1" 200 -
+[January 19, 2024 23:24:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:29] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:29] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:29] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:29] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:29] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:29] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:29] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:29] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:29] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:29] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:29] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:29] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:29] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:37 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:37] "[32mPOST /app/update HTTP/1.1[0m" 302 -
+[January 19, 2024 23:24:37 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:37] "GET /app/profile HTTP/1.1" 200 -
+[January 19, 2024 23:24:37 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:37] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:37 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:37] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:37 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:37] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:37 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:37] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:37 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:37] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:37 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:37] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:37 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:37] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:37 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:37] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:37 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:37] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:37 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:37] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:37 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:37] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:37 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:37] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:24:37 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:24:37] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:43] "GET /app/pwd HTTP/1.1" 200 -
+[January 19, 2024 23:25:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:43] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:43] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:43] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:43] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:43] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:43] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:43] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:43] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:44 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:44] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:44 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:44] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:44 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:44] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:44 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:44] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:44 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:44] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:50 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:50] "GET /app/listpwd HTTP/1.1" 200 -
+[January 19, 2024 23:25:50 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:50] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:50 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:50] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:50 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:50] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:50 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:50] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:51] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:51] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:51] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:51] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:51] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:51] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:51] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:51] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:25:51 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:25:51] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:09] "[32mPOST /app/share HTTP/1.1[0m" 302 -
+[January 19, 2024 23:26:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:09] "GET /app/listpwd HTTP/1.1" 200 -
+[January 19, 2024 23:26:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:09] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:09] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:09] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:09] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:09] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:09] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:09] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:09] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:09] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:09] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:09] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:09] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:09 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:09] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:40] "GET /app/listuser HTTP/1.1" 200 -
+[January 19, 2024 23:26:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:40] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:40] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:40] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:40] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:40] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:40] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:40] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:40] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:40] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:40] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:40] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:40] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:26:40 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:26:40] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:00 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:00] "[32mPOST /app/deluser HTTP/1.1[0m" 302 -
+[January 19, 2024 23:27:00 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:00] "GET /app/listuser HTTP/1.1" 200 -
+[January 19, 2024 23:27:00 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:00] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:00 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:00] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:00 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:00] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:00 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:00] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:00 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:00] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:00 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:00] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:00 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:00] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:00 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:00] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:00 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:00] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:00 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:00] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:00 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:00] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:00 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:00] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:00 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:00] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:04] "GET /app/listpwd HTTP/1.1" 200 -
+[January 19, 2024 23:27:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:04] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:04] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:05 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:05] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:05 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:05] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:05 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:05] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:05 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:05] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:05 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:05] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:05 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:05] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:05 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:05] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:05 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:05] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:05 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:05] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:05 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:05] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:05 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:05] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:34] "[32mPOST /app/share HTTP/1.1[0m" 302 -
+[January 19, 2024 23:27:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:35] "GET /app/listpwd HTTP/1.1" 200 -
+[January 19, 2024 23:27:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:35] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:35] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:35] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:35] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:35] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:35] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:35] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:35] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:35] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:35] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:35] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:35] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:27:35 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:27:35] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:21 W. Europe Standard Time] INFO | _internal >>> [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:9000
+ * Running on http://192.168.1.104:9000
+[January 19, 2024 23:29:21 W. Europe Standard Time] INFO | _internal >>> [33mPress CTRL+C to quit[0m
+[January 19, 2024 23:29:21 W. Europe Standard Time] INFO | _internal >>>  * Restarting with stat
+[January 19, 2024 23:29:22 W. Europe Standard Time] WARNING | _internal >>>  * Debugger is active!
+[January 19, 2024 23:29:22 W. Europe Standard Time] INFO | _internal >>>  * Debugger PIN: 607-858-308
+[January 19, 2024 23:29:27 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:27] "GET /app/listpwd HTTP/1.1" 200 -
+[January 19, 2024 23:29:27 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:27] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:27 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:27] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:27 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:27] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:27 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:27] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:27 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:27] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:27 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:27] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:27 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:27] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:27 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:27] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:28] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:28] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:28] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:28] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:28] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:28] "GET /app/static/assets/favicon.ico HTTP/1.1" 200 -
+[January 19, 2024 23:29:58 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:58] "GET /app/listuser HTTP/1.1" 200 -
+[January 19, 2024 23:29:58 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:58] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:58 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:58] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:58 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:58] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:58 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:58] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:58 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:58] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:58 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:58] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:58 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:58] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:58 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:58] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:58 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:58] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:58 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:58] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:58 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:58] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:58 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:58] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:29:58 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:29:58] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:30:08 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:30:08] "GET /app/pwd HTTP/1.1" 200 -
+[January 19, 2024 23:30:08 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:30:08] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:30:08 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:30:08] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:30:08 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:30:08] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:30:08 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:30:08] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:30:08 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:30:08] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:30:08 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:30:08] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:30:08 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:30:08] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:30:08 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:30:08] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:30:08 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:30:08] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:30:08 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:30:08] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:30:08 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:30:08] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:30:08 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:30:08] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:30:08 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:30:08] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:30:15 W. Europe Standard Time] ERROR | app >>> Exception on /addpwd [POST]
+Traceback (most recent call last):
+  File "C:\Users\BrijitSarkar\AppData\Local\Programs\Python\Python310\lib\site-packages\mysql\connector\connection_cext.py", line 639, in cmd_query
+    self._cmysql.query(
+_mysql_connector.MySQLInterfaceError: Unknown column 'uid' in 'field list'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\BrijitSarkar\AppData\Local\Programs\Python\Python310\lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\BrijitSarkar\AppData\Local\Programs\Python\Python310\lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\BrijitSarkar\AppData\Local\Programs\Python\Python310\lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\BrijitSarkar\AppData\Local\Programs\Python\Python310\lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "C:\Users\BrijitSarkar\Desktop\pms\frontend.py", line 393, in addpwd
+    resp = add_apppwd(ID, appname, passw)
+  File "C:\Users\BrijitSarkar\Desktop\pms\pms.py", line 115, in add_apppwd
+    result = insert_apppwd(ID, passw, appname)
+  File "C:\Users\BrijitSarkar\Desktop\pms\database.py", line 157, in insert_apppwd
+    cur.execute(query, (rows[0][0], appname, pa, rows[0][10]))
+  File "C:\Users\BrijitSarkar\AppData\Local\Programs\Python\Python310\lib\site-packages\mysql\connector\cursor_cext.py", line 330, in execute
+    result = self._cnx.cmd_query(
+  File "C:\Users\BrijitSarkar\AppData\Local\Programs\Python\Python310\lib\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 77, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\BrijitSarkar\AppData\Local\Programs\Python\Python310\lib\site-packages\mysql\connector\connection_cext.py", line 647, in cmd_query
+    raise get_mysql_exception(
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'uid' in 'field list'
+[January 19, 2024 23:30:15 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:30:15] "[35m[1mPOST /app/addpwd HTTP/1.1[0m" 500 -
+[January 19, 2024 23:31:29 W. Europe Standard Time] INFO | _internal >>> [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:9000
+ * Running on http://192.168.1.104:9000
+[January 19, 2024 23:31:29 W. Europe Standard Time] INFO | _internal >>> [33mPress CTRL+C to quit[0m
+[January 19, 2024 23:31:29 W. Europe Standard Time] INFO | _internal >>>  * Restarting with stat
+[January 19, 2024 23:31:30 W. Europe Standard Time] WARNING | _internal >>>  * Debugger is active!
+[January 19, 2024 23:31:30 W. Europe Standard Time] INFO | _internal >>>  * Debugger PIN: 607-858-308
+[January 19, 2024 23:31:32 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:32] "GET /app/pwd HTTP/1.1" 200 -
+[January 19, 2024 23:31:32 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:32] "GET /app/static/js/range.js HTTP/1.1" 200 -
+[January 19, 2024 23:31:32 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:32] "GET /app/static/css/sb-admin-2.min.css HTTP/1.1" 200 -
+[January 19, 2024 23:31:32 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:32] "GET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 200 -
+[January 19, 2024 23:31:32 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:32] "GET /app/static/img/undraw_rocket.svg HTTP/1.1" 200 -
+[January 19, 2024 23:31:32 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:32] "GET /app/static/img/undraw_profile.svg HTTP/1.1" 200 -
+[January 19, 2024 23:31:32 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:32] "GET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1" 200 -
+[January 19, 2024 23:31:32 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:32] "GET /app/static/js/sb-admin-2.min.js HTTP/1.1" 200 -
+[January 19, 2024 23:31:32 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:32] "GET /app/static/js/demo/chart-pie-demo.js HTTP/1.1" 200 -
+[January 19, 2024 23:31:32 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:32] "GET /app/static/js/demo/chart-area-demo.js HTTP/1.1" 200 -
+[January 19, 2024 23:31:32 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:32] "GET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 200 -
+[January 19, 2024 23:31:32 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:32] "GET /app/static/css/errors.css HTTP/1.1" 200 -
+[January 19, 2024 23:31:32 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:32] "GET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1" 200 -
+[January 19, 2024 23:31:32 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:32] "GET /app/static/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 HTTP/1.1" 200 -
+[January 19, 2024 23:31:32 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:32] "GET /app/static/vendor/jquery/jquery.min.js HTTP/1.1" 200 -
+[January 19, 2024 23:31:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:43] "[32mPOST /app/addpwd HTTP/1.1[0m" 302 -
+[January 19, 2024 23:31:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:43] "GET /app/pwd HTTP/1.1" 200 -
+[January 19, 2024 23:31:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:43] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:43] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:43] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:43] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:43] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:43] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:43] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:43] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:43] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:43] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:43] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:43] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:43] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:48 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:48] "GET /app/listpwd HTTP/1.1" 200 -
+[January 19, 2024 23:31:48 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:48] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:48 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:48] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:48 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:48] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:48 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:48] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:48 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:48] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:48 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:48] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:48 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:48] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:48 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:48] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:48 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:48] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:48 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:48] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:48 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:48] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:48 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:48] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:31:48 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:31:48] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:34:45 W. Europe Standard Time] INFO | _internal >>> [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:9000
+ * Running on http://192.168.1.104:9000
+[January 19, 2024 23:34:45 W. Europe Standard Time] INFO | _internal >>> [33mPress CTRL+C to quit[0m
+[January 19, 2024 23:34:45 W. Europe Standard Time] INFO | _internal >>>  * Restarting with stat
+[January 19, 2024 23:34:46 W. Europe Standard Time] WARNING | _internal >>>  * Debugger is active!
+[January 19, 2024 23:34:46 W. Europe Standard Time] INFO | _internal >>>  * Debugger PIN: 607-858-308
+[January 19, 2024 23:37:49 W. Europe Standard Time] INFO | _internal >>> [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:9000
+ * Running on http://192.168.1.104:9000
+[January 19, 2024 23:37:49 W. Europe Standard Time] INFO | _internal >>> [33mPress CTRL+C to quit[0m
+[January 19, 2024 23:37:49 W. Europe Standard Time] INFO | _internal >>>  * Restarting with stat
+[January 19, 2024 23:37:50 W. Europe Standard Time] WARNING | _internal >>>  * Debugger is active!
+[January 19, 2024 23:37:50 W. Europe Standard Time] INFO | _internal >>>  * Debugger PIN: 607-858-308
+[January 19, 2024 23:38:03 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:03] "GET /app/listpwd HTTP/1.1" 200 -
+[January 19, 2024 23:38:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:04] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:04] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:04] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:04] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:04] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:04] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:04] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:04] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:04] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:04] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:04] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:04] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:04] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:04] "[36mGET /app/static/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:04 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:04] "GET /app/static/assets/favicon.ico HTTP/1.1" 200 -
+[January 19, 2024 23:38:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:33] "[32mPOST /app/share HTTP/1.1[0m" 302 -
+[January 19, 2024 23:38:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:33] "GET /app/listpwd HTTP/1.1" 200 -
+[January 19, 2024 23:38:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:33] "GET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 200 -
+[January 19, 2024 23:38:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:34] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:34] "GET /app/static/css/errors.css HTTP/1.1" 200 -
+[January 19, 2024 23:38:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:34] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:34] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:34] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:34] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:34] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:34] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:34] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:34] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:34] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:34] "GET /app/static/css/sb-admin-2.min.css HTTP/1.1" 200 -
+[January 19, 2024 23:38:34 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:34] "[36mGET /app/static/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 HTTP/1.1[0m" 304 -
+[January 19, 2024 23:38:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:43] "GET /app/logout HTTP/1.1" 200 -
+[January 19, 2024 23:38:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:43] "GET /app/static/css/styles.css HTTP/1.1" 200 -
+[January 19, 2024 23:38:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:43] "GET /app/static/js/scripts.js HTTP/1.1" 200 -
+[January 19, 2024 23:38:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:43] "GET /app/static/assets/img/testimonials-2.jpg HTTP/1.1" 200 -
+[January 19, 2024 23:38:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:43] "GET /app/static/assets/img/testimonials-3.jpg HTTP/1.1" 200 -
+[January 19, 2024 23:38:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:43] "GET /app/static/assets/img/testimonials-1.jpg HTTP/1.1" 200 -
+[January 19, 2024 23:38:43 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:38:43] "GET /app/static/assets/img/bg-masthead.jpg HTTP/1.1" 200 -
+[January 19, 2024 23:40:20 W. Europe Standard Time] INFO | _internal >>> [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:9000
+ * Running on http://192.168.1.104:9000
+[January 19, 2024 23:40:20 W. Europe Standard Time] INFO | _internal >>> [33mPress CTRL+C to quit[0m
+[January 19, 2024 23:40:20 W. Europe Standard Time] INFO | _internal >>>  * Restarting with stat
+[January 19, 2024 23:40:21 W. Europe Standard Time] WARNING | _internal >>>  * Debugger is active!
+[January 19, 2024 23:40:21 W. Europe Standard Time] INFO | _internal >>>  * Debugger PIN: 607-858-308
+[January 19, 2024 23:44:19 W. Europe Standard Time] INFO | _internal >>> [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:9000
+ * Running on http://192.168.1.104:9000
+[January 19, 2024 23:44:19 W. Europe Standard Time] INFO | _internal >>> [33mPress CTRL+C to quit[0m
+[January 19, 2024 23:44:19 W. Europe Standard Time] INFO | _internal >>>  * Restarting with stat
+[January 19, 2024 23:44:19 W. Europe Standard Time] WARNING | _internal >>>  * Debugger is active!
+[January 19, 2024 23:44:19 W. Europe Standard Time] INFO | _internal >>>  * Debugger PIN: 607-858-308
+[January 19, 2024 23:50:54 W. Europe Standard Time] INFO | _internal >>> [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:9000
+ * Running on http://192.168.1.104:9000
+[January 19, 2024 23:50:54 W. Europe Standard Time] INFO | _internal >>> [33mPress CTRL+C to quit[0m
+[January 19, 2024 23:50:54 W. Europe Standard Time] INFO | _internal >>>  * Restarting with stat
+[January 19, 2024 23:50:55 W. Europe Standard Time] WARNING | _internal >>>  * Debugger is active!
+[January 19, 2024 23:50:55 W. Europe Standard Time] INFO | _internal >>>  * Debugger PIN: 607-858-308
+[January 19, 2024 23:53:02 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:02] "GET /app/login HTTP/1.1" 200 -
+[January 19, 2024 23:53:02 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:02] "GET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 200 -
+[January 19, 2024 23:53:02 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:02] "GET /app/static/css/errors.css HTTP/1.1" 200 -
+[January 19, 2024 23:53:02 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:02] "GET /app/static/js/sb-admin-2.min.js HTTP/1.1" 200 -
+[January 19, 2024 23:53:02 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:02] "GET /app/static/css/sb-admin-2.min.css HTTP/1.1" 200 -
+[January 19, 2024 23:53:02 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:02] "GET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1" 200 -
+[January 19, 2024 23:53:02 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:02] "GET /app/static/vendor/jquery/jquery.min.js HTTP/1.1" 200 -
+[January 19, 2024 23:53:02 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:02] "GET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 200 -
+[January 19, 2024 23:53:23 W. Europe Standard Time] INFO | frontend >>> Access granted
+[January 19, 2024 23:53:23 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:23] "[32mPOST /app/login HTTP/1.1[0m" 302 -
+[January 19, 2024 23:53:23 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:23] "GET /app/dashboard HTTP/1.1" 200 -
+[January 19, 2024 23:53:23 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:23] "GET /app/static/img/undraw_rocket.svg HTTP/1.1" 200 -
+[January 19, 2024 23:53:23 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:23] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:23 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:23] "GET /app/static/css/sb-admin-2.min.css HTTP/1.1" 200 -
+[January 19, 2024 23:53:24 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:24] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:24 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:24] "GET /app/static/img/undraw_profile.svg HTTP/1.1" 200 -
+[January 19, 2024 23:53:24 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:24] "GET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1" 200 -
+[January 19, 2024 23:53:24 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:24] "GET /app/static/css/errors.css HTTP/1.1" 200 -
+[January 19, 2024 23:53:24 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:24] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:24 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:24] "GET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1" 200 -
+[January 19, 2024 23:53:24 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:24] "GET /app/static/js/demo/chart-pie-demo.js HTTP/1.1" 200 -
+[January 19, 2024 23:53:24 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:24] "GET /app/static/js/range.js HTTP/1.1" 200 -
+[January 19, 2024 23:53:24 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:24] "GET /app/static/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 HTTP/1.1" 200 -
+[January 19, 2024 23:53:24 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:24] "GET /app/static/js/demo/chart-area-demo.js HTTP/1.1" 200 -
+[January 19, 2024 23:53:24 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:24] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:24 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:24] "GET /app/static/assets/favicon.ico HTTP/1.1" 200 -
+[January 19, 2024 23:53:27 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:27] "GET /app/passpol HTTP/1.1" 200 -
+[January 19, 2024 23:53:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:28] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:28] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:28] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:28] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:28] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:28] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:28] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:28] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:28] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:28] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:28] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:28] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:28] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:33] "GET /app/listuser HTTP/1.1" 200 -
+[January 19, 2024 23:53:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:33] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:33] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:33] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:33] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:33] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:33] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:33] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:33] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:33] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:33] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:33] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:33] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:33] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:36 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:36] "GET /app/listpwd HTTP/1.1" 200 -
+[January 19, 2024 23:53:36 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:36] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:36 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:36] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:36 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:36] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:36 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:36] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:36 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:36] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:36 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:36] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:36 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:36] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:36 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:36] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:36 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:36] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:36 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:36] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:36 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:36] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:36 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:36] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:36 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:36] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:53:48 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:48] "GET /app/logout HTTP/1.1" 200 -
+[January 19, 2024 23:53:48 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:48] "GET /app/static/css/styles.css HTTP/1.1" 200 -
+[January 19, 2024 23:53:48 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:48] "GET /app/static/assets/img/testimonials-1.jpg HTTP/1.1" 200 -
+[January 19, 2024 23:53:48 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:48] "GET /app/static/js/scripts.js HTTP/1.1" 200 -
+[January 19, 2024 23:53:48 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:48] "GET /app/static/assets/img/testimonials-3.jpg HTTP/1.1" 200 -
+[January 19, 2024 23:53:48 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:48] "GET /app/static/assets/img/testimonials-2.jpg HTTP/1.1" 200 -
+[January 19, 2024 23:53:48 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:53:48] "GET /app/static/assets/img/bg-masthead.jpg HTTP/1.1" 200 -
+[January 19, 2024 23:54:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:06] "GET /app/login HTTP/1.1" 200 -
+[January 19, 2024 23:54:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:06] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:06] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:06] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:06] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:06] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:06] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:06 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:06] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:28 W. Europe Standard Time] INFO | frontend >>> Access granted
+[January 19, 2024 23:54:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:28] "[32mPOST /app/login HTTP/1.1[0m" 302 -
+[January 19, 2024 23:54:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:28] "GET /app/dashboard HTTP/1.1" 200 -
+[January 19, 2024 23:54:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:28] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:28] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:28] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:28 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:28] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:29] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:29] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:29] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:29] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:29] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:29] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:29] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:29] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:29] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:29 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:29] "GET /app/static/assets/favicon.ico HTTP/1.1" 200 -
+[January 19, 2024 23:54:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:33] "GET /app/listpwd HTTP/1.1" 200 -
+[January 19, 2024 23:54:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:33] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:33] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:33] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:33] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:33] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:33] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:33] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:33] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:33] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:33] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:33] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:33] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:54:33 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:54:33] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:55:07 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:55:07] "GET /app/profile HTTP/1.1" 200 -
+[January 19, 2024 23:55:07 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:55:07] "[36mGET /app/static/js/range.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:55:07 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:55:07] "[36mGET /app/static/img/undraw_rocket.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:55:07 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:55:07] "[36mGET /app/static/img/undraw_profile.svg HTTP/1.1[0m" 304 -
+[January 19, 2024 23:55:07 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:55:07] "[36mGET /app/static/js/sb-admin-2.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:55:07 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:55:07] "[36mGET /app/static/vendor/jquery/jquery.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:55:07 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:55:07] "[36mGET /app/static/vendor/jquery-easing/jquery.easing.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:55:07 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:55:07] "[36mGET /app/static/vendor/fontawesome-free/css/all.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:55:07 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:55:07] "[36mGET /app/static/js/demo/chart-area-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:55:07 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:55:07] "[36mGET /app/static/vendor/chart.js/Chart.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:55:07 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:55:07] "[36mGET /app/static/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:55:07 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:55:07] "[36mGET /app/static/css/sb-admin-2.min.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:55:07 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:55:07] "[36mGET /app/static/css/errors.css HTTP/1.1[0m" 304 -
+[January 19, 2024 23:55:07 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:55:07] "[36mGET /app/static/js/demo/chart-pie-demo.js HTTP/1.1[0m" 304 -
+[January 19, 2024 23:55:15 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:55:15] "GET /app/logout HTTP/1.1" 200 -
+[January 19, 2024 23:55:15 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:55:15] "GET /app/static/css/styles.css HTTP/1.1" 200 -
+[January 19, 2024 23:55:15 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:55:15] "GET /app/static/assets/img/testimonials-1.jpg HTTP/1.1" 200 -
+[January 19, 2024 23:55:15 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:55:15] "GET /app/static/assets/img/testimonials-3.jpg HTTP/1.1" 200 -
+[January 19, 2024 23:55:15 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:55:15] "GET /app/static/assets/img/testimonials-2.jpg HTTP/1.1" 200 -
+[January 19, 2024 23:55:15 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:55:15] "GET /app/static/js/scripts.js HTTP/1.1" 200 -
+[January 19, 2024 23:55:15 W. Europe Standard Time] INFO | _internal >>> 127.0.0.1 - - [19/Jan/2024 23:55:15] "GET /app/static/assets/img/bg-masthead.jpg HTTP/1.1" 200 -
