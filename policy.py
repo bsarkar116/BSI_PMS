@@ -1,61 +1,80 @@
-# referenced password_strength module from https://pypi.org/project/password-strength/
 from password_strength import PasswordPolicy as pp
-from database import update_status, query_all
+from database import update_status, query_acc, lookup_status
 from datetime import datetime
+from validations import validate_json
+from schema import policySchema
 import json
 
-# Constant
+# DV7, AH23
 time_format = "%Y-%m-%d %H:%M:%S"
 
 
+def read_pol():
+    with open(r"C:\Users\BrijitSarkar\Desktop\pms\policy\policy.json", 'r', encoding='utf-8') as file:
+        p = json.load(file)
+    return p
+
+
 def gen_policy(a, b, c, d, e, f):
-    poli = {'Length': a, 'Upper': b, 'Lower': c, 'Digits': d, 'Special': e, 'Age': f,
-            'Date': datetime.today().strftime(time_format)}
-    with open('policy.json', "w", encoding="utf8") as outfile:
-        json.dump(poli, outfile)
-    pass_retention()
-
-
-def load_policy():
-    try:
-        with open('policy.json') as json_file:
-            pol = json.load(json_file)
-        return pol
-    except:
-        print("Missing config file")
-
-
-def return_len():
-    pol = load_policy()
-    return pol['Length']
-
-
-def check_policy(p):
-    pol = load_policy()
-    policy = pp.from_names(
-        length=pol['Length'],  # min length
-        uppercase=pol['Upper'],  # min no. uppercase letters
-        nonletters=pol['Lower'],  # min no. any other characters
-        numbers=pol['Digits'],  # min no. digits
-        special=pol['Special'],  # min no. special characters
-    )
-    if not policy.test(p):
+    s = int(b) + int(c) + int(d) + int(e)
+    if a >= s:
+        poli = {"Length": a, "Upper": b, "Lower": c, "Digits": d, "Special": e, "Age": f,
+                "Date": str(datetime.today().strftime(time_format))}
+        with open(r"C:\Users\BrijitSarkar\Desktop\pms\policy\policy.json", 'w', encoding='utf-8') as fi:
+            json.dump(poli, fi)
+        pass_retention()
         return True
     else:
         return False
 
 
-# total_seconds() referenced from https://docs.python.org/3.9/library/datetime.html#datetime.timedelta
+def add_pol():
+    with open(r"C:\Users\BrijitSarkar\Desktop\pms\temp\temp_policy.json", 'r', encoding='utf-8') as file:
+        temp_pol = json.load(file)
+        isvalid = validate_json(temp_pol, policySchema)
+        if isvalid:
+            resp = gen_policy(temp_pol["Length"], temp_pol["Upper"], temp_pol["Lower"], temp_pol["Digits"],
+                              temp_pol["Special"], temp_pol["Age"])
+            if resp:
+                return True
+            else:
+                return False
+        else:
+            return False
+
+
+def check_policy(pa):
+    pol = read_pol()
+    policy = pp.from_names(
+        length=pol['Length'],  # Length
+        uppercase=pol['Upper'],  # min no. uppercase letters
+        nonletters=pol['Lower'],  # min no. any other characters
+        numbers=pol['Digits'],  # min no. digits
+        special=pol['Special'],  # min no. special characters
+    )
+    if not policy.test(pa):
+        return True
+    else:
+        return False
+
 
 def pass_retention():
     flag = False
-    pol = load_policy()
-    rows = query_all()
+    rows, c = query_acc("NULL", 1)
+    pol = read_pol()
     for i in range(len(rows)):
         current = datetime.today().strftime(time_format)
-        age = datetime.strptime(current, time_format) - rows[i][3]
-        delta = datetime.strptime(pol['Date'], time_format) - rows[i][3]
-        if int(delta.total_seconds()) > 0 or int(age.days) > pol['Age']:
-            update_status(rows[i][0])
+        age = datetime.strptime(current, time_format) - rows[i][8]
+        delta = datetime.strptime(pol['Date'], time_format) - rows[i][8]
+        if int(delta.total_seconds()) > 0 or int(age.days) > int(pol['Age']):
+            update_status(rows[i][10])
             flag = True
     return flag
+
+
+def check_status(ID):
+    rows = lookup_status(ID)
+    if rows:
+        return True
+    else:
+        return False

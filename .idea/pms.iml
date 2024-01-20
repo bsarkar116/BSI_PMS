@@ -7,7 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/venv/Scripts" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/venv/Lib" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.9 (pms)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.10" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
