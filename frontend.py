@@ -138,7 +138,7 @@ def before_request():
 @app.route("/", methods=["GET", "POST"])
 def index():
     if not session.get("id") or request.remote_addr != session.get("IP"):  # AH14
-        return render_template("index.html")
+        return render_template("index.html", mimetypes="UTF-8")
     else:
         pass_retention()
         return redirect(url_for('dashboard'))
@@ -189,7 +189,7 @@ def register():
                     return redirect(url_for('register'))
         else:
             form.uid.errors.append("Username already in use")
-    return render_template('register.html', form=form)
+    return render_template('register.html', form=form, mimetypes="UTF-8")
 
 
 # AH3, AH6
@@ -222,7 +222,7 @@ def login():
         else:
             form.passw.errors.append("Invalid Username/Password. Please try again...")
             root.info("Access denied")
-    return render_template("login.html", form=form)
+    return render_template("login.html", form=form, mimetypes="UTF-8")
 
 
 @app.route("/dashboard", methods=["GET", "POST"])
@@ -237,13 +237,16 @@ def dashboard():
             return render_template("admin.html", fname=rows[0][1], lname=rows[0][2], mimetypes="UTF-8")  # HT7
         elif r[0][1] == "user":
             return render_template("user.html", fname=rows[0][1], lname=rows[0][2], mimetypes="UTF-8")
+        else:
+            session.clear()
+            return render_template("index.html", mimetypes="UTF-8")
 
 
 # AH8
 @app.route("/logout", methods=["GET", "POST"])
 def logout():
     session.clear()
-    return render_template("index.html")
+    return render_template("index.html", mimetypes="UTF-8")
 
 
 @app.route('/forgot', methods=["POST"])
@@ -262,13 +265,13 @@ def forgot():
                         return redirect(url_for('forgot'))
             if flag == 0:
                 form.email.errors.append("Not a valid email address...")
-    return render_template('forgot-password.html', form=form)
+    return render_template('forgot-password.html', form=form, mimetypes="UTF-8")
 
 
 @app.route('/profile', methods=["GET", "POST"])
 def profile():
     if not session.get("id") or request.remote_addr != session.get("IP"):
-        return render_template("index.html")
+        return render_template("index.html", mimetypes="UTF-8")
     else:
         form = ProfileForm(request.form)
         ID = session.get("id")
@@ -295,7 +298,7 @@ def profile():
 @app.route('/update', methods=["GET", "POST"])
 def update():
     if not session.get("id") or request.remote_addr != session.get("IP"):
-        return render_template("index.html")
+        return render_template("index.html", mimetypes="UTF-8")
     else:
         form = ProfileForm(request.form)
         if request.method == "POST":
@@ -336,7 +339,7 @@ def update():
 @app.route('/pwd', methods=["GET", "POST"])
 def pwd():
     if not session.get("id") or request.remote_addr != session.get("IP"):
-        return render_template("index.html")
+        return render_template("index.html", mimetypes="UTF-8")
     else:
         form = PasswordForm(request.form)
         ID = session.get("id")
@@ -350,13 +353,13 @@ def pwd():
                                    lname=rows[0][2], mimetypes="UTF-8")
         else:
             session.clear()
-            return render_template("index.html")
+            return render_template("index.html", mimetypes="UTF-8")
 
 
 @app.route('/addpwd', methods=["GET", "POST"])
 def addpwd():
     if not session.get("id") or request.remote_addr != session.get("IP"):
-        return render_template("index.html")
+        return render_template("index.html", mimetypes="UTF-8")
     else:
         if request.method == "POST":
             ID = session.get("id")
@@ -415,9 +418,11 @@ def addpwd():
                 elif ref == "listpwd":
                     return redirect(url_for('listpwd'))
             else:
-                return render_template("index.html")
+                session.clear()
+                return render_template("index.html", mimetypes="UTF-8")
         else:
-            return render_template("index.html")
+            session.clear()
+            return render_template("index.html", mimetypes="UTF-8")
 
 
 @app.route("/listpwd", methods=["GET", "POST"])
@@ -452,13 +457,13 @@ def listpwd():
                                    lname=rows[0][2], mimetypes="UTF-8")
         else:
             session.clear()
-            return render_template("index.html")
+            return render_template("index.html", mimetypes="UTF-8")
 
 
 @app.route('/share', methods=["GET", "POST"])
 def share():
     if not session.get("id") or request.remote_addr != session.get("IP"):
-        return render_template("index.html")
+        return render_template("index.html", mimetypes="UTF-8")
     else:
         if request.method == "POST":
             ID = session.get("id")
@@ -491,7 +496,7 @@ def share():
 @app.route('/delpwd', methods=["GET", "POST"])
 def delpwd():
     if not session.get("id") or request.remote_addr != session.get("IP"):
-        return render_template("index.html")
+        return render_template("index.html", mimetypes="UTF-8")
     else:
         if request.method == "POST":
             ID = session.get("id")
@@ -510,7 +515,7 @@ def delpwd():
 @app.route('/passpol', methods=["GET", "POST"])
 def passpol():
     if not session.get("id") or request.remote_addr != session.get("IP"):
-        return render_template("index.html")
+        return render_template("index.html", mimetypes="UTF-8")
     else:
         form = PolicyForm(request.form)
         form1 = UploadForm(request.form)
@@ -531,13 +536,13 @@ def passpol():
             return redirect(url_for('dashboard'))
         else:
             session.clear()
-            return render_template("index.html")
+            return render_template("index.html", mimetypes="UTF-8")
 
 
 @app.route('/updpol', methods=["GET", "POST"])
 def updpol():
     if not session.get("id") or request.remote_addr != session.get("IP"):
-        return render_template("index.html")
+        return render_template("index.html", mimetypes="UTF-8")
     else:
         ID = session.get("id")
         r = lookup_role(ID)
@@ -578,7 +583,11 @@ def updpol():
                 else:
                     root.info("Password Policy update failed")
                     flash('Invalid JSON file uploaded', "Error")
-        return redirect(url_for('passpol'))
+        elif r[0][1] == "user":
+            return redirect(url_for('dashboard'))
+        else:
+            session.clear()
+            return render_template("index.html", mimetypes="UTF-8")
 
 
 @app.route("/listuser", methods=["GET", "POST"])
@@ -594,14 +603,17 @@ def listuser():
             return render_template("list-user.html", all_data=users, template="admin.html",
                                    fname=rows[0][1],
                                    lname=rows[0][2], mimetypes="UTF-8")
-        else:
+        elif r[0][1] == "user":
             return redirect(url_for('dashboard'))
+        else:
+            session.clear()
+            return render_template("index.html", mimetypes="UTF-8")
 
 
 @app.route('/deluser', methods=["GET", "POST"])
 def deluser():
     if not session.get("id") or request.remote_addr != session.get("IP"):
-        return render_template("index.html")
+        return render_template("index.html", mimetypes="UTF-8")
     else:
         ID = session.get("id")
         r = lookup_role(ID)
@@ -614,8 +626,11 @@ def deluser():
             else:
                 flash("User removal failed", "Success")
                 return redirect(url_for('listuser'))
-        else:
+        elif r[0][1] == "user":
             return redirect(url_for('dashboard'))
+        else:
+            session.clear()
+            return render_template("index.html", mimetypes="UTF-8")
 
 
 # Reverse proxy settings
