@@ -144,7 +144,7 @@ def index():
         return redirect(url_for('dashboard'))
 
 
-@app.route('/register', methods=["POST"])
+@app.route('/register', methods=["GET", "POST"])
 def register():
     global flag
     flag = 0
@@ -193,7 +193,7 @@ def register():
 
 
 # AH3, AH6
-@app.route("/login", methods=["POST"])
+@app.route("/login", methods=["GET", "POST"])
 def login():
     pass_retention()
     form = LoginForm(request.form)
@@ -225,7 +225,7 @@ def login():
     return render_template("login.html", form=form)
 
 
-@app.route("/dashboard", methods=["POST"])
+@app.route("/dashboard", methods=["GET", "POST"])
 def dashboard():
     if not session.get("id") or request.remote_addr != session.get("IP"):
         return redirect(url_for('login'))
@@ -240,7 +240,7 @@ def dashboard():
 
 
 # AH8
-@app.route("/logout", methods=["POST"])
+@app.route("/logout", methods=["GET", "POST"])
 def logout():
     session.clear()
     return render_template("index.html")
@@ -265,7 +265,7 @@ def forgot():
     return render_template('forgot-password.html', form=form)
 
 
-@app.route('/profile', methods=["POST"])
+@app.route('/profile', methods=["GET", "POST"])
 def profile():
     if not session.get("id") or request.remote_addr != session.get("IP"):
         return render_template("index.html")
@@ -290,7 +290,7 @@ def profile():
             return render_template("profile.html", form=form, template="user.html", fname=rows[0][1], lname=rows[0][2])
 
 
-@app.route('/update', methods=["POST"])
+@app.route('/update', methods=["GET", "POST"])
 def update():
     if not session.get("id") or request.remote_addr != session.get("IP"):
         return render_template("index.html")
@@ -331,7 +331,7 @@ def update():
         return redirect(url_for('profile'))
 
 
-@app.route('/pwd', methods=["POST"])
+@app.route('/pwd', methods=["GET", "POST"])
 def pwd():
     if not session.get("id") or request.remote_addr != session.get("IP"):
         return render_template("index.html")
@@ -346,7 +346,7 @@ def pwd():
             return render_template("add-pwd.html", form=form, template="user.html", fname=rows[0][1], lname=rows[0][2])
 
 
-@app.route('/addpwd', methods=["POST"])
+@app.route('/addpwd', methods=["GET", "POST"])
 def addpwd():
     if not session.get("id") or request.remote_addr != session.get("IP"):
         return render_template("index.html")
@@ -410,7 +410,7 @@ def addpwd():
             return render_template("index.html")
 
 
-@app.route("/listpwd", methods=["POST"])
+@app.route("/listpwd", methods=["GET", "POST"])
 def listpwd():
     if not session.get("id") or request.remote_addr != session.get("IP"):
         return redirect(url_for('login'))
@@ -442,7 +442,7 @@ def listpwd():
                                    lname=rows[0][2])
 
 
-@app.route('/share', methods=["POST"])
+@app.route('/share', methods=["GET", "POST"])
 def share():
     if not session.get("id") or request.remote_addr != session.get("IP"):
         return render_template("index.html")
@@ -472,7 +472,7 @@ def share():
             return redirect(url_for('dashboard'))
 
 
-@app.route('/delpwd', methods=["POST"])
+@app.route('/delpwd', methods=["GET", "POST"])
 def delpwd():
     if not session.get("id") or request.remote_addr != session.get("IP"):
         return render_template("index.html")
@@ -488,7 +488,7 @@ def delpwd():
             return redirect(url_for('dashboard'))
 
 
-@app.route('/passpol', methods=["POST"])
+@app.route('/passpol', methods=["GET", "POST"])
 def passpol():
     if not session.get("id") or request.remote_addr != session.get("IP"):
         return render_template("index.html")
@@ -512,7 +512,7 @@ def passpol():
             return redirect(url_for('dashboard'))
 
 
-@app.route('/updpol', methods=["POST"])
+@app.route('/updpol', methods=["GET", "POST"])
 def updpol():
     if not session.get("id") or request.remote_addr != session.get("IP"):
         return render_template("index.html")
@@ -559,7 +559,7 @@ def updpol():
         return redirect(url_for('passpol'))
 
 
-@app.route("/listuser", methods=["POST"])
+@app.route("/listuser", methods=["GET", "POST"])
 def listuser():
     if not session.get("id") or request.remote_addr != session.get("IP"):
         return redirect(url_for('login'))
@@ -576,7 +576,7 @@ def listuser():
             return redirect(url_for('dashboard'))
 
 
-@app.route('/deluser', methods=["POST"])
+@app.route('/deluser', methods=["GET", "POST"])
 def deluser():
     if not session.get("id") or request.remote_addr != session.get("IP"):
         return render_template("index.html")
@@ -602,4 +602,4 @@ hostedApp.wsgi_app = DispatcherMiddleware(NotFound(), {
     "/app": app
 })
 
-hostedApp.run(host="0.0.0.0", port=9000, debug=True)
+hostedApp.run(host="0.0.0.0", port=9050, debug=True)
