@@ -6,10 +6,10 @@ from logger import logging
 from flask_session import Session
 from flask import Flask, render_template, request, session, redirect, url_for, flash
 from pms import add_user, compare_hash, update_accpass, lookup_role, query_acc, gen_apppass, add_apppwd, \
-    update_user, upd_apppwd, lookup_app, del_apppwd, delete_user, pass_retention, read_pol, \
-    check_status, gen_policy, add_pol, lookup_appperms, update_appperms, lookup_acc
+    update_user, upd_apppwd, lookup_app, del_apppwd, del_user, pass_retention, read_pol, \
+    check_status, gen_policy, add_pol, lookup_appperms, upd_appperms, lookup_acc, update_accrole
 from wtforms import Form, BooleanField, StringField, PasswordField, validators, IntegerRangeField, IntegerField, \
-    SelectField
+    SelectField, RadioField
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 from werkzeug.exceptions import NotFound
 from flask_wtf import csrf, FlaskForm
@@ -84,7 +84,9 @@ class UploadForm(FlaskForm):
 
 class ShareForm(Form):
     uid = SelectField('User', coerce=int)
-    perms = SelectField('Permission', choices=[("o", "owner"), ("v", "viewer"), ("e", "editor")])
+    perms1 = SelectField('Permission', choices=[('v', 'viewer'), ('e', 'editor')])
+    perms2 = SelectField('Permission', choices=[('o', 'owner'), ('v', 'viewer'), ('e', 'editor')])
+    role = RadioField(choices=[('user', 'user'), ('admin', 'admin')])
 
 
 # Flask app configuration
@@ -232,7 +234,7 @@ def dashboard():
     else:
         ID = session.get("id")
         rows = lookup_acc("NULL", ID, 2)
-        r = lookup_role(ID)
+        r = lookup_role(ID, 1)
         if r[0][1] == "admin":
             return render_template("admin.html", fname=rows[0][1], lname=rows[0][2], mimetypes="UTF-8")  # HT7
         elif r[0][1] == "user":
@@ -276,7 +278,7 @@ def profile():
         form = ProfileForm(request.form)
         ID = session.get("id")
         rows = lookup_acc("NULL", ID, 2)
-        r = lookup_role(ID)
+        r = lookup_role(ID, 1)
         if r[0][1] == "admin":
             form.uid.data = rows[0][0]
             form.fname.data = rows[0][1]
@@ -304,7 +306,7 @@ def update():
         if request.method == "POST":
             ID = session.get("id")
             rows = lookup_acc("NULL", ID, 2)
-            r = lookup_role(ID)
+            r = lookup_role(ID, 1)
             if r[0][1] == "admin" or r[0][1] == "user":
                 if rows:
                     if "upd_dets" in request.form:
@@ -344,7 +346,7 @@ def pwd():
         form = PasswordForm(request.form)
         ID = session.get("id")
         rows = lookup_acc("NULL", ID, 2)
-        r = lookup_role(ID)
+        r = lookup_role(ID, 1)
         if r[0][1] == "admin":
             return render_template("add-pwd.html", form=form, template="admin.html", fname=rows[0][1],
                                    lname=rows[0][2], mimetypes="UTF-8")
@@ -363,7 +365,7 @@ def addpwd():
     else:
         if request.method == "POST":
             ID = session.get("id")
-            r = lookup_role(ID)
+            r = lookup_role(ID, 1)
             if r[0][1] == "admin" or r[0][1] == "user":
                 y, ref = request.referrer.rsplit("/", 1)
                 if request.method == "POST":
@@ -430,31 +432,31 @@ def listpwd():
     if not session.get("id") or request.remote_addr != session.get("IP"):
         return redirect(url_for('login'))
     else:
-        group_list = list()
+        user_list = list()
         form = PasswordForm(request.form)
         form1 = ShareForm(request.form)
         ID = session.get("id")
         rows = lookup_acc("NULL", ID, 2)
         pa = lookup_appperms(ID, "NULL", 3)
         pm = lookup_appperms(ID, "NULL", 2)
-        r = lookup_role(ID)
+        r = lookup_role(ID, 1)
         users, c = query_acc("NULL", 1)
         for i in range(len(users)):
             if ID != users[i][10]:
-                group_list.append((users[i][10], users[i][0]))
-        form1.uid.choices = group_list
+                user_list.append((users[i][10], users[i][0]))
+        form1.uid.choices = user_list
         if r[0][1] == "admin":
             return render_template("list-pwd.html", form=form, form1=form1, pdata=pa, share_data=pm,
                                    udata=users,
                                    template="admin.html",
                                    fname=rows[0][1],
-                                   lname=rows[0][2], mimetypes="UTF-8")
+                                   lname=rows[0][2], mimetypes="UTF-8", uid=ID)
         elif r[0][1] == "user":
             return render_template("list-pwd.html", form=form, form1=form1, pdata=pa, share_data=pm,
                                    udata=users,
                                    template="user.html",
                                    fname=rows[0][1],
-                                   lname=rows[0][2], mimetypes="UTF-8")
+                                   lname=rows[0][2], mimetypes="UTF-8", uid=ID)
         else:
             session.clear()
             return render_template("index.html", mimetypes="UTF-8")
@@ -467,26 +469,74 @@ def share():
     else:
         if request.method == "POST":
             ID = session.get("id")
-            r = lookup_role(ID)
-            if r[0][1] == "admin" or r[0][1] == "user":
-                form = ShareForm(request.form)
-                appid = request.form['id']
-                if form.perms.data == "o":
-                    resp = update_appperms(form.perms.data, form.uid.data, appid, 2)
-                    if resp:
-                        flash("Owner changed", "Success")
-                        return redirect(url_for('listpwd'))
-                    else:
-                        flash("Owner was not changed", "Error")
-                        return redirect(url_for('listpwd'))
-                else:
-                    resp = update_appperms(form.perms.data, form.uid.data, appid, 1)
-                    if resp:
-                        flash("Permissions changed", "Success")
-                        return redirect(url_for('listpwd'))
+            r = lookup_role(ID, 1)
+            y, ref = request.referrer.rsplit("/", 1)
+            form = ShareForm(request.form)
+            if ref == "listpwd":
+                if r[0][1] == "admin" or r[0][1] == "user":
+                    appid = request.form['id']
+                    perms = form.perms1.data
+                    perms1 = form.perms2.data
+                    if perms and perms == "o":
+                        resp = upd_appperms(perms, form.uid.data, appid, 2)
+                        if resp:
+                            flash("Owner changed", "Success")
+                            return redirect(url_for('listpwd'))
+                        else:
+                            flash("Owner was not changed", "Error")
+                            return redirect(url_for('listpwd'))
+                    elif perms1 and perms1 == "o":
+                        resp = upd_appperms(perms1, form.uid.data, appid, 2)
+                        if resp:
+                            flash("Owner changed", "Success")
+                            return redirect(url_for('listpwd'))
+                        else:
+                            flash("Owner was not changed", "Error")
+                            return redirect(url_for('listpwd'))
+                    elif perms and perms != "o":
+                        resp = upd_appperms(perms, form.uid.data, appid, 1)
+                        if resp:
+                            flash("Permissions changed", "Success")
+                            return redirect(url_for('listpwd'))
+                        else:
+                            flash("Permissions were not changed", "Error")
+                            return redirect(url_for('listpwd'))
+                    elif perms1 and perms1 != "o":
+                        resp = upd_appperms(perms1, form.uid.data, appid, 1)
+                        if resp:
+                            flash("Permissions changed", "Success")
+                            return redirect(url_for('listpwd'))
+                        else:
+                            flash("Permissions were not changed", "Error")
+                            return redirect(url_for('listpwd'))
                     else:
                         flash("Permissions were not changed", "Error")
                         return redirect(url_for('listpwd'))
+                else:
+                    return redirect(url_for('dashboard'))
+            elif ref == "listuser":
+                if r[0][1] == "admin":
+                    ID = request.form['id']
+                    if form.role.data == "admin":
+                        resp = update_accrole(ID, "admin")
+                        if resp:
+                            flash("Admin privilege granted", "Success")
+                            return redirect(url_for('listpwd'))
+                        else:
+                            flash("Admin privilege not granted", "Error")
+                            return redirect(url_for('listpwd'))
+                    elif form.role.data == "user":
+                        resp = update_accrole(ID, "user")
+                        if resp:
+                            flash("User privilege granted", "Success")
+                            return redirect(url_for('listpwd'))
+                        else:
+                            flash("User privilege granted", "Error")
+                            return redirect(url_for('listpwd'))
+                    else:
+                        return redirect(url_for('listuser'))
+                else:
+                    return redirect(url_for('dashboard'))
             else:
                 return redirect(url_for('dashboard'))
         else:
@@ -500,7 +550,7 @@ def delpwd():
     else:
         if request.method == "POST":
             ID = session.get("id")
-            r = lookup_role(ID)
+            r = lookup_role(ID, 1)
             if r[0][1] == "admin" or r[0][1] == "user":
                 appid = request.form['id']
                 del_apppwd(appid)
@@ -521,7 +571,7 @@ def passpol():
         form1 = UploadForm(request.form)
         ID = session.get("id")
         rows = lookup_acc("NULL", ID, 2)
-        r = lookup_role(ID)
+        r = lookup_role(ID, 1)
         poli = read_pol()
         form.length.data = poli['Length']
         form.upper.data = poli['Upper']
@@ -545,7 +595,7 @@ def updpol():
         return render_template("index.html", mimetypes="UTF-8")
     else:
         ID = session.get("id")
-        r = lookup_role(ID)
+        r = lookup_role(ID, 1)
         if request.method == 'POST' and r[0][1] == "admin":
             form = PolicyForm(request.form)
             if "add_pol" in request.form:
@@ -568,7 +618,7 @@ def updpol():
                 else:
                     flash('Invalid/Empty policy information provided', 'Error')
             elif "upload_pol" in request.form:
-                form = UploadForm()
+                form = UploadForm(request.form)
                 if form.validate_on_submit():
                     filedata = form.file.data
                     filedata.save(os.path.join(app.config['UPLOAD_FOLDER'], "temp_policy.json"))
@@ -595,12 +645,14 @@ def listuser():
     if not session.get("id") or request.remote_addr != session.get("IP"):
         return redirect(url_for('login'))
     else:
+        form = ShareForm(request.form)
         ID = session.get("id")
         rows = lookup_acc("NULL", ID, 2)
         users = query_acc(ID, 2)
-        r = lookup_role(ID)
+        r = lookup_role(ID, 1)
+        rdata = lookup_role(ID, 2)
         if r[0][1] == "admin":
-            return render_template("list-user.html", all_data=users, template="admin.html",
+            return render_template("list-user.html", form=form, all_data=users, rdata=rdata, template="admin.html",
                                    fname=rows[0][1],
                                    lname=rows[0][2], mimetypes="UTF-8")
         elif r[0][1] == "user":
@@ -616,10 +668,10 @@ def deluser():
         return render_template("index.html", mimetypes="UTF-8")
     else:
         ID = session.get("id")
-        r = lookup_role(ID)
+        r = lookup_role(ID, 1)
         if request.method == 'POST' and r[0][1] == "admin":
             ID = request.form['id']
-            resp = delete_user(ID)
+            resp = del_user(ID)
             if resp:
                 flash("User removed successfully", "Success")
                 return redirect(url_for('listuser'))

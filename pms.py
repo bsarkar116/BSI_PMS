@@ -5,8 +5,8 @@ import bcrypt
 import schema
 import validations
 from policy import check_policy, read_pol, pass_retention, check_status, gen_policy, add_pol
-from database import insert_user, del_user, insert_apppwd, lookup_role, query_acc,  \
-    update_acc, update_apppwd, lookup_app, delete_apppwd, lookup_appperms, update_appperms, lookup_acc
+from database import insert_user, delete_user, insert_apppwd, lookup_role, query_acc, \
+    update_acc, update_apppwd, lookup_app, delete_apppwd, lookup_appperms, update_appperms, lookup_acc, update_role
 from emailer import send_email
 from schema import userSchema, loginSchema
 
@@ -48,12 +48,12 @@ def add_user(u, fn, ln, e, a, i):
     user = {"uid": u, "fname": fn, "lname": ln, "email": e, "address": a}
     isValid = validations.validate_json(user, userSchema)
     if isValid:
-        passw = random_gen()
-        hpass, s = hash_pwd(passw)
-        result = insert_user(u, fn, ln, e, a, hpass, s)
-        send_email(u, e, passw, i)
-        if result:
-            return True
+        rows = lookup_acc(u, "NULL", 1)
+        if not rows:
+            passw = random_gen()
+            hpass, s = hash_pwd(passw)
+            insert_user(u, fn, ln, e, a, hpass, s)
+            send_email(u, e, passw, i)
         else:
             return False
     else:
@@ -64,19 +64,27 @@ def update_user(ID, fn, ln, addr):
     info = {"fname": fn, "lname": ln, "address": addr}
     isValid = validations.validate_json(info, schema.profileSchema)
     if isValid:
-        res = update_acc(ID, fn, ln, addr, "NULL", "NULL", 1)
-        if res:
-            return True
+        rows = lookup_acc("NULL", ID, 2)
+        if rows:
+            res = update_acc(ID, fn, ln, addr, "NULL", "NULL", 1)
+            if res:
+                return True
+            else:
+                return False
         else:
             return False
     else:
         return False
 
 
-def delete_user(ID):
-    res = del_user(ID)
-    if res:
-        return True
+def del_user(ID):
+    rows = lookup_acc("NULL", ID, 2)
+    if rows:
+        resp = delete_user(ID)
+        if resp:
+            return True
+        else:
+            return False
     else:
         return False
 
@@ -87,6 +95,15 @@ def update_accpass(ID, u, e, i):
     res = update_acc(ID, "NULL", "NULL", "NULL", hpass, s, 2)
     if res:
         send_email(u, e, passw, i)
+        return True
+    else:
+        return False
+
+
+def update_accrole(ID, r):
+    rows = lookup_acc("NULL", ID, 2)
+    if rows:
+        update_role(ID, r)
         return True
     else:
         return False
@@ -112,19 +129,35 @@ def gen_apppass(lett, d, s, le):
 
 
 def add_apppwd(ID, appname, passw):
-    result = insert_apppwd(ID, passw, appname)
-    if result:
-        return True
+    rows = lookup_acc("NULL", ID, 2)
+    if rows:
+        result = insert_apppwd(ID, passw, appname)
+        if result:
+            return True
+        else:
+            return False
     else:
         return False
 
 
 def upd_apppwd(appid, ID, appname, passw):
-    result = update_apppwd(appid, ID, passw, appname)
-    if result:
-        return True
+    rows = lookup_acc("NULL", ID, 2)
+    if rows:
+        result = update_apppwd(appid, ID, passw, appname)
+        if result:
+            return True
+        else:
+            return False
     else:
         return False
+
+
+def upd_appperms(perm, ID, appid, i):
+    resp = update_appperms(perm, ID, appid, i)
+    if resp:
+        return True
+    else:
+        return True
 
 
 def del_apppwd(appid):
