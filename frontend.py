@@ -8,7 +8,7 @@ from forms import *
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 from werkzeug.exceptions import NotFound
 from flask_wtf import csrf
-from flask_login import login_required, LoginManager
+# from flask_login import login_required, LoginManager
 
 # Flask app configuration
 app = Flask(__name__)
@@ -24,8 +24,8 @@ app.config["SESSION_COOKIE_HTTPONLY"] = True
 Session(app)
 
 # Flask login settings
-login_manager = LoginManager()
-login_manager.init_app(app)
+# login_manager = LoginManager()
+# login_manager.init_app(app)
 
 # HT5
 # CSRF Configuration
@@ -153,7 +153,6 @@ def login():
 
 
 @app.route("/dashboard", methods=["GET", "POST"])
-@login_required
 def dashboard():
     if not session.get("id") or request.remote_addr != session.get("IP"):
         return redirect(url_for('login'))
