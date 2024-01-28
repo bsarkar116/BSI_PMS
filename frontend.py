@@ -1,93 +1,14 @@
 import datetime
-import schema
-import validations
 import os
 from logger import logging
 from flask_session import Session
 from flask import Flask, render_template, request, session, redirect, url_for, flash
-from pms import add_user, compare_hash, update_accpass, lookup_role, query_acc, gen_apppass, add_apppwd, \
-    update_user, upd_apppwd, lookup_app, del_apppwd, del_user, pass_retention, read_pol, \
-    check_status, gen_policy, add_pol, lookup_appperms, upd_appperms, lookup_acc, update_accrole
-from wtforms import Form, BooleanField, StringField, PasswordField, validators, IntegerRangeField, IntegerField, \
-    SelectField, RadioField
+from pms import *
+from forms import *
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 from werkzeug.exceptions import NotFound
-from flask_wtf import csrf, FlaskForm
-from flask_wtf.file import FileField, FileAllowed, FileRequired
-
-
-# DV1, DV2, DV4
-# Server Side form validation configurations
-class RegistrationForm(Form):
-    uid = StringField('Username',
-                      [validators.Length(min=4, max=25), validators.input_required()])
-    fname = StringField('First Name', [validators.input_required()])
-    lname = StringField('Last Name', [validators.input_required()])
-    email = StringField('Email Address', [validators.Email(),
-                                          validators.input_required()])
-    address = StringField('Address', [validators.input_required()])
-
-
-class LoginForm(Form):
-    uid = StringField('Username',
-                      [validators.Length(min=4), validators.input_required()])
-    passw = PasswordField('Password', [validators.input_required()])
-
-
-class ForgotForm(Form):
-    email = StringField('Email Address', [validators.Email(),
-                                          validators.input_required()])
-
-
-class ProfileForm(Form):
-    uid = StringField('Username')
-    fname = StringField('First Name', [validators.input_required()])
-    lname = StringField('Last Name', [validators.input_required()])
-    email = StringField('Email Address')
-    address = StringField('Address', [validators.input_required()])
-
-
-class PasswordForm(Form):
-    appname = StringField('App Name', [validators.input_required()])
-    letters = BooleanField('Letters', [validators.input_required()])
-    digits = BooleanField('Digits')
-    special = BooleanField('Special Chars')
-    length = IntegerRangeField('Length', [validators.input_required(), validators.NumberRange(min=6, max=25)])
-
-
-class AppForm(Form):
-    appname = StringField('App Name')
-    letters = BooleanField('Letters', [validators.input_required()])
-    digits = BooleanField('Digits')
-    special = BooleanField('Special Chars')
-    length = IntegerRangeField('Length', [validators.input_required(), validators.NumberRange(min=6, max=25)])
-
-
-class PolicyForm(Form):
-    length = IntegerField('Password Length(6-30)', [validators.input_required(),
-                                                    validators.NumberRange(min=6, max=30)])
-    upper = IntegerField('Uppercase Letters(Min 1)', [validators.input_required(),
-                                                      validators.NumberRange(min=1)])
-    lower = IntegerField('Lowercase Letters(Min 1)', [validators.input_required(),
-                                                      validators.NumberRange(min=1)])
-    digits = IntegerField('Digits(Min 1)', [validators.input_required(),
-                                            validators.NumberRange(min=1)])
-    special = IntegerField('Special Chars(Min 1)', [validators.input_required(),
-                                                    validators.NumberRange(min=1)])
-    age = IntegerField('Password Retention Period(10-60)', [validators.input_required(),
-                                                            validators.NumberRange(min=10, max=60)])
-
-
-class UploadForm(FlaskForm):
-    file = FileField('Upload JSON', validators=[FileAllowed(['json', 'JSON']), FileRequired()])
-
-
-class ShareForm(Form):
-    uid = SelectField('User', coerce=int)
-    perms1 = SelectField('Permission', choices=[('v', 'viewer'), ('e', 'editor')])
-    perms2 = SelectField('Permission', choices=[('o', 'owner'), ('v', 'viewer'), ('e', 'editor')])
-    role = RadioField(choices=[('user', 'user'), ('admin', 'admin')])
-
+from flask_wtf import csrf
+from flask_login import login_required, LoginManager
 
 # Flask app configuration
 app = Flask(__name__)
@@ -101,6 +22,10 @@ app.config["SESSION_FILE_THRESHOLD"] = 10
 app.config["SESSION_COOKIE_SECURE"] = True  # HT4
 app.config["SESSION_COOKIE_HTTPONLY"] = True
 Session(app)
+
+# Flask login settings
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 # HT5
 # CSRF Configuration
@@ -120,19 +45,19 @@ global flag
 # AH11
 @app.before_request
 def before_request():
-    now = datetime.datetime.now()
     try:
-        last_active = session['last_active']
-        delta = now - last_active
-        if delta.seconds > 900:
-            flash("Session has expired. Please login again", "Error")
-            session.clear()
-            return redirect(url_for('index'))
-    except:
-        pass
-    try:
+        now = datetime.datetime.now()
+        if session:
+            if 'last_active' in session:
+                last_active = session['last_active']
+                delta = now - last_active
+                if delta.seconds > 900:
+                    session.clear()
+                    root.info("Session has expired")
+                    return redirect(url_for('login'))
         session['last_active'] = now
-    except:
+        root.info("Session updated with current time")
+    except KeyError:
         pass
 
 
@@ -228,6 +153,7 @@ def login():
 
 
 @app.route("/dashboard", methods=["GET", "POST"])
+@login_required
 def dashboard():
     if not session.get("id") or request.remote_addr != session.get("IP"):
         return redirect(url_for('login'))
