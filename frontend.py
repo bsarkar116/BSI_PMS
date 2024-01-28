@@ -9,8 +9,6 @@ from werkzeug.middleware.dispatcher import DispatcherMiddleware
 from werkzeug.exceptions import NotFound
 from flask_wtf import csrf
 
-# from flask_login import login_required, LoginManager
-
 # Flask app configuration
 app = Flask(__name__)
 
