@@ -209,6 +209,11 @@ def profile():
             "admin": {"template": "admin.html", "fname": rows[1], "lname": rows[2]},
             "user": {"template": "user.html", "fname": rows[1], "lname": rows[2]}
         }
+        form.uid.data = rows[0]
+        form.fname.data = rows[1]
+        form.lname.data = rows[2]
+        form.email.data = rows[3]
+        form.address.data = rows[4]
         return render_template("profile.html", form=form, template=role_templates[r[1]]["template"],
                                fname=role_templates[r[1]]["fname"], lname=role_templates[r[1]]["lname"],
                                mimetypes="UTF-8")
