@@ -14,9 +14,9 @@ from schema import userSchema, loginSchema
 def compare_hash(u, passw):
     rows = lookup_acc(u, "NULL", 1)
     if rows:
-        salt = rows[0][6].encode()
+        salt = rows[6].encode()
         testpass = salt + passw.encode() + salt + passw.encode() + salt
-        if hashlib.sha3_512(testpass).hexdigest() == rows[0][5]:
+        if hashlib.sha3_512(testpass).hexdigest() == rows[5]:
             return True
         else:
             return False

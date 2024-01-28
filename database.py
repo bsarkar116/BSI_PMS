@@ -32,75 +32,64 @@ def insert_user(u, fn, ln, e, a, p, s):
 def update_acc(ID, fname, lname, address, pas, s, i):
     db, cur = db_conn()
     if i == 1:
-        query = """UPDATE accounts SET fname=%s, lname=%s, address=%s WHERE id=%s"""
-        cur.execute(query, (fname, lname, address, ID))
+        query = "UPDATE accounts SET fname=%s, lname=%s, address=%s WHERE id=%s"
+        params = (fname, lname, address, ID)
+        cur.execute(query, params=params)
         db.commit()
-        cur.close()
-        db.close()
         return True
     elif i == 2:
-        query = """UPDATE accounts SET passw=%s, status=%s, pwd_creation=CURRENT_TIMESTAMP(), salt=%s WHERE id=%s"""
-        cur.execute(query, (pas, "0", s, ID))
+        query = "UPDATE accounts SET passw=%s, status=%s, pwd_creation=CURRENT_TIMESTAMP(), salt=%s WHERE id=%s"
+        params = (pas, "0", s, ID)
+        cur.execute(query, params=params)
         db.commit()
-        cur.close()
-        db.close()
+        return True
     else:
-        cur.close()
-        db.close()
         return False
 
 
 def query_acc(ID, i):
     db, cur = db_conn()
     if i == 1:
-        query = """SELECT * FROM accounts"""
+        query = "SELECT * FROM accounts"
         cur.execute(query)
         rows = cur.fetchall()
         count = cur.rowcount
-        cur.close()
-        db.close()
         return rows, count
     elif i == 2:
         db, cur = db_conn()
-        query = """SELECT * FROM accounts WHERE id<>%s"""
-        cur.execute(query, (ID,))
+        query = "SELECT * FROM accounts WHERE id<>%s"
+        params = (ID,)
+        cur.execute(query, params=params)
         rows = cur.fetchall()
-        cur.close()
-        db.close()
         return rows
     else:
-        cur.close()
-        db.close()
         return False
 
 
 def lookup_acc(u, ID, i):
     db, cur = db_conn()
     if i == 1:
-        query = """SELECT * FROM accounts WHERE uid=%s"""
-        cur.execute(query, (u,))
-        rows = cur.fetchall()
-        cur.close()
-        db.close()
+        query = "SELECT * FROM accounts WHERE uid=%s"
+        params = (u,)
+        cur.execute(query, params=params)
+        rows = cur.fetchone()
         return rows
     elif i == 2:
         db, cur = db_conn()
-        query = """SELECT * FROM accounts WHERE id=%s"""
-        cur.execute(query, (ID,))
-        rows = cur.fetchall()
-        cur.close()
-        db.close()
+        query = "SELECT * FROM accounts WHERE id=%s"
+        params = (ID,)
+        cur.execute(query, params=params)
+        rows = cur.fetchone()
         return rows
     else:
-        cur.close()
-        db.close()
         return False
 
 
 def delete_user(ID):
     db, cur = db_conn()
-    query = """DELETE FROM accounts WHERE id=%s"""
-    cur.execute(query, (ID,))
+    query = "DELETE FROM accounts WHERE id=%s"
+    params = (ID,)
+    cur.execute(query, params=params)
     db.commit()
     cur.close()
     db.close()
@@ -108,8 +97,9 @@ def delete_user(ID):
 
 def update_role(ID, role):
     db, cur = db_conn()
-    query = """UPDATE roles SET role=%s WHERE id=%s"""
-    cur.execute(query, (role, ID))
+    query = "UPDATE roles SET role=%s WHERE id=%s"
+    params = (role, ID)
+    cur.execute(query, params=params)
     db.commit()
     cur.close()
     db.close()
@@ -117,30 +107,26 @@ def update_role(ID, role):
 
 def lookup_role(ID, i):
     db, cur = db_conn()
+    params = (ID,)
     if i == 1:
-        query = """SELECT * FROM roles WHERE id=%s"""
-        cur.execute(query, (ID,))
-        rows = cur.fetchall()
-        cur.close()
-        db.close()
+        query = "SELECT * FROM roles WHERE id=%s"
+        cur.execute(query, params=params)
+        rows = cur.fetchone()
         return rows
     elif i == 2:
-        query = """SELECT * FROM roles WHERE id<>%s"""
-        cur.execute(query, (ID,))
+        query = "SELECT * FROM roles WHERE id<>%s"
+        cur.execute(query, params=params)
         rows = cur.fetchall()
-        cur.close()
-        db.close()
         return rows
     else:
-        cur.close()
-        db.close()
         return False
 
 
 def lookup_status(ID):
     db, cur = db_conn()
-    query = """SELECT * FROM accounts WHERE id=%s AND status=%s"""
-    cur.execute(query, (ID, "1",))
+    query = "SELECT * FROM accounts WHERE id=%s AND status=%s"
+    params = (ID, "1",)
+    cur.execute(query, params=params)
     rows = cur.fetchall()
     cur.close()
     db.close()
@@ -149,8 +135,9 @@ def lookup_status(ID):
 
 def update_status(ID):
     db, cur = db_conn()
-    query = """UPDATE accounts SET status=%s WHERE id=%s"""
-    cur.execute(query, ("1", ID,))
+    query = "UPDATE accounts SET status=%s WHERE id=%s"
+    params = ("1", ID,)
+    cur.execute(query, params=params)
     db.commit()
     cur.close()
     db.close()
@@ -158,8 +145,9 @@ def update_status(ID):
 
 def insert_apppwd(ID, pa, appname):
     db, cur = db_conn()
-    query = """INSERT INTO passwords (appname, pass, pwd_creation, id) VALUES (%s, %s, CURRENT_TIMESTAMP(), %s) """
-    cur.execute(query, (appname, pa, ID))
+    query = "INSERT INTO passwords (appname, pass, pwd_creation, id) VALUES (%s, %s, CURRENT_TIMESTAMP(), %s)"
+    params = (appname, pa, ID)
+    cur.execute(query, params=params)
     db.commit()
     cur.close()
     db.close()
@@ -167,8 +155,9 @@ def insert_apppwd(ID, pa, appname):
 
 def update_apppwd(appid, ID, pa, appname):
     db, cur = db_conn()
-    query = """Update passwords SET appname=%s, pass=%s, pwd_creation=CURRENT_TIMESTAMP() WHERE appid=%s AND id=%s"""
-    cur.execute(query, (appname, pa, appid, ID))
+    query = "Update passwords SET appname=%s, pass=%s, pwd_creation=CURRENT_TIMESTAMP() WHERE appid=%s AND id=%s"
+    params = (appname, pa, appid, ID)
+    cur.execute(query, params=params)
     db.commit()
     cur.close()
     db.close()
@@ -176,8 +165,9 @@ def update_apppwd(appid, ID, pa, appname):
 
 def delete_apppwd(appid):
     db, cur = db_conn()
-    query = """DELETE FROM passwords WHERE appid=%s """
-    cur.execute(query, (appid,))
+    query = "DELETE FROM passwords WHERE appid=%s"
+    params = (appid,)
+    cur.execute(query, params=params)
     db.commit()
     cur.close()
     db.close()
@@ -186,33 +176,28 @@ def delete_apppwd(appid):
 def lookup_app(ID, appname, appid, i):
     db, cur = db_conn()
     if i == 1:
-        query = """SELECT * FROM passwords WHERE id=%s AND appname=%s"""
-        cur.execute(query, (ID, appname,))
+        query = "SELECT * FROM passwords WHERE id=%s AND appname=%s"
+        params = (ID, appname,)
+        cur.execute(query, params=params)
         rows = cur.fetchall()
-        cur.close()
-        db.close()
         return rows
     elif i == 2:
-        query = """SELECT * FROM passwords WHERE appid=%s"""
-        cur.execute(query, (appid,))
-        rows = cur.fetchall()
-        cur.close()
-        db.close()
+        query = "SELECT * FROM passwords WHERE appid=%s"
+        params = (appid,)
+        cur.execute(query, params=params)
+        rows = cur.fetchone()
         return rows
     else:
-        cur.close()
-        db.close()
         return False
 
 
 def lookup_appperms(ID, appid, i):
     db, cur = db_conn()
     if i == 1:
-        query = """SELECT * FROM permissions WHERE id=%s AND appid=%s"""
-        cur.execute(query, (ID, appid,))
+        query = "SELECT * FROM permissions WHERE id=%s AND appid=%s"
+        params = (ID, appid,)
+        cur.execute(query, params=params)
         rows = cur.fetchall()
-        cur.close()
-        db.close()
         return rows
     elif i == 2:
         query = """SELECT appid, permission, id FROM permissions 
@@ -220,62 +205,48 @@ def lookup_appperms(ID, appid, i):
                    UNION
                    SELECT appid, permission, id FROM permissions 
                    WHERE appid IN (SELECT appid FROM permissions WHERE id=%s AND permission=%s)"""
-        cur.execute(query, (ID, ID, 'e'))
+        params = (ID, ID, 'e',)
+        cur.execute(query, params=params)
         rows = cur.fetchall()
-        cur.close()
-        db.close()
         return rows
     elif i == 3:
-        db, cur = db_conn()
         query1 = """SELECT passw.appid, passw.id, passw.appname, passw.pass, passw.pwd_creation, perm.id, perm.permission
                     FROM passwords as passw
                     LEFT JOIN (SELECT * FROM permissions WHERE id=%s) AS perm ON passw.appid = perm.appid
                     WHERE perm.id=%s OR passw.id=%s
                     ORDER BY passw.appid"""
-        cur.execute(query1, (ID, ID, ID,))
+        params = (ID, ID, ID,)
+        cur.execute(query1, params=params)
         rows = cur.fetchall()
-        cur.close()
-        db.close()
         return rows
     else:
-        cur.close()
-        db.close()
         return False
 
 
 def update_appperms(perm, ID, appid, i):
     db, cur = db_conn()
-    rows = lookup_acc("NULL", ID, 2)
-    app = lookup_app("NULL", "NULL", appid, 2)
+    rows = lookup_acc(None, ID, 2)
+    app = lookup_app(None, None, appid, 2)
     if rows and app:
         if i == 1:
             resp = lookup_appperms(ID, appid, 1)
             if resp:
-                query = """Update permissions SET permission=%s WHERE id=%s AND appid=%s"""
-                cur.execute(query, (perm, ID, appid))
-                db.commit()
-                cur.close()
-                db.close()
-                return True
+                query = "Update permissions SET permission=%s WHERE id=%s AND appid=%s"
+                params = (perm, ID, appid)
+                cur.execute(query, params=params)
             else:
-                query = """INSERT INTO permissions(id, permission, appid) VALUES(%s, %s, %s)"""
-                cur.execute(query, (ID, perm, appid))
-                db.commit()
-                cur.close()
-                db.close()
-                return True
-        elif i == 2:
-            query = """Update passwords SET id=%s WHERE appid=%s"""
-            cur.execute(query, (rows[0][10], appid))
+                query = "INSERT INTO permissions(id, permission, appid) VALUES(%s, %s, %s)"
+                params = (ID, perm, appid)
+                cur.execute(query, params=params)
             db.commit()
-            cur.close()
-            db.close()
+            return True
+        elif i == 2:
+            query = "Update passwords SET id=%s WHERE appid=%s"
+            params = (rows[0][10], appid)
+            cur.execute(query, params=params)
+            db.commit()
             return True
         else:
-            cur.close()
-            db.close()
             return False
     else:
-        cur.close()
-        db.close()
         return False

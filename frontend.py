@@ -8,6 +8,7 @@ from forms import *
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 from werkzeug.exceptions import NotFound
 from flask_wtf import csrf
+
 # from flask_login import login_required, LoginManager
 
 # Flask app configuration
@@ -64,7 +65,7 @@ def before_request():
 # HT2
 @app.route("/", methods=["GET", "POST"])
 def index():
-    if not session.get("id") or request.remote_addr != session.get("IP"):  # AH14
+    if not session.get("id") or request.environ.get('HTTP_X_REAL_IP', request.remote_addr) != session.get("IP"):  # AH14
         return render_template("index.html", mimetypes="UTF-8")
     else:
         pass_retention()
@@ -77,9 +78,9 @@ def register():
     flag = 0
     form = RegistrationForm(request.form)
     if request.method == "POST" and form.validate():  # DH3
-        rows = lookup_acc(form.uid.data, "NULL", 1)
+        rows = lookup_acc(form.uid.data, None, 1)
         if not rows:
-            r, count = query_acc("NULL", 1)
+            r, count = query_acc(None, 1)
             if r:
                 for i in range(len(r)):
                     if form.email.data == r[i][3]:
@@ -132,14 +133,14 @@ def login():
         if isValid:
             resp = compare_hash(uid, passw)
             if resp:
-                r = lookup_acc(form.uid.data, "NULL", 1)
-                session["id"] = r[0][10]
+                r = lookup_acc(form.uid.data, None, 1)
+                session["id"] = r[10]
                 session["IP"] = request.remote_addr
                 session["last_active"] = datetime.datetime.now()
-                if check_status(r[0][10]):
+                if check_status(r[10]):
                     ID = session["id"]
-                    r = lookup_acc("NULL", ID, 2)
-                    update_accpass(ID, uid, r[0][3], 3)
+                    r = lookup_acc(None, ID, 2)
+                    update_accpass(ID, uid, r[3], 3)
                     flash("New login credentials emailed as per new Password Policy", "Success")
                 root.info("Access granted")
                 return redirect(url_for('dashboard'))
@@ -154,19 +155,19 @@ def login():
 
 @app.route("/dashboard", methods=["GET", "POST"])
 def dashboard():
-    if not session.get("id") or request.remote_addr != session.get("IP"):
+    if not session.get("id") or request.environ.get('HTTP_X_REAL_IP', request.remote_addr) != session.get("IP"):
         return redirect(url_for('login'))
     else:
         ID = session.get("id")
-        rows = lookup_acc("NULL", ID, 2)
+        rows = lookup_acc(None, ID, 2)
         r = lookup_role(ID, 1)
-        if r[0][1] == "admin":
-            return render_template("admin.html", fname=rows[0][1], lname=rows[0][2], mimetypes="UTF-8")  # HT7
-        elif r[0][1] == "user":
-            return render_template("user.html", fname=rows[0][1], lname=rows[0][2], mimetypes="UTF-8")
-        else:
-            session.clear()
-            return render_template("index.html", mimetypes="UTF-8")
+        role_templates = {
+            "admin": "admin.html",
+            "user": "user.html"
+        }
+        template = role_templates.get(r[1], "index.html")
+        print(template)
+        return render_template(template, fname=rows[1], lname=rows[2], mimetypes="UTF-8")
 
 
 # AH8
@@ -182,7 +183,7 @@ def forgot():
     flag = 0
     form = ForgotForm(request.form)
     if request.method == "POST" and form.validate():
-        r, count = query_acc("NULL", 1)
+        r, count = query_acc(None, 1)
         if r:
             for i in range(len(r)):
                 if form.email.data == r[i][3]:
@@ -197,49 +198,40 @@ def forgot():
 
 @app.route('/profile', methods=["GET", "POST"])
 def profile():
-    if not session.get("id") or request.remote_addr != session.get("IP"):
+    if not session.get("id") or request.environ.get('HTTP_X_REAL_IP', request.remote_addr) != session.get("IP"):
         return render_template("index.html", mimetypes="UTF-8")
     else:
         form = ProfileForm(request.form)
         ID = session.get("id")
-        rows = lookup_acc("NULL", ID, 2)
+        rows = lookup_acc(None, ID, 2)
         r = lookup_role(ID, 1)
-        if r[0][1] == "admin":
-            form.uid.data = rows[0][0]
-            form.fname.data = rows[0][1]
-            form.lname.data = rows[0][2]
-            form.email.data = rows[0][3]
-            form.address.data = rows[0][4]
-            return render_template("profile.html", form=form, template="admin.html", fname=rows[0][1],
-                                   lname=rows[0][2], mimetypes="UTF-8")
-        elif r[0][1] == "user":
-            form.uid.data = rows[0][0]
-            form.fname.data = rows[0][1]
-            form.lname.data = rows[0][2]
-            form.email.data = rows[0][3]
-            form.address.data = rows[0][4]
-            return render_template("profile.html", form=form, template="user.html", fname=rows[0][1],
-                                   lname=rows[0][2], mimetypes="UTF-8")
+        role_templates = {
+            "admin": {"template": "admin.html", "fname": rows[1], "lname": rows[2]},
+            "user": {"template": "user.html", "fname": rows[1], "lname": rows[2]}
+        }
+        return render_template("profile.html", form=form, template=role_templates[r[1]]["template"],
+                               fname=role_templates[r[1]]["fname"], lname=role_templates[r[1]]["lname"],
+                               mimetypes="UTF-8")
 
 
 @app.route('/update', methods=["GET", "POST"])
 def update():
-    if not session.get("id") or request.remote_addr != session.get("IP"):
+    if not session.get("id") or request.environ.get('HTTP_X_REAL_IP', request.remote_addr) != session.get("IP"):
         return render_template("index.html", mimetypes="UTF-8")
     else:
         form = ProfileForm(request.form)
         if request.method == "POST":
             ID = session.get("id")
-            rows = lookup_acc("NULL", ID, 2)
+            rows = lookup_acc(None, ID, 2)
             r = lookup_role(ID, 1)
-            if r[0][1] == "admin" or r[0][1] == "user":
+            if r[1] == "admin" or r[1] == "user":
                 if rows:
                     if "upd_dets" in request.form:
                         if form.validate():
                             fname = form.fname.data
                             lname = form.lname.data
                             address = form.address.data
-                            if fname != rows[0][1] or lname != rows[0][2] or address != rows[0][4]:
+                            if fname != rows[1] or lname != rows[2] or address != rows[4]:
                                 resp = update_user(ID, fname, lname, address)
                                 if resp:
                                     flash("Profile updated successfully!!", "Success")
@@ -253,7 +245,7 @@ def update():
                         else:
                             flash("Invalid information provided", "Error")
                     elif "res_pass" in request.form and form.validate():
-                        resp = update_accpass(rows[0][10], rows[0][0], rows[0][3], 2)
+                        resp = update_accpass(rows[10], rows[0], rows[3], 2)
                         if resp:
                             flash("Login credentials sent to registered email", "Success")
                             return redirect(url_for('profile'))
@@ -265,27 +257,25 @@ def update():
 
 @app.route('/pwd', methods=["GET", "POST"])
 def pwd():
-    if not session.get("id") or request.remote_addr != session.get("IP"):
+    if not session.get("id") or request.environ.get('HTTP_X_REAL_IP', request.remote_addr) != session.get("IP"):
         return render_template("index.html", mimetypes="UTF-8")
     else:
         form = PasswordForm(request.form)
         ID = session.get("id")
         rows = lookup_acc("NULL", ID, 2)
         r = lookup_role(ID, 1)
-        if r[0][1] == "admin":
-            return render_template("add-pwd.html", form=form, template="admin.html", fname=rows[0][1],
-                                   lname=rows[0][2], mimetypes="UTF-8")
-        elif r[0][1] == "user":
-            return render_template("add-pwd.html", form=form, template="user.html", fname=rows[0][1],
-                                   lname=rows[0][2], mimetypes="UTF-8")
-        else:
-            session.clear()
-            return render_template("index.html", mimetypes="UTF-8")
+        role_templates = {
+            "admin": {"template": "admin.html", "fname": rows[1], "lname": rows[2]},
+            "user": {"template": "user.html", "fname": rows[1], "lname": rows[2]}
+        }
+        return render_template("add-pwd.html", form=form, template=role_templates[r[1]]["template"],
+                               fname=role_templates[r[1]]["fname"], lname=role_templates[r[1]]["lname"],
+                               mimetypes="UTF-8")
 
 
 @app.route('/addpwd', methods=["GET", "POST"])
 def addpwd():
-    if not session.get("id") or request.remote_addr != session.get("IP"):
+    if not session.get("id") or request.environ.get('HTTP_X_REAL_IP', request.remote_addr) != session.get("IP"):
         return render_template("index.html", mimetypes="UTF-8")
     else:
         if request.method == "POST":
@@ -303,10 +293,10 @@ def addpwd():
                             digi = form.digits.data
                             spc = form.special.data
                             le = form.length.data
-                            own = lookup_acc("NULL", owner, 2)
-                            rows = lookup_app(own[0][10], appname, "NULL", 1)
+                            own = lookup_acc(None, owner, 2)
+                            rows = lookup_app(own[10], appname, None, 1)
                             passw = gen_apppass(lett, digi, spc, le)
-                            resp = upd_apppwd(rows[0][0], ID, appname, passw)
+                            resp = upd_apppwd(rows[0], ID, appname, passw)
                             if resp:
                                 flash("Application password updated", "Success")
                                 return redirect(url_for('listpwd'))
@@ -318,7 +308,7 @@ def addpwd():
                         ID = session.get("id")
                         if form.validate():
                             appname = form.appname.data
-                            rows = lookup_app(ID, appname, "NULL", 1)
+                            rows = lookup_app(ID, appname, None, 1)
                             if not rows:
                                 lett = form.letters.data
                                 digi = form.digits.data
@@ -354,42 +344,34 @@ def addpwd():
 
 @app.route("/listpwd", methods=["GET", "POST"])
 def listpwd():
-    if not session.get("id") or request.remote_addr != session.get("IP"):
+    if not session.get("id") or request.environ.get('HTTP_X_REAL_IP', request.remote_addr) != session.get("IP"):
         return redirect(url_for('login'))
     else:
         user_list = list()
         form = PasswordForm(request.form)
         form1 = ShareForm(request.form)
         ID = session.get("id")
-        rows = lookup_acc("NULL", ID, 2)
-        pa = lookup_appperms(ID, "NULL", 3)
-        pm = lookup_appperms(ID, "NULL", 2)
+        rows = lookup_acc(None, ID, 2)
+        pa = lookup_appperms(ID, None, 3)
+        pm = lookup_appperms(ID, None, 2)
         r = lookup_role(ID, 1)
-        users, c = query_acc("NULL", 1)
+        users, c = query_acc(None, 1)
         for i in range(len(users)):
             if ID != users[i][10]:
                 user_list.append((users[i][10], users[i][0]))
         form1.uid.choices = user_list
-        if r[0][1] == "admin":
-            return render_template("list-pwd.html", form=form, form1=form1, pdata=pa, share_data=pm,
-                                   udata=users,
-                                   template="admin.html",
-                                   fname=rows[0][1],
-                                   lname=rows[0][2], mimetypes="UTF-8", uid=ID)
-        elif r[0][1] == "user":
-            return render_template("list-pwd.html", form=form, form1=form1, pdata=pa, share_data=pm,
-                                   udata=users,
-                                   template="user.html",
-                                   fname=rows[0][1],
-                                   lname=rows[0][2], mimetypes="UTF-8", uid=ID)
-        else:
-            session.clear()
-            return render_template("index.html", mimetypes="UTF-8")
+        role_templates = {
+            "admin": {"template": "admin.html", "fname": rows[1], "lname": rows[2]},
+            "user": {"template": "user.html", "fname": rows[1], "lname": rows[2]}
+        }
+        return render_template("list-pwd.html", form=form, form1=form1, pdata=pa, share_data=pm, template=role_templates[r[1]]["template"],
+                               fname=role_templates[r[1]]["fname"], lname=role_templates[r[1]]["lname"],
+                               mimetypes="UTF-8", udata=users, uid=ID)
 
 
 @app.route('/share', methods=["GET", "POST"])
 def share():
-    if not session.get("id") or request.remote_addr != session.get("IP"):
+    if not session.get("id") or request.environ.get('HTTP_X_REAL_IP', request.remote_addr) != session.get("IP"):
         return render_template("index.html", mimetypes="UTF-8")
     else:
         if request.method == "POST":
@@ -398,7 +380,7 @@ def share():
             y, ref = request.referrer.rsplit("/", 1)
             form = ShareForm(request.form)
             if ref == "listpwd":
-                if r[0][1] == "admin" or r[0][1] == "user":
+                if r[1] == "admin" or r[1] == "user":
                     appid = request.form['id']
                     perms = form.perms1.data
                     perms1 = form.perms2.data
@@ -440,24 +422,24 @@ def share():
                 else:
                     return redirect(url_for('dashboard'))
             elif ref == "listuser":
-                if r[0][1] == "admin":
+                if r[1] == "admin":
                     ID = request.form['id']
                     if form.role.data == "admin":
                         resp = update_accrole(ID, "admin")
                         if resp:
                             flash("Admin privilege granted", "Success")
-                            return redirect(url_for('listpwd'))
+                            return redirect(url_for('listuser'))
                         else:
                             flash("Admin privilege not granted", "Error")
-                            return redirect(url_for('listpwd'))
+                            return redirect(url_for('listuser'))
                     elif form.role.data == "user":
                         resp = update_accrole(ID, "user")
                         if resp:
                             flash("User privilege granted", "Success")
-                            return redirect(url_for('listpwd'))
+                            return redirect(url_for('listuser'))
                         else:
                             flash("User privilege granted", "Error")
-                            return redirect(url_for('listpwd'))
+                            return redirect(url_for('listuser'))
                     else:
                         return redirect(url_for('listuser'))
                 else:
@@ -470,13 +452,13 @@ def share():
 
 @app.route('/delpwd', methods=["GET", "POST"])
 def delpwd():
-    if not session.get("id") or request.remote_addr != session.get("IP"):
+    if not session.get("id") or request.environ.get('HTTP_X_REAL_IP', request.remote_addr) != session.get("IP"):
         return render_template("index.html", mimetypes="UTF-8")
     else:
         if request.method == "POST":
             ID = session.get("id")
             r = lookup_role(ID, 1)
-            if r[0][1] == "admin" or r[0][1] == "user":
+            if r[1] == "admin" or r[1] == "user":
                 appid = request.form['id']
                 del_apppwd(appid)
                 flash("Application entry deleted", "Success")
@@ -489,13 +471,13 @@ def delpwd():
 
 @app.route('/passpol', methods=["GET", "POST"])
 def passpol():
-    if not session.get("id") or request.remote_addr != session.get("IP"):
+    if not session.get("id") or request.environ.get('HTTP_X_REAL_IP', request.remote_addr) != session.get("IP"):
         return render_template("index.html", mimetypes="UTF-8")
     else:
         form = PolicyForm(request.form)
         form1 = UploadForm(request.form)
         ID = session.get("id")
-        rows = lookup_acc("NULL", ID, 2)
+        rows = lookup_acc(None, ID, 2)
         r = lookup_role(ID, 1)
         poli = read_pol()
         form.length.data = poli['Length']
@@ -504,10 +486,10 @@ def passpol():
         form.digits.data = poli['Digits']
         form.special.data = poli['Special']
         form.age.data = poli['Age']
-        if r[0][1] == "admin":
-            return render_template("pass-pol.html", form=form, form1=form1, template="admin.html", fname=rows[0][1],
-                                   lname=rows[0][2], mimetypes="UTF-8")
-        elif r[0][1] == "user":
+        if r[1] == "admin":
+            return render_template("pass-pol.html", form=form, form1=form1, template="admin.html", fname=rows[1],
+                                   lname=rows[2], mimetypes="UTF-8")
+        elif r[1] == "user":
             return redirect(url_for('dashboard'))
         else:
             session.clear()
@@ -516,12 +498,12 @@ def passpol():
 
 @app.route('/updpol', methods=["GET", "POST"])
 def updpol():
-    if not session.get("id") or request.remote_addr != session.get("IP"):
+    if not session.get("id") or request.environ.get('HTTP_X_REAL_IP', request.remote_addr) != session.get("IP"):
         return render_template("index.html", mimetypes="UTF-8")
     else:
         ID = session.get("id")
         r = lookup_role(ID, 1)
-        if request.method == 'POST' and r[0][1] == "admin":
+        if request.method == 'POST' and r[1] == "admin":
             form = PolicyForm(request.form)
             if "add_pol" in request.form:
                 if form.validate():
@@ -558,7 +540,7 @@ def updpol():
                 else:
                     root.info("Password Policy update failed")
                     flash('Invalid JSON file uploaded', "Error")
-        elif r[0][1] == "user":
+        elif r[1] == "user":
             return redirect(url_for('dashboard'))
         else:
             session.clear()
@@ -567,20 +549,20 @@ def updpol():
 
 @app.route("/listuser", methods=["GET", "POST"])
 def listuser():
-    if not session.get("id") or request.remote_addr != session.get("IP"):
+    if not session.get("id") or request.environ.get('HTTP_X_REAL_IP', request.remote_addr) != session.get("IP"):
         return redirect(url_for('login'))
     else:
         form = ShareForm(request.form)
         ID = session.get("id")
-        rows = lookup_acc("NULL", ID, 2)
+        rows = lookup_acc(None, ID, 2)
         users = query_acc(ID, 2)
         r = lookup_role(ID, 1)
         rdata = lookup_role(ID, 2)
-        if r[0][1] == "admin":
+        if r[1] == "admin":
             return render_template("list-user.html", form=form, all_data=users, rdata=rdata, template="admin.html",
-                                   fname=rows[0][1],
-                                   lname=rows[0][2], mimetypes="UTF-8")
-        elif r[0][1] == "user":
+                                   fname=rows[1],
+                                   lname=rows[2], mimetypes="UTF-8")
+        elif r[1] == "user":
             return redirect(url_for('dashboard'))
         else:
             session.clear()
@@ -589,12 +571,12 @@ def listuser():
 
 @app.route('/deluser', methods=["GET", "POST"])
 def deluser():
-    if not session.get("id") or request.remote_addr != session.get("IP"):
+    if not session.get("id") or request.environ.get('HTTP_X_REAL_IP', request.remote_addr) != session.get("IP"):
         return render_template("index.html", mimetypes="UTF-8")
     else:
         ID = session.get("id")
         r = lookup_role(ID, 1)
-        if request.method == 'POST' and r[0][1] == "admin":
+        if request.method == 'POST' and r[1] == "admin":
             ID = request.form['id']
             resp = del_user(ID)
             if resp:
@@ -603,7 +585,7 @@ def deluser():
             else:
                 flash("User removal failed", "Success")
                 return redirect(url_for('listuser'))
-        elif r[0][1] == "user":
+        elif r[1] == "user":
             return redirect(url_for('dashboard'))
         else:
             session.clear()
