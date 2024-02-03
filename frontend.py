@@ -22,10 +22,6 @@ app.config["SESSION_COOKIE_SECURE"] = True  # HT4
 app.config["SESSION_COOKIE_HTTPONLY"] = True
 Session(app)
 
-# Flask login settings
-# login_manager = LoginManager()
-# login_manager.init_app(app)
-
 # HT5
 # CSRF Configuration
 app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY')
@@ -34,6 +30,7 @@ csrf = csrf.CSRFProtect(app)
 # File upload configuration
 app.config['UPLOAD_FOLDER'] = r"C:\Users\BrijitSarkar\Desktop\pms\temp"
 
+# AO4
 # Logging configuration
 root = logging.getLogger("root")
 
@@ -76,7 +73,12 @@ def register():
     flag = 0
     form = RegistrationForm(request.form)
     if request.method == "POST" and form.validate():  # DH3
-        rows = lookup_acc(form.uid.data, None, 1)
+        uid = form.uid.data
+        fname = form.fname.data
+        lname = form.lname.data
+        email = form.email.data
+        addr = form.address.data
+        rows = lookup_acc(uid, None, 1)
         if not rows:
             r, count = query_acc(None, 1)
             if r:
@@ -86,11 +88,6 @@ def register():
                         form.email.errors.append("Email already in use")
                         break
                 if flag == 0:
-                    uid = form.uid.data
-                    fname = form.fname.data
-                    lname = form.lname.data
-                    email = form.email.data
-                    addr = form.address.data
                     resp = add_user(uid, fname, lname, email, addr, 1)
                     if resp:
                         flash("Account created. Check registered email for login credentials", "Success")
@@ -100,11 +97,6 @@ def register():
                         flash("Invalid details provided", "Error")
                         return redirect(url_for('register'))
             else:
-                uid = form.uid.data
-                fname = form.fname.data
-                lname = form.lname.data
-                email = form.email.data
-                addr = form.address.data
                 resp = add_user(uid, fname, lname, email, addr, 1)
                 if resp:
                     flash("Account created. Check registered email for login credentials", "Success")
@@ -164,7 +156,6 @@ def dashboard():
             "user": "user.html"
         }
         template = role_templates.get(r[1], "index.html")
-        print(template)
         return render_template(template, fname=rows[1], lname=rows[2], mimetypes="UTF-8")
 
 

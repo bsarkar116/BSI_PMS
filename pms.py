@@ -12,7 +12,7 @@ from schema import userSchema, loginSchema
 
 
 def compare_hash(u, passw):
-    rows = lookup_acc(u, "NULL", 1)
+    rows = lookup_acc(u, None, 1)
     if rows:
         salt = rows[6].encode()
         testpass = salt + passw.encode() + salt + passw.encode() + salt
@@ -48,12 +48,16 @@ def add_user(u, fn, ln, e, a, i):
     user = {"uid": u, "fname": fn, "lname": ln, "email": e, "address": a}
     isValid = validations.validate_json(user, userSchema)
     if isValid:
-        rows = lookup_acc(u, "NULL", 1)
+        rows = lookup_acc(u, None, 1)
         if not rows:
             passw = random_gen()
             hpass, s = hash_pwd(passw)
-            insert_user(u, fn, ln, e, a, hpass, s)
-            send_email(u, e, passw, i)
+            resp = insert_user(u, fn, ln, e, a, hpass, s)
+            if resp:
+                send_email(u, e, passw, i)
+                return True
+            else:
+                return False
         else:
             return False
     else:
@@ -64,9 +68,9 @@ def update_user(ID, fn, ln, addr):
     info = {"fname": fn, "lname": ln, "address": addr}
     isValid = validations.validate_json(info, schema.profileSchema)
     if isValid:
-        rows = lookup_acc("NULL", ID, 2)
+        rows = lookup_acc(None, ID, 2)
         if rows:
-            res = update_acc(ID, fn, ln, addr, "NULL", "NULL", 1)
+            res = update_acc(ID, fn, ln, addr, None, None, 1)
             if res:
                 return True
             else:
@@ -78,7 +82,7 @@ def update_user(ID, fn, ln, addr):
 
 
 def del_user(ID):
-    rows = lookup_acc("NULL", ID, 2)
+    rows = lookup_acc(None, ID, 2)
     if rows:
         resp = delete_user(ID)
         if resp:
@@ -92,7 +96,7 @@ def del_user(ID):
 def update_accpass(ID, u, e, i):
     passw = random_gen()
     hpass, s = hash_pwd(passw)
-    res = update_acc(ID, "NULL", "NULL", "NULL", hpass, s, 2)
+    res = update_acc(ID, None, None, None, hpass, s, 2)
     if res:
         send_email(u, e, passw, i)
         return True
@@ -101,7 +105,7 @@ def update_accpass(ID, u, e, i):
 
 
 def update_accrole(ID, r):
-    rows = lookup_acc("NULL", ID, 2)
+    rows = lookup_acc(None, ID, 2)
     if rows:
         update_role(ID, r)
         return True
@@ -129,7 +133,7 @@ def gen_apppass(lett, d, s, le):
 
 
 def add_apppwd(ID, appname, passw):
-    rows = lookup_acc("NULL", ID, 2)
+    rows = lookup_acc(None, ID, 2)
     if rows:
         result = insert_apppwd(ID, passw, appname)
         if result:
@@ -141,7 +145,7 @@ def add_apppwd(ID, appname, passw):
 
 
 def upd_apppwd(appid, ID, appname, passw):
-    rows = lookup_acc("NULL", ID, 2)
+    rows = lookup_acc(None, ID, 2)
     if rows:
         result = update_apppwd(appid, ID, passw, appname)
         if result:

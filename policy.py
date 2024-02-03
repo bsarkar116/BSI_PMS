@@ -60,7 +60,7 @@ def check_policy(pa):
 
 def pass_retention():
     flag = False
-    rows, c = query_acc("NULL", 1)
+    rows, c = query_acc(None, 1)
     pol = read_pol()
     for i in range(len(rows)):
         current = datetime.today().strftime(time_format)
