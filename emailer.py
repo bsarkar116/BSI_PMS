@@ -4,6 +4,7 @@ import os
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+# DH1, DH2
 SMTP_SERVER = "smtp.gmail.com"
 PORT = 587
 EMAIL = os.environ.get("EM_USER")  # DH1

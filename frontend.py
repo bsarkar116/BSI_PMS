@@ -8,6 +8,7 @@ from forms import *
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 from werkzeug.exceptions import NotFound
 from flask_wtf import csrf
+from validations import validate_json
 
 # Flask app configuration
 app = Flask(__name__)
@@ -61,7 +62,7 @@ def before_request():
 @app.route("/", methods=["GET", "POST"])
 def index():
     if not session.get("id") or request.environ.get('HTTP_X_REAL_IP', request.remote_addr) != session.get("IP"):  # AH14
-        return render_template("index.html", mimetypes="UTF-8")
+        return render_template("index.html", mimetypes="UTF-8")  # DV3
     else:
         pass_retention()
         return redirect(url_for('dashboard'))
@@ -358,7 +359,8 @@ def listpwd():
             "admin": {"template": "admin.html", "fname": rows[1], "lname": rows[2]},
             "user": {"template": "user.html", "fname": rows[1], "lname": rows[2]}
         }
-        return render_template("list-pwd.html", form=form, form1=form1, pdata=pa, share_data=pm, template=role_templates[r[1]]["template"],
+        return render_template("list-pwd.html", form=form, form1=form1, pdata=pa, share_data=pm,
+                               template=role_templates[r[1]]["template"],
                                fname=role_templates[r[1]]["fname"], lname=role_templates[r[1]]["lname"],
                                mimetypes="UTF-8", udata=users, uid=ID)
 
@@ -519,21 +521,32 @@ def updpol():
                 else:
                     flash('Invalid/Empty policy information provided', 'Error')
             elif "upload_pol" in request.form:
-                form = UploadForm(request.form)
+                form = UploadForm()
                 if form.validate_on_submit():
+                    print("p2")
                     filedata = form.file.data
-                    filedata.save(os.path.join(app.config['UPLOAD_FOLDER'], "temp_policy.json"))
+                    if filedata:
+                        filedata.save(os.path.join(app.config['UPLOAD_FOLDER'], "temp_policy.json"))
+                    else:
+                        flash('File is empty', 'Error')
+                        root.info("File is empty")
+                        return redirect(url_for('passpol'))
                     resp = add_pol()
                     if resp:
+                        print("p3")
                         flash('Policy updated!!', 'Success')
                         root.info("New Password Policy added")
                         return redirect(url_for('passpol'))
                     else:
+                        print("p4")
                         root.info("Password Policy update failed")
                         flash('Invalid JSON file uploaded', "Error")
+                        return redirect(url_for('passpol'))
                 else:
+                    print("p5")
                     root.info("Password Policy update failed")
                     flash('Invalid JSON file uploaded', "Error")
+                    return redirect(url_for('passpol'))
         elif r[1] == "user":
             return redirect(url_for('dashboard'))
         else:

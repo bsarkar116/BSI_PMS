@@ -4,6 +4,7 @@ from datetime import datetime
 from validations import validate_json
 from schema import policySchema
 import json
+import os
 
 # DV7, AH23
 time_format = "%Y-%m-%d %H:%M:%S"
@@ -13,6 +14,11 @@ def read_pol():
     with open(r"C:\Users\BrijitSarkar\Desktop\pms\policy\policy.json", 'r', encoding='utf-8') as file:
         p = json.load(file)
     return p
+
+
+def del_temp():
+    if os.path.exists(r"C:\Users\BrijitSarkar\Desktop\pms\temp\temp_policy.json"):
+        os.remove(r"C:\Users\BrijitSarkar\Desktop\pms\temp\temp_policy.json")
 
 
 def gen_policy(a, b, c, d, e, f):
@@ -29,6 +35,7 @@ def gen_policy(a, b, c, d, e, f):
 
 
 def add_pol():
+ try:
     with open(r"C:\Users\BrijitSarkar\Desktop\pms\temp\temp_policy.json", 'r', encoding='utf-8') as file:
         temp_pol = json.load(file)
         isvalid = validate_json(temp_pol, policySchema)
@@ -36,11 +43,17 @@ def add_pol():
             resp = gen_policy(temp_pol["Length"], temp_pol["Upper"], temp_pol["Lower"], temp_pol["Digits"],
                               temp_pol["Special"], temp_pol["Age"])
             if resp:
+                del_temp()
                 return True
             else:
+                del_temp()
                 return False
         else:
+            del_temp()
             return False
+ except json.decoder.JSONDecodeError as e:
+     del_temp()
+     return False
 
 
 def check_policy(pa):
