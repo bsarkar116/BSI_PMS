@@ -8,7 +8,7 @@ root = logging.getLogger("root")
 
 def db_conn():
     host = os.environ.get("DB_HOST")
-    user = os.environ.get("DB_USER")  # KY2
+    user = os.environ.get("DB_USER")  # KY2, AH22
     password = os.environ.get("DB_PASS")
     database = os.environ.get("DB_NAME")
     tls_version = os.environ.get("DB_TLS")
@@ -41,7 +41,6 @@ def db_conn():
         return None, None
 
 
-# DV7
 def insert_user(u, fn, ln, e, a, p, s):
     db, cur = db_conn()
     if db and cur:
@@ -49,10 +48,7 @@ def insert_user(u, fn, ln, e, a, p, s):
             query1 = """INSERT INTO accounts (uid, fname, lname, email, address, passw, salt, status, pwd_creation, acc_creation) VALUES (%s, %s, %s, 
                            %s, %s, %s, %s, %s, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP())"""
             params = (u, fn, ln, e, a, p, s, "0")
-            if not all(isinstance(param, str) for param in params) or u != "" or e != "":
-                root.error("Invalid input parameters")
-                return False
-            cur.execute(query1, params)
+            cur.execute(query1, params)  # DV7
             db.commit()
             ID = lookup_acc(u, None, 1)
             if ID:
@@ -277,6 +273,7 @@ def insert_apppwd(ID, pa, appname):
             db.commit()
             cur.close()
             db.close()
+            return True
         except sql.Error as e:
             db.rollback()
             root.error(f"Error executing SQL query: {e}")
@@ -297,6 +294,7 @@ def update_apppwd(appid, ID, pa, appname):
             db.commit()
             cur.close()
             db.close()
+            return True
         except sql.Error as e:
             db.rollback()
             root.error(f"Error executing SQL query: {e}")

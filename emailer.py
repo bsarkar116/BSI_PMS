@@ -4,10 +4,9 @@ import os
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-# DH1, DH2
 SMTP_SERVER = "smtp.gmail.com"
 PORT = 587
-EMAIL = os.environ.get("EM_USER")  # DH1
+EMAIL = os.environ.get("EM_USER")  # DH1, DH2, AH22
 PASSWORD = os.environ.get("EM_PASS")
 
 context = ssl.create_default_context()

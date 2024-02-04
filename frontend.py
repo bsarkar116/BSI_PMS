@@ -31,7 +31,7 @@ csrf = csrf.CSRFProtect(app)
 # File upload configuration
 app.config['UPLOAD_FOLDER'] = r"C:\Users\BrijitSarkar\Desktop\pms\temp"
 
-# AO4
+# AO8
 # Logging configuration
 root = logging.getLogger("root")
 
@@ -58,11 +58,10 @@ def before_request():
         pass
 
 
-# HT2
-@app.route("/", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])  # HT2
 def index():
     if not session.get("id") or request.environ.get('HTTP_X_REAL_IP', request.remote_addr) != session.get("IP"):  # AH14
-        return render_template("index.html", mimetypes="UTF-8")  # DV3
+        return render_template("index.html", mimetypes="UTF-8")  # HT7
     else:
         pass_retention()
         return redirect(url_for('dashboard'))
@@ -133,7 +132,7 @@ def login():
                     r = lookup_acc(None, ID, 2)
                     update_accpass(ID, uid, r[3], 3)
                     flash("New login credentials emailed as per new Password Policy", "Success")
-                root.info("Access granted")
+                root.info("Access granted") # AO8
                 return redirect(url_for('dashboard'))
             else:
                 form.passw.errors.append("Invalid Username/Password. Please try again...")
@@ -160,7 +159,7 @@ def dashboard():
         return render_template(template, fname=rows[1], lname=rows[2], mimetypes="UTF-8")
 
 
-# AH8
+# AH8, AH12
 @app.route("/logout", methods=["GET", "POST"])
 def logout():
     session.clear()
@@ -276,7 +275,7 @@ def addpwd():
         if request.method == "POST":
             ID = session.get("id")
             r = lookup_role(ID, 1)
-            if r[0][1] == "admin" or r[0][1] == "user":
+            if r[1] == "admin" or r[1] == "user":
                 y, ref = request.referrer.rsplit("/", 1)
                 if request.method == "POST":
                     if ref == "listpwd":
@@ -291,7 +290,7 @@ def addpwd():
                             own = lookup_acc(None, owner, 2)
                             rows = lookup_app(own[10], appname, None, 1)
                             passw = gen_apppass(lett, digi, spc, le)
-                            resp = upd_apppwd(rows[0], ID, appname, passw)
+                            resp = upd_apppwd(rows[0][0], ID, appname, passw)
                             if resp:
                                 flash("Application password updated", "Success")
                                 return redirect(url_for('listpwd'))
@@ -512,18 +511,17 @@ def updpol():
                     resp = gen_policy(le, up, lo, digi, spcl, age)
                     if resp:
                         flash('Policy updated!!', 'Success')
-                        root.info("New Password Policy added")
                         return redirect(url_for('passpol'))
                     else:
-                        root.info("Password Policy update failed")
-                        flash('Please make sure the individual parameters do not exceed the max selected length',
+                        flash('Invalid/Empty policy information provided',
                               'Error')
+                        return redirect(url_for('passpol'))
                 else:
                     flash('Invalid/Empty policy information provided', 'Error')
+                    return redirect(url_for('passpol'))
             elif "upload_pol" in request.form:
                 form = UploadForm()
                 if form.validate_on_submit():
-                    print("p2")
                     filedata = form.file.data
                     if filedata:
                         filedata.save(os.path.join(app.config['UPLOAD_FOLDER'], "temp_policy.json"))
@@ -533,17 +531,14 @@ def updpol():
                         return redirect(url_for('passpol'))
                     resp = add_pol()
                     if resp:
-                        print("p3")
                         flash('Policy updated!!', 'Success')
                         root.info("New Password Policy added")
                         return redirect(url_for('passpol'))
                     else:
-                        print("p4")
                         root.info("Password Policy update failed")
                         flash('Invalid JSON file uploaded', "Error")
                         return redirect(url_for('passpol'))
                 else:
-                    print("p5")
                     root.info("Password Policy update failed")
                     flash('Invalid JSON file uploaded', "Error")
                     return redirect(url_for('passpol'))

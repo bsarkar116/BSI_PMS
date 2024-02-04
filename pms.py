@@ -36,7 +36,7 @@ def random_gen():
     return password
 
 
-# AH7, KY1, KY8
+# AH7, KY1, KY3
 def hash_pwd(passw):
     salt = bcrypt.gensalt()
     dbpass = salt + passw.encode() + salt + passw.encode() + salt

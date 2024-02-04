@@ -21,11 +21,11 @@ policySchema = {
 userSchema = {
     "type": "object",
     "properties": {
-        "uid": {"type": "string", "pattern": "^[A-Za-z0-9]+[\._]?[A-Za-z0-9]$"},
-        "fname": {"type": "string", "pattern": "^[A-Za-z0-9]+[\._]?[A-Za-z0-9]$"},
-        "lname": {"type": "string", "pattern": "^[A-Za-z0-9]+[\._]?[A-Za-z0-9]$"},
+        "uid": {"type": "string", "pattern": "^(?![nN][uU][lL]{2}$)\\s*\\S.*"},
+        "fname": {"type": "string", "pattern": "^(?![nN][uU][lL]{2}$)\\s*\\S.*"},
+        "lname": {"type": "string", "pattern": "^(?![nN][uU][lL]{2}$)\\s*\\S.*"},
         "email": {"type": "string", "pattern": "^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"},
-        "address": {"type": "string"}
+        "address": {"type": "string", "pattern": "^(?![nN][uU][lL]{2}$)\\s*\\S.*"}
     },
     "required": [
         "uid",
@@ -39,9 +39,9 @@ userSchema = {
 profileSchema = {
     "type": "object",
     "properties": {
-        "fname": {"type": "string", "pattern": "^[A-Za-z0-9]+[\._]?[A-Za-z0-9]$"},
-        "lname": {"type": "string", "pattern": "^[A-Za-z0-9]+[\._]?[A-Za-z0-9]$"},
-        "address": {"type": "string"}
+        "fname": {"type": "string", "pattern": "^(?![nN][uU][lL]{2}$)\\s*\\S.*"},
+        "lname": {"type": "string", "pattern": "^(?![nN][uU][lL]{2}$)\\s*\\S.*"},
+        "address": {"type": "string", "pattern": "^(?![nN][uU][lL]{2}$)\\s*\\S.*"}
     },
     "required": [
         "fname",
@@ -54,7 +54,7 @@ profileSchema = {
 loginSchema = {
     "type": "object",
     "properties": {
-        "uid": {"type": "string", "pattern": "^[A-Za-z0-9]+[\._]?[A-Za-z0-9]$"},
+        "uid": {"type": "string", "pattern": "^(?![nN][uU][lL]{2}$)\\s*\\S.*"},
         "pass": {"type": "string"},
     },
     "required": [
@@ -67,7 +67,7 @@ loginSchema = {
 appSchema = {
     "type": "object",
     "properties": {
-        "appname": {"type": "string"},
+        "appname": {"type": "string", "pattern": "^(?![nN][uU][lL]{2}$)\\s*\\S.*"},
         "len": {"type": "integer", "minimum": 1, "maximum": 25},
     },
     "required": [
