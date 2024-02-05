@@ -94,7 +94,8 @@
                                     <form class="user" method="POST" action="{{ url_for('login') }}" novalidate accept-charset="utf-8">
                                         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                                         <div class="form-group">
-                                            {{render_input(form.uid, type="text", class="form-control form-control-user", id="InputUid", placeholder="Enter Username...", autocomplete="off")}} <!--HT9-->
+                                         <!--HT9 - Make sure that the autocomplete function is deactivated for all password fields (and forms that contain them).-->
+                                            {{render_input(form.uid, type="text", class="form-control form-control-user", id="InputUid", placeholder="Enter Username...", autocomplete="off")}}
                                         </div>
                                         <div class="form-group">
                                             {{render_input(form.passw,type="password", class="form-control form-control-user", id="InputPassword", placeholder="Password", autocomplete="off")}}

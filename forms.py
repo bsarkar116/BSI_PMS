@@ -4,7 +4,13 @@ from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 
 
-# DV1, DV2, DV4
+# DV1 - It must be ensured that all entries are checked against a positive security model. The data input must be
+# checked for content, plausibility, valid value range, permitted characters, length and type.
+
+# DV2 - It must be ensured that all errors during input validation lead to rejection or correction of the corresponding
+# entries
+
+# DV4 - It must be ensured that all input validation is carried out at least on the server side.
 # Server Side form validation configurations
 class RegistrationForm(Form):
     uid = StringField('Username',

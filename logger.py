@@ -1,7 +1,8 @@
 from logging.config import dictConfig
 import logging
 
-# AO8
+# AO8 - It must be ensured that it is possible to log all access control decisions and that all incorrect decisions are
+# always logged.
 dictConfig(
     {
         "version": 1,
@@ -25,6 +26,6 @@ dictConfig(
                 "formatter": "default",
             },
         },
-        "root": {"level": "DEBUG", "handlers": ["size-rotate"]},
+        "root": {"level": "INFO", "handlers": ["size-rotate"]},
     }
 )

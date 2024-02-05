@@ -16,7 +16,8 @@ def read_pol():
             return p
 
 
-# DH6
+# DH5 - It must be ensured that all cached or temporary copies of sensitive data are protected against unauthorized
+# access or that they are invalidated or deleted if this is the case.
 def del_temp():
     if os.path.exists(r"C:\Users\BrijitSarkar\Desktop\pms\temp\temp_policy.json"):
         os.remove(r"C:\Users\BrijitSarkar\Desktop\pms\temp\temp_policy.json")
@@ -25,11 +26,8 @@ def del_temp():
 def pass_retention():
     flag = False
     rows, c = query_acc(None, 1)
-    print(read_pol())
     pol = read_pol()
-    print(pol)
     for i in range(len(rows)):
-        print(pol)
         current = datetime.today().strftime(time_format)
         age = datetime.strptime(current, time_format) - rows[i][8]
         delta = datetime.strptime(pol['Date'], time_format) - rows[i][8]
@@ -47,7 +45,7 @@ def check_status(ID):
         return False
 
 
-# AH23
+# AH23 - The application must be able to enforce the implementation of a given password policy.
 def gen_policy(a, b, c, d, e, f):
     s = int(b) + int(c) + int(d) + int(e)
     if a >= s:
@@ -57,9 +55,8 @@ def gen_policy(a, b, c, d, e, f):
             if os.path.exists(r"C:\Users\BrijitSarkar\Desktop\pms\policy\policy.json"):
                 with open(r"C:\Users\BrijitSarkar\Desktop\pms\policy\policy.json", 'w', encoding='utf-8') as fi:
                     json.dump(poli, fi)
-                    resp = pass_retention()
-                    print(resp)
-                    return True
+            pass_retention()
+            return True
         else:
             return False
     else:

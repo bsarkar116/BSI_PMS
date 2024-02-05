@@ -36,7 +36,12 @@ def random_gen():
     return password
 
 
-# AH7, KY1, KY3
+# AH7 - It must be ensured that user passwords are only saved as a salted hash.
+
+# KY1 - It must be ensured that cryptographic functions used by the application to protect sensitive information are
+# implemented on the server side.
+
+# KY3 - It must be ensured that password hashes are salted.
 def hash_pwd(passw):
     salt = bcrypt.gensalt()
     dbpass = salt + passw.encode() + salt + passw.encode() + salt

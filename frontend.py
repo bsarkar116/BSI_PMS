@@ -8,22 +8,32 @@ from forms import *
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 from werkzeug.exceptions import NotFound
 from flask_wtf import csrf
-from validations import validate_json
 
 # Flask app configuration
 app = Flask(__name__)
 
-# AH1, AH9, AH15, AO1, AO3, DH5, HT5
+# AH1 - It must be ensured that all non-public pages and resources require authentication. During authentication,
+# the web application must ensure that each user can be identified using unique session identifiers, for example a
+# unique and randomly generated session key, which is transferred via a confidential channel.
+
+# AH9 - It must be ensured that sessions or session identifiers become invalid after a certain period of inactivity
+# of the other party (timeout due to inactivity).
+
+# AH15 - It must be ensured that the session identifiers used have sufficient length and randomness to withstand
+# typical attacks for the respective environment.
 # Session configuration
 app.config["SESSION_PERMANENT"] = False
 app.config["PERMANENT_SESSION_LIFETIME"] = datetime.timedelta(seconds=900)
 app.config["SESSION_TYPE"] = "filesystem"
 app.config["SESSION_FILE_THRESHOLD"] = 10
-app.config["SESSION_COOKIE_SECURE"] = True  # HT4
+# HT4 - It must be ensured that the secure flag is used by all cookies that contain confidential information
+app.config["SESSION_COOKIE_SECURE"] = True
 app.config["SESSION_COOKIE_HTTPONLY"] = True
 Session(app)
 
-# HT5
+# HT5 - It must be ensured that the application generates a cryptographically strong random token, which is part of all
+# links and forms that provide transactions or access to sensitive data. In addition, the application must check whether
+# the correct token of the respective user is available before executing a request.
 # CSRF Configuration
 app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY')
 csrf = csrf.CSRFProtect(app)
@@ -31,7 +41,8 @@ csrf = csrf.CSRFProtect(app)
 # File upload configuration
 app.config['UPLOAD_FOLDER'] = r"C:\Users\BrijitSarkar\Desktop\pms\temp"
 
-# AO8
+# AO8 - It must be ensured that it is possible to log all access control decisions and that all incorrect decisions are
+# always logged
 # Logging configuration
 root = logging.getLogger("root")
 
@@ -39,7 +50,7 @@ root = logging.getLogger("root")
 global flag
 
 
-# AH11
+# AH11 - It must be ensured that the session identifiers are renewed after successful/new login.
 @app.before_request
 def before_request():
     try:
@@ -60,8 +71,11 @@ def before_request():
 
 @app.route("/", methods=["GET", "POST"])  # HT2
 def index():
-    if not session.get("id") or request.environ.get('HTTP_X_REAL_IP', request.remote_addr) != session.get("IP"):  # AH14
-        return render_template("index.html", mimetypes="UTF-8")  # HT7
+    # AH14 - It must be ensured that only authentic session identifiers created by the application itself or a third-party
+    # component used are accepted by the application
+    if not session.get("id") or request.environ.get('HTTP_X_REAL_IP', request.remote_addr) != session.get("IP"):
+        # HT7 -It must be ensured that each HTTP response contains a content type that defines a secure character set (e.g. UTF-8).
+        return render_template("index.html", mimetypes="UTF-8")
     else:
         pass_retention()
         return redirect(url_for('dashboard'))
@@ -72,7 +86,8 @@ def register():
     global flag
     flag = 0
     form = RegistrationForm(request.form)
-    if request.method == "POST" and form.validate():  # DH3
+    # DH3 - It must be ensured that sensitive data can only be sent to the server in the HTTP body.
+    if request.method == "POST" and form.validate():
         uid = form.uid.data
         fname = form.fname.data
         lname = form.lname.data
@@ -110,7 +125,9 @@ def register():
     return render_template('register.html', form=form, mimetypes="UTF-8")
 
 
-# AH3, AH6
+# AH3 - It must be ensured that all authentication controls are implemented on the server side
+# AH6 - It must be ensured that users can only change their access data via a mechanism that has at least the same
+# level of protection as primary authentication.
 @app.route("/login", methods=["GET", "POST"])
 def login():
     pass_retention()
@@ -132,7 +149,9 @@ def login():
                     r = lookup_acc(None, ID, 2)
                     update_accpass(ID, uid, r[3], 3)
                     flash("New login credentials emailed as per new Password Policy", "Success")
-                root.info("Access granted") # AO8
+                # AO8 - It must be ensured that it is possible to log all access control decisions and that all
+                # incorrect decisions are always logged.
+                root.info("Access granted")
                 return redirect(url_for('dashboard'))
             else:
                 form.passw.errors.append("Invalid Username/Password. Please try again...")
@@ -145,6 +164,12 @@ def login():
 
 @app.route("/dashboard", methods=["GET", "POST"])
 def dashboard():
+    # AO1 - It must be ensured that users can only access protected functions, resources or data if this access has been
+    # successfully authorized beforehand. In accordance with the principle of access control, every access to any object
+    # must be checked for authorization.
+
+    # AO3 - Applications may only assign users the minimum rights that are absolutely necessary for the execution of the
+    # required functions
     if not session.get("id") or request.environ.get('HTTP_X_REAL_IP', request.remote_addr) != session.get("IP"):
         return redirect(url_for('login'))
     else:
@@ -159,7 +184,8 @@ def dashboard():
         return render_template(template, fname=rows[1], lname=rows[2], mimetypes="UTF-8")
 
 
-# AH8, AH12
+# AH8 - It must be ensured that session identifiers become invalid when the user logs out.
+# AH12 - It must be ensured that all pages whose access requires authentication have a logout mechanism.
 @app.route("/logout", methods=["GET", "POST"])
 def logout():
     session.clear()

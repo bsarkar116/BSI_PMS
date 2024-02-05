@@ -8,7 +8,9 @@ root = logging.getLogger("root")
 
 def db_conn():
     host = os.environ.get("DB_HOST")
-    user = os.environ.get("DB_USER")  # KY2, AH22
+    # KY2 - It must be ensured that all types of access data that are stored locally in plain text and are used to
+    # access security-relevant configuration data (e.g. secret keys, passwords) are protected against unauthorized access.
+    user = os.environ.get("DB_USER")
     password = os.environ.get("DB_PASS")
     database = os.environ.get("DB_NAME")
     tls_version = os.environ.get("DB_TLS")
@@ -26,7 +28,7 @@ def db_conn():
     try:
         mydb = sql.connect(
             host="127.0.0.1",
-            user=os.environ.get("DB_USER"),  # KY2
+            user=os.environ.get("DB_USER"),
             password=os.environ.get("DB_PASS"),
             database=os.environ.get("DB_NAME"),
             tls_versions=["TLSv1.3"]
@@ -48,7 +50,9 @@ def insert_user(u, fn, ln, e, a, p, s):
             query1 = """INSERT INTO accounts (uid, fname, lname, email, address, passw, salt, status, pwd_creation, acc_creation) VALUES (%s, %s, %s, 
                            %s, %s, %s, %s, %s, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP())"""
             params = (u, fn, ln, e, a, p, s, "0")
-            cur.execute(query1, params)  # DV7
+            # DV7 - It must be ensured that all methods that provide data as input for an interpreter encode all
+            # characters that are known to be unsafe for the respective interpreter.
+            cur.execute(query1, params)
             db.commit()
             ID = lookup_acc(u, None, 1)
             if ID:

@@ -6,7 +6,15 @@ from email.mime.text import MIMEText
 
 SMTP_SERVER = "smtp.gmail.com"
 PORT = 587
-EMAIL = os.environ.get("EM_USER")  # DH1, DH2, AH22
+# DH1 - It must be ensured that all connections to internal and external systems that involve sensitive information or
+# functions use a user account that only has minimal privileges.
+
+# DH2 - It must be ensured that all connections to external systems are authenticated if they involve sensitive
+# information or functions.
+
+# AH22 - It must be ensured that all access data for accessing external application services is only encrypted and
+# stored in a protected location (e.g. not in the source code).
+EMAIL = os.environ.get("EM_USER")
 PASSWORD = os.environ.get("EM_PASS")
 
 context = ssl.create_default_context()

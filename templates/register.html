@@ -84,8 +84,8 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create Your Free PMS Account!</h1>
                             </div>
-<!--                            DV3-->
-                            <form class="user" method="POST" action="{{ url_for('register') }}" novalidate accept-charset="utf-8">  <!--DV3-->
+                         <!--DV3 - It must be ensured that a specific character set (e.g. UTF-8) is defined for all input sources.-->
+                            <form class="user" method="POST" action="{{ url_for('register') }}" novalidate accept-charset="utf-8">
                                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                                 <div class="form-group">
                                     {{render_input(form.uid,type="text", class="form-control form-control-user", id="InputUid", placeholder="Username", autocomplete="off")}}
