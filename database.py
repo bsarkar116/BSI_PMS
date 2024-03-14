@@ -12,8 +12,11 @@ def db_conn():
     # access security-relevant configuration data (e.g. secret keys, passwords) are protected against unauthorized access.
     user = os.environ.get("DB_USER")
     password = os.environ.get("DB_PASS")
-    database = os.environ.get("DB_NAME")
+    # database = os.environ.get("DB_NAME")
     tls_version = os.environ.get("DB_TLS")
+
+    # Database clone for testing
+    database = "pms_test"
 
     if not host or not user or not password or not database or tls_version not in ["TLSv1.2", "TLSv1.3"]:
         root.error("Missing database connection parameters")
@@ -27,11 +30,11 @@ def db_conn():
 
     try:
         mydb = sql.connect(
-            host="127.0.0.1",
-            user=os.environ.get("DB_USER"),
-            password=os.environ.get("DB_PASS"),
-            database=os.environ.get("DB_NAME"),
-            tls_versions=["TLSv1.3"]
+            host=host,
+            user=user,
+            password=password,
+            database=database,
+            tls_versions=[tls_version]
         )
         mycursor = mydb.cursor()
         return mydb, mycursor

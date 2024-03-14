@@ -24,6 +24,7 @@ app = Flask(__name__)
 # Session configuration
 app.config["SESSION_PERMANENT"] = False
 app.config["PERMANENT_SESSION_LIFETIME"] = datetime.timedelta(seconds=900)
+app.config["SESSION_ID_LENGTH"] = 512
 app.config["SESSION_TYPE"] = "filesystem"
 app.config["SESSION_FILE_THRESHOLD"] = 10
 # HT4 - It must be ensured that the secure flag is used by all cookies that contain confidential information
@@ -71,8 +72,6 @@ def before_request():
 
 @app.route("/", methods=["GET", "POST"])  # HT2
 def index():
-    # AH14 - It must be ensured that only authentic session identifiers created by the application itself or a third-party
-    # component used are accepted by the application
     if not session.get("id") or request.environ.get('HTTP_X_REAL_IP', request.remote_addr) != session.get("IP"):
         # HT7 -It must be ensured that each HTTP response contains a content type that defines a secure character set (e.g. UTF-8).
         return render_template("index.html", mimetypes="UTF-8")
@@ -168,6 +167,9 @@ def dashboard():
     # successfully authorized beforehand. In accordance with the principle of access control, every access to any object
     # must be checked for authorization.
 
+    # AH14 - It must be ensured that only authentic session identifiers created by the application itself or a third-party
+    # component used are accepted by the application
+
     # AO3 - Applications may only assign users the minimum rights that are absolutely necessary for the execution of the
     # required functions
     if not session.get("id") or request.environ.get('HTTP_X_REAL_IP', request.remote_addr) != session.get("IP"):
@@ -192,7 +194,7 @@ def logout():
     return render_template("index.html", mimetypes="UTF-8")
 
 
-@app.route('/forgot', methods=["POST"])
+@app.route('/forgot', methods=["GET", "POST"])
 def forgot():
     global flag
     flag = 0
